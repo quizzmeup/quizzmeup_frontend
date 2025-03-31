@@ -1,0 +1,15 @@
+.notfound {
+  text-align: center;
+  padding: 4rem;
+}
+
+.notfound h1 {
+  font-size: 5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.notfound p {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+}

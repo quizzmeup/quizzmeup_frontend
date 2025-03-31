@@ -1,0 +1,24 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  margin-bottom: 30px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 1);
+
+  background-color: var(--primary-color);
+  overflow: hidden;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+/* Assure que le contenu du header passe bien au-dessus */
+.header > * {
+  position: relative;
+  z-index: 1;
+}
