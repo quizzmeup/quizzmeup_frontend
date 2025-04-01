@@ -10,7 +10,6 @@ const Header = () => {
           <Logo />
           <h1>QuizMeUp</h1>
         </div>
-
         <AuthButtons />
       </div>
     </header>

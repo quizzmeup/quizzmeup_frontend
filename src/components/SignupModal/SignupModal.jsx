@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { signup } from "../../api/auth";
 import { useAuth } from "../../contexts/AuthContext";
 import { useModal } from "../../contexts/ModalContext";
@@ -11,9 +11,22 @@ const SignupModal = () => {
   const { handleLogin } = useAuth();
   const { showToast } = useToast();
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+
+  //check if passwords match
+  useEffect(() => {
+    if (confirmPassword) {
+      if (password !== confirmPassword) {
+        setError("The passwords must be equal");
+      } else {
+        setError("");
+      }
+    }
+  }, [password, confirmPassword]);
 
   if (!isSignupModalOpen) return null;
 
@@ -23,7 +36,7 @@ const SignupModal = () => {
 
     let data;
     try {
-      data = await signup({ email, password });
+      data = await signup({ name, email, password });
     } catch (err) {
       setError(handleApiError(err));
       return;
@@ -54,6 +67,14 @@ const SignupModal = () => {
         <h2>Sign up</h2>
         <form className="modal-form" onSubmit={handleSubmit}>
           <input
+            type="text"
+            placeholder="Username"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+
+          <input
             type="email"
             placeholder="Email address"
             value={email}
@@ -66,6 +87,14 @@ const SignupModal = () => {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+          <input
+            type="password"
+            placeholder="Confirm password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
 
@@ -99,4 +128,3 @@ const SignupModal = () => {
 };
 
 export default SignupModal;
-
