@@ -10,37 +10,40 @@ const AuthButtons = () => {
 
   return (
     <div className="auth-buttons">
-      {token ? (
-        <>
-          <button
-            type="button"
-            className="auth-btn logout"
-            onClick={() => {
-              handleLogout();
-              showToast("Logged out successfully", "success");
-            }}
-          >
-            Logout
-          </button>
-        </>
-      ) : (
-        <>
-          <button
-            type="button"
-            className="auth-btn login"
-            onClick={openLoginModal}
-          >
-            Login
-          </button>
-          <button
-            type="button"
-            className="auth-btn signup"
-            onClick={openSignupModal}
-          >
-            Signup
-          </button>
-        </>
-      )}
+      <div className="student-auth">
+        {token ? (
+          <>
+            <button
+              type="button"
+              className="auth-btn "
+              onClick={() => {
+                handleLogout();
+                showToast("Logged out successfully", "success");
+              }}
+            >
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <button type="button" className="auth-btn" onClick={openLoginModal}>
+              Login
+            </button>
+            <button
+              type="button"
+              className="auth-btn"
+              onClick={openSignupModal}
+            >
+              Signup
+            </button>
+          </>
+        )}
+      </div>
+      <div className="admin-auth">
+        <button type="button" className="auth-btn backoff-btn">
+          Backoffice
+        </button>
+      </div>
     </div>
   );
 };

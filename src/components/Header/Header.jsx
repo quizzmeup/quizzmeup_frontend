@@ -5,8 +5,14 @@ import AuthButtons from "./AuthButtons";
 const Header = () => {
   return (
     <header className="header">
-      <Logo />
-      <AuthButtons />
+      <div className="container">
+        <div className="header-title">
+          <Logo />
+          <h1>QuizMeUp</h1>
+        </div>
+
+        <AuthButtons />
+      </div>
     </header>
   );
 };
