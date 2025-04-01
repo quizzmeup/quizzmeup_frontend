@@ -9,6 +9,7 @@
   --text-color: #000000;
   --error-color: #ff0505;
   --font-family: "AvertaStd-Regular", sans-serif;
+  --font-bold: "AvertaStd-Bold", sans-serif;
 
   --header-height: 80px;
 }
@@ -30,7 +31,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "AvertaStd-Bold", sans-serif;
+  font-family: var(--font-bold);
   color: var(--text-color);
   margin-bottom: 1rem;
 }
