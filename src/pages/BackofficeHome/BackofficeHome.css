@@ -34,7 +34,7 @@
 .quiz-label {
   width: 30%;
   background: linear-gradient(to right, #f4f5f7, #e7eaed);
-  padding: 0.3rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 5px;
   cursor: pointer;
   font-family: var(--font-bold);
