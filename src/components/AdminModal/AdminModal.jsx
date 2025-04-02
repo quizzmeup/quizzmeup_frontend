@@ -3,9 +3,12 @@ import { adminLogin } from "../../api/auth";
 import { useModal } from "../../contexts/ModalContext";
 import { handleApiError } from "../../utils/apiErrorHandler";
 import { useToast } from "../../contexts/ToastContext";
+import { useNavigate } from "react-router-dom";
 import "./AdminModal.css";
 
 const LoginModal = () => {
+  const navigate = useNavigate();
+
   const { isAdminModalOpen, closeModals } = useModal();
   const { showToast } = useToast();
 
@@ -28,7 +31,7 @@ const LoginModal = () => {
 
     if (data.message) {
       handleClose();
-      //Prévoir la redirection vers la page backoffice
+      navigate("/backoffice/backoffice");
       showToast(data.message, "success");
     } else {
       setError("Aucun token reçu.");

@@ -1,18 +1,19 @@
 import { useModal } from "../../contexts/ModalContext";
 import { useAuth } from "../../contexts/AuthContext";
 import { useToast } from "../../contexts/ToastContext";
+import { useNavigate } from "react-router-dom";
 import "./AuthButtons.css";
 
 const AuthButtons = () => {
+  const navigate = useNavigate();
+
   const { openLoginModal, openSignupModal, openAdminModal } = useModal();
   const { token, userData, handleLogout } = useAuth();
   const { showToast } = useToast();
 
   // navigate to backoffice if user is already admin
   const adminClickHandler = () => {
-    userData.isAdmin
-      ? showToast("Prévoir la redirection dans AuthButton.jsx")
-      : openAdminModal();
+    userData.isAdmin ? navigate("/backoffice/backoffice") : openAdminModal();
   };
 
   return (
