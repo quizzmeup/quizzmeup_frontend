@@ -1,8 +1,16 @@
+@import url("./utils/css/font.css");
+
 :root {
-  --primary-color: #e62429;
+  --primary-color: #57b97d;
   --secondary-color: #202020;
-  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  
+  --reacteur-color: #523ecd;
+  --bg-color: #ffffff;
+  --div-bg-color: #e7f8e9;
+  --text-color: #000000;
+  --error-color: #ff0505;
+  --font-family: "AvertaStd-Regular", sans-serif;
+  --font-bold: "AvertaStd-Bold", sans-serif;
+
   --header-height: 80px;
 }
 
@@ -15,13 +23,21 @@
 body {
   font-family: var(--font-family);
   background-color: #fff;
-  color: var(--secondary-color);
+  color: var(--text-color);
   line-height: 1.6;
 }
 
-h1, h2, h3, h4 {
-  color: var(--primary-color);
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-bold);
+  color: var(--text-color);
   margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 1.8em;
 }
 
 p {
@@ -72,3 +88,7 @@ textarea {
   background-color: #f39c12;
 }
 
+.container {
+  max-width: 1024px;
+  margin: auto;
+}

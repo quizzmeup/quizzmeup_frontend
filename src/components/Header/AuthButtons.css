@@ -1,29 +1,27 @@
 .auth-buttons {
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .auth-btn {
-  color: white;
+  color: var(--bg-color);
   padding: 0.4rem 0.8rem;
-  border-radius: 3px;
+  border-radius: 5px;
   cursor: pointer;
   font-weight: 700;
-  font-size: 1.3rem;
-  border: none;
-}
-
-.auth-btn.login {
-  background-color: var(--secondary-color);
-}
-
-.auth-btn.signup {
+  font-size: 1.1rem;
+  border: 2px solid var(--primary-color);
   background-color: var(--primary-color);
+}
+
+.student-auth {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .auth-btn:hover {
   background-color: white;
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 .auth-btn.logout {

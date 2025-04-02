@@ -32,9 +32,9 @@ const LoginModal = () => {
     if (data.token && data.user) {
       handleLogin(data.token, data.user);
       handleClose();
-      showToast("Logged in successfully", "success");
+      showToast("Vous êtes connecté", "success");
     } else {
-      setError("No token received.");
+      setError("Aucun token reçu.");
     }
   };
 
@@ -55,7 +55,7 @@ const LoginModal = () => {
         <form className="modal-form" onSubmit={handleSubmit}>
           <input
             type="email"
-            placeholder="Email address"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -63,7 +63,7 @@ const LoginModal = () => {
 
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Mot de passe"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -74,7 +74,7 @@ const LoginModal = () => {
           <button type="submit">Login</button>
 
           <p className="modal-footer">
-            Don't have an account?{" "}
+            Pas encore de compte?{" "}
             <span
               className="switch-modal"
               onClick={() => {
@@ -82,7 +82,7 @@ const LoginModal = () => {
                 openSignupModal();
               }}
             >
-              Sign up!
+              S'enregistrer!
             </span>
           </p>
         </form>
@@ -92,4 +92,3 @@ const LoginModal = () => {
 };
 
 export default LoginModal;
-
