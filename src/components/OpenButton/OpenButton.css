@@ -1,0 +1,10 @@
+.open-button {
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  font-size: 20px;
+  border-radius: 5px;
+}

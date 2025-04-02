@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "AvertaStd-Regular";
+  src: url("https://db.onlinewebfonts.com/t/19b8f54eb1f074fb01efb1c4f02e9623.eot");
+  src: url("https://db.onlinewebfonts.com/t/19b8f54eb1f074fb01efb1c4f02e9623.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/19b8f54eb1f074fb01efb1c4f02e9623.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/19b8f54eb1f074fb01efb1c4f02e9623.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/19b8f54eb1f074fb01efb1c4f02e9623.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/19b8f54eb1f074fb01efb1c4f02e9623.svg#AvertaStd-Regular")
+      format("svg");
+}
+
+@font-face {
+  font-family: "AvertaStd-Bold";
+  src: url("https://db.onlinewebfonts.com/t/447315c0c330fd423c8e1cc18024669d.eot");
+  src: url("https://db.onlinewebfonts.com/t/447315c0c330fd423c8e1cc18024669d.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/447315c0c330fd423c8e1cc18024669d.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/447315c0c330fd423c8e1cc18024669d.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/447315c0c330fd423c8e1cc18024669d.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/447315c0c330fd423c8e1cc18024669d.svg#AvertaStd-Bold")
+      format("svg");
+}

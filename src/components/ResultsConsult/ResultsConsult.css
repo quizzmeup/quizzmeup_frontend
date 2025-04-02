@@ -1,4 +1,11 @@
 .results-div {
-  width: 30%;
-  background-color: lightgray;
+  width: 50%;
+  background: linear-gradient(to right, #f4f5f7, #e7eaed);
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: var(--font-bold);
+  font-size: 1.3rem;
+  box-shadow: 5px 2px 12px rgb(196, 196, 196);
+  margin: 0.5rem 0px;
 }

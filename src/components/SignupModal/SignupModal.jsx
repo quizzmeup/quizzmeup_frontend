@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { signup } from "../../api/auth";
 import { useAuth } from "../../contexts/AuthContext";
 import { useModal } from "../../contexts/ModalContext";
@@ -11,9 +11,22 @@ const SignupModal = () => {
   const { handleLogin } = useAuth();
   const { showToast } = useToast();
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+
+  //check if passwords match
+  useEffect(() => {
+    if (confirmPassword) {
+      if (password !== confirmPassword) {
+        setError("Les deux mots de passe doivent être identiques");
+      } else {
+        setError("");
+      }
+    }
+  }, [password, confirmPassword]);
 
   if (!isSignupModalOpen) return null;
 
@@ -23,7 +36,7 @@ const SignupModal = () => {
 
     let data;
     try {
-      data = await signup({ email, password });
+      data = await signup({ name, email, password });
     } catch (err) {
       setError(handleApiError(err));
       return;
@@ -32,9 +45,9 @@ const SignupModal = () => {
     if (data.token && data.user) {
       handleLogin(data.token, data.user);
       handleClose();
-      showToast("Signed up successfully", "success");
+      showToast("Vous êtes connecté", "success");
     } else {
-      setError("No token received.");
+      setError("Aucun token reçu.");
     }
   };
 
@@ -54,8 +67,16 @@ const SignupModal = () => {
         <h2>Sign up</h2>
         <form className="modal-form" onSubmit={handleSubmit}>
           <input
+            type="text"
+            placeholder="Nom prénom"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+
+          <input
             type="email"
-            placeholder="Email address"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -63,25 +84,26 @@ const SignupModal = () => {
 
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Mot de passe"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
 
-          <p className="newsletter-info">
-            By signing up, I confirm I have read and agree to the{" "}
-            <a href="#">Terms & Conditions</a> and{" "}
-            <a href="#">Privacy Policy</a>. <br />I confirm I am at least 18
-            years old.
-          </p>
+          <input
+            type="password"
+            placeholder="Confirmez le mot de passe"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
 
           {error && <p className="error-message">{error}</p>}
 
-          <button type="submit">Sign up</button>
+          <button type="submit">Créer un compte</button>
 
           <p className="modal-footer">
-            Already have an account?{" "}
+            Déjà un compte?{" "}
             <span
               className="switch-modal"
               onClick={() => {
@@ -89,7 +111,7 @@ const SignupModal = () => {
                 openLoginModal();
               }}
             >
-              Log in here
+              Se connecter
             </span>
           </p>
         </form>
@@ -99,4 +121,3 @@ const SignupModal = () => {
 };
 
 export default SignupModal;
-
