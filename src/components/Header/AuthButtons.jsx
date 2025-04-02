@@ -4,9 +4,16 @@ import { useToast } from "../../contexts/ToastContext";
 import "./AuthButtons.css";
 
 const AuthButtons = () => {
-  const { openLoginModal, openSignupModal } = useModal();
-  const { token, handleLogout } = useAuth();
+  const { openLoginModal, openSignupModal, openAdminModal } = useModal();
+  const { token, userData, handleLogout } = useAuth();
   const { showToast } = useToast();
+
+  // navigate to backoffice if user is already admin
+  const adminClickHandler = () => {
+    userData.isAdmin
+      ? showToast("Prévoir la redirection dans AuthButton.jsx")
+      : openAdminModal();
+  };
 
   return (
     <div className="auth-buttons">
@@ -39,11 +46,17 @@ const AuthButtons = () => {
           </>
         )}
       </div>
-      <div className="admin-auth">
-        <button type="button" className="auth-btn backoff-btn">
-          Espace formateur
-        </button>
-      </div>
+      {token && (
+        <div className="admin-auth">
+          <button
+            type="button"
+            className="auth-btn backoff-btn"
+            onClick={adminClickHandler}
+          >
+            Espace formateur
+          </button>
+        </div>
+      )}
     </div>
   );
 };

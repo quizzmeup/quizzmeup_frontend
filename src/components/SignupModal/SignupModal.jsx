@@ -36,9 +36,19 @@ const SignupModal = () => {
 
     let data;
     try {
+      //check the length off the password
+      if (password.length < 8) {
+        throw {
+          passwordError:
+            "Votre mot de passe doit contenir au moins 8 caractères",
+        };
+      }
+
       data = await signup({ name, email, password });
     } catch (err) {
-      setError(handleApiError(err));
+      err.passwordError
+        ? setError(err.passwordError)
+        : setError(handleApiError(err));
       return;
     }
 
@@ -52,8 +62,10 @@ const SignupModal = () => {
   };
 
   const handleClose = () => {
+    setName("");
     setEmail("");
     setPassword("");
+    setConfirmPassword("");
     setError("");
     closeModals();
   };
