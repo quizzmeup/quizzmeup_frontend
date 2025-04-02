@@ -21,7 +21,7 @@ const SignupModal = () => {
   useEffect(() => {
     if (confirmPassword) {
       if (password !== confirmPassword) {
-        setError("The passwords must be equal");
+        setError("Les deux mots de passe doivent être identiques");
       } else {
         setError("");
       }
@@ -45,9 +45,9 @@ const SignupModal = () => {
     if (data.token && data.user) {
       handleLogin(data.token, data.user);
       handleClose();
-      showToast("Signed up successfully", "success");
+      showToast("Vous êtes connecté", "success");
     } else {
-      setError("No token received.");
+      setError("Aucun token reçu.");
     }
   };
 
@@ -68,7 +68,7 @@ const SignupModal = () => {
         <form className="modal-form" onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="Username"
+            placeholder="Nom prénom"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
@@ -76,7 +76,7 @@ const SignupModal = () => {
 
           <input
             type="email"
-            placeholder="Email address"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -84,7 +84,7 @@ const SignupModal = () => {
 
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Mot de passe"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -92,25 +92,18 @@ const SignupModal = () => {
 
           <input
             type="password"
-            placeholder="Confirm password"
+            placeholder="Confirmez le mot de passe"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
 
-          <p className="newsletter-info">
-            By signing up, I confirm I have read and agree to the{" "}
-            <a href="#">Terms & Conditions</a> and{" "}
-            <a href="#">Privacy Policy</a>. <br />I confirm I am at least 18
-            years old.
-          </p>
-
           {error && <p className="error-message">{error}</p>}
 
-          <button type="submit">Sign up</button>
+          <button type="submit">Créer un compte</button>
 
           <p className="modal-footer">
-            Already have an account?{" "}
+            Déjà un compte?{" "}
             <span
               className="switch-modal"
               onClick={() => {
@@ -118,7 +111,7 @@ const SignupModal = () => {
                 openLoginModal();
               }}
             >
-              Log in here
+              Se connecter
             </span>
           </p>
         </form>
