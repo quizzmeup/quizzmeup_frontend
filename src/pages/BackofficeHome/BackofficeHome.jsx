@@ -1,4 +1,3 @@
-import Button from "../../components/Button/Button";
 import OpenButton from "../../components/OpenButton/OpenButton";
 import ResultsConsult from "../../components/ResultsConsult/ResultsConsult";
 import { Link } from "react-router-dom";
@@ -9,7 +8,7 @@ const BackofficeHome = () => {
     <div className="backoffice-home">
       <div className="backoffice-quiz">
         <h2>Formulaires</h2>
-        <Button text="+ Nouveau formulaire" />
+        <button>+ Nouveau formulaire</button>
       </div>
       <div className="backoffice-consult">
         <h2>Résultats</h2>
