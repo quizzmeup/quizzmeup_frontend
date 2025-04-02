@@ -18,7 +18,7 @@ const AuthButtons = () => {
               className="auth-btn "
               onClick={() => {
                 handleLogout();
-                showToast("Logged out successfully", "success");
+                showToast("Vous êtes déconnecté", "success");
               }}
             >
               Logout
@@ -27,21 +27,21 @@ const AuthButtons = () => {
         ) : (
           <>
             <button type="button" className="auth-btn" onClick={openLoginModal}>
-              Login
+              Se connecter
             </button>
             <button
               type="button"
               className="auth-btn"
               onClick={openSignupModal}
             >
-              Signup
+              S'enregister
             </button>
           </>
         )}
       </div>
       <div className="admin-auth">
         <button type="button" className="auth-btn backoff-btn">
-          Backoffice
+          Espace formateur
         </button>
       </div>
     </div>
