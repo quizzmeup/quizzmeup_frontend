@@ -4,6 +4,11 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { getQuizzes } from "../../api/home";
 import { useNavigate } from "react-router-dom";
+import { ROUTES } from "../../routes";
+
+import BannerItem from "../../components/BannerItem/BannerItem";
+import BannerItemBis from "../../components/BannerItemBis/BannerItemBis";
+import Loader from "../../components/Loader/Loader";
 
 import { FaExternalLinkAlt } from "react-icons/fa";
 
@@ -17,11 +22,7 @@ const Home = () => {
     setIsLoading(true);
     try {
       const response = await getQuizzes();
-      //const response = await axios.get("http://localhost:3000/api/quizzes");
-
       setData(response.data);
-
-      //console.log(response.data);
       setIsLoading(false);
     } catch (error) {
       console.error("Erreur lors du chargement :", error);
@@ -34,11 +35,9 @@ const Home = () => {
 
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate("/backoffice/backoffice");
-  };
-
-  return !userData ? (
+  return isLoading ? (
+    <Loader />
+  ) : userData ? (
     <main className="container">
       <div className="formulaire">
         <h1 className="titre">Répondre à un questionnaire</h1>
@@ -47,23 +46,23 @@ const Home = () => {
         {data && data.length > 0 ? (
           data.map((elem, index) => (
             <div className="line_formulaire" key={index}>
-              <h2>{elem.title}</h2>
-
-              <div className="line_formulaire" onClick={handleClick}>
-                <FaExternalLinkAlt size={30} color="white" />
-              </div>
-              <button className="auth-btn" onClick={handleClick}>
-                Clique moi
-              </button>
+              <BannerItem
+                text={elem.title}
+                specialClassItem="back-component"
+                specialClassDiv="back-div"
+                specialClassButton="back-button"
+                // TO DO
+                linkTo={ROUTES.quiz + "/" + elem.id}
+              />
             </div>
           ))
         ) : (
-          <p>Connecte-toi ou crée un compte avant toute chose, merci</p>
+          <h1>Pas de formulaires disponible pour toi, désolé.</h1>
         )}
       </div>
     </main>
   ) : (
-    <div>tata</div>
+    <h1>Connecte-toi ou crée un compte avant toute chose, merci.</h1>
   );
 };
 

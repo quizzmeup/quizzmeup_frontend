@@ -1,16 +1,8 @@
-h2 {
-  border: 1px solid yellow;
-  width: 80%;
-  background-color: white;
-  height: 36px;
-}
+main {
+  width: 100%;
+  height: calc(100vh - var(--header-height) - 60px);
 
-.formulaire {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid red;
-  flex: 1;
-  align-items: center;
+  background-color: rgb(238, 243, 240);
 }
 
 .titre {
@@ -24,41 +16,40 @@ h2 {
   text-decoration: underline;
 }
 
+.formulaire {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+}
+
 .line_formulaire {
   display: flex;
   flex-direction: row;
   align-items: baseline;
-
+  justify-content: space-evenly;
   gap: 10px;
-  padding: 10px;
-  width: 80%;
+  padding: 5px;
+  width: 60%;
   border: 1px solid blue;
 }
 
-main {
-  width: 950px;
-  background-color: rgb(238, 243, 240);
-}
-
-.auth-btn {
-  color: var(--bg-color);
-  padding: 0.4rem 0.8rem;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 1rem;
-  border: 2px solid var(--primary-color);
-  background-color: var(--primary-color);
-}
-
-.auth-btn:hover {
-  background-color: white;
-  color: var(--primary-color);
-}
-
-.toto {
-  background-color: green;
-  height: 50px;
-  width: 50px;
+.back-div {
+  padding: 0.3rem 1rem;
+  margin: 0.5rem 0px;
+  background: white;
+  height: 34px;
   display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.back-div span {
+  font-size: 12px;
+}
+
+.back-button {
+  font-size: 16px;
+  padding: 8px;
+  height: 20;
 }
