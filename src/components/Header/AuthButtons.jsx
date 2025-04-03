@@ -13,7 +13,7 @@ const AuthButtons = () => {
 
   // navigate to backoffice if user is already admin
   const adminClickHandler = () => {
-    userData.isAdmin ? navigate("/backoffice/backoffice") : openAdminModal();
+    userData.isAdmin ? navigate("/backoffice") : openAdminModal();
   };
 
   return (
