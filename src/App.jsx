@@ -17,6 +17,7 @@ import AdminModal from "./components/AdminModal/AdminModal";
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
 import BackofficeHome from "./pages/BackofficeHome/BackofficeHome";
+import ResultUsers from "./pages/ResultUsers/ResultUsers";
 
 const AppContent = () => {
   return (
@@ -29,6 +30,7 @@ const AppContent = () => {
           <Route path={ROUTES.home} element={<Home />} />
           <Route path={ROUTES.notFound} element={<NotFound />} />
           <Route path={ROUTES.backoffice} element={<BackofficeHome />} />
+          <Route path={ROUTES.resultUsers} element={<ResultUsers />} />
         </Route>
       </Routes>
     </Router>
