@@ -11,6 +11,7 @@ import { ToastProvider } from "./contexts/ToastContext";
 import Layout from "./components/Layout/Layout";
 import SignupModal from "./components/SignupModal/SignupModal";
 import LoginModal from "./components/LoginModal/LoginModal";
+import AdminModal from "./components/AdminModal/AdminModal";
 
 // Pages
 import Home from "./pages/Home/Home";
@@ -22,6 +23,7 @@ const AppContent = () => {
     <Router>
       <SignupModal />
       <LoginModal />
+      <AdminModal />
       <Routes>
         <Route element={<Layout />}>
           <Route path={ROUTES.home} element={<Home />} />

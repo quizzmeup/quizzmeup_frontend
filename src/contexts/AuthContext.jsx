@@ -23,7 +23,9 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const handleLogin = (token, userData) => {
-    Cookies.set(QUIZZMEUP_FRONTEND_AUTH_TOKEN_COOKIE_NAME, token, { expires: 3 });
+    Cookies.set(QUIZZMEUP_FRONTEND_AUTH_TOKEN_COOKIE_NAME, token, {
+      expires: 3,
+    });
     localStorage.setItem("userData", JSON.stringify(userData));
     setToken(token);
     setUserData(userData);
