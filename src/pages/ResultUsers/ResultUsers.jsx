@@ -47,6 +47,7 @@ const ResultUsers = () => {
     ) : (
       <div className="container ">
         <div className="result-background">
+          <h1>Résultats par utilisateurs</h1>
           <SearchInput
             placeholder="Rechercher un utilisateur"
             onChange={handleSearch}
@@ -59,6 +60,7 @@ const ResultUsers = () => {
                   key={user._id}
                   title={user.name}
                   linkLabel="Consulter"
+                  specialClass="search-results"
                 />
               );
             })}

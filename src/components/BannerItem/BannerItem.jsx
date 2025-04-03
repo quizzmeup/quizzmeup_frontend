@@ -1,5 +1,5 @@
 import "./BannerItem.css";
-import { RxOpenInNewWindow } from "react-icons/rx";
+import { FaExternalLinkAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const BannerItem = ({ text, specialClassDiv, specialClassButton, linkTo }) => {
@@ -10,7 +10,7 @@ const BannerItem = ({ text, specialClassDiv, specialClassButton, linkTo }) => {
       </div>
       <Link to={linkTo}>
         <button className={`open-button ${specialClassButton}`}>
-          <RxOpenInNewWindow />
+          <FaExternalLinkAlt />
         </button>
       </Link>
     </div>
