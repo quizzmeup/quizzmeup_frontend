@@ -3,10 +3,11 @@ import { createContext, useContext, useState } from "react";
 const ModalContext = createContext();
 
 export const ModalProvider = ({ children }) => {
-  const [activeModal, setActiveModal] = useState(null); // "login", "signup", or null
+  const [activeModal, setActiveModal] = useState(null); // "login", "signup", "admin" or null
 
   const openSignupModal = () => setActiveModal("signup");
   const openLoginModal = () => setActiveModal("login");
+  const openAdminModal = () => setActiveModal("admin");
   const closeModals = () => setActiveModal(null);
 
   return (
@@ -14,8 +15,10 @@ export const ModalProvider = ({ children }) => {
       value={{
         isSignupModalOpen: activeModal === "signup",
         isLoginModalOpen: activeModal === "login",
+        isAdminModalOpen: activeModal === "admin",
         openSignupModal,
         openLoginModal,
+        openAdminModal,
         closeModals,
       }}
     >

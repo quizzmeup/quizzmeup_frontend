@@ -11,20 +11,24 @@ import { ToastProvider } from "./contexts/ToastContext";
 import Layout from "./components/Layout/Layout";
 import SignupModal from "./components/SignupModal/SignupModal";
 import LoginModal from "./components/LoginModal/LoginModal";
+import AdminModal from "./components/AdminModal/AdminModal";
 
 // Pages
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
+import BackofficeHome from "./pages/BackofficeHome/BackofficeHome";
 
 const AppContent = () => {
   return (
     <Router>
       <SignupModal />
       <LoginModal />
+      <AdminModal />
       <Routes>
         <Route element={<Layout />}>
           <Route path={ROUTES.home} element={<Home />} />
           <Route path={ROUTES.notFound} element={<NotFound />} />
+          <Route path={ROUTES.backoffice} element={<BackofficeHome />} />
         </Route>
       </Routes>
     </Router>
