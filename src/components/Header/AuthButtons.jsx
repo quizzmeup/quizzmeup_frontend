@@ -1,12 +1,20 @@
 import { useModal } from "../../contexts/ModalContext";
 import { useAuth } from "../../contexts/AuthContext";
 import { useToast } from "../../contexts/ToastContext";
+import { useNavigate } from "react-router-dom";
 import "./AuthButtons.css";
 
 const AuthButtons = () => {
-  const { openLoginModal, openSignupModal } = useModal();
-  const { token, handleLogout } = useAuth();
+  const navigate = useNavigate();
+
+  const { openLoginModal, openSignupModal, openAdminModal } = useModal();
+  const { token, userData, handleLogout } = useAuth();
   const { showToast } = useToast();
+
+  // navigate to backoffice if user is already admin
+  const adminClickHandler = () => {
+    userData.isAdmin ? navigate("/backoffice/backoffice") : openAdminModal();
+  };
 
   return (
     <div className="auth-buttons">
@@ -39,11 +47,17 @@ const AuthButtons = () => {
           </>
         )}
       </div>
-      <div className="admin-auth">
-        <button type="button" className="auth-btn backoff-btn">
-          Espace formateur
-        </button>
-      </div>
+      {token && (
+        <div className="admin-auth">
+          <button
+            type="button"
+            className="auth-btn backoff-btn"
+            onClick={adminClickHandler}
+          >
+            Espace formateur
+          </button>
+        </div>
+      )}
     </div>
   );
 };
