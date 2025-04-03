@@ -35,6 +35,7 @@ const LoginModal = () => {
     }
 
     if (data.message) {
+      //modifie le statut isAdmin dans le local storage et dans le state userData si l'utilisateur est admin
       storedUserObj.isAdmin = true;
       setUserData(storedUserObj);
       localStorage.setItem("userData", JSON.stringify(storedUserObj));

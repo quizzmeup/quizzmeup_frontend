@@ -1,4 +1,4 @@
-.banner-item {
+.banner-item-bis {
   width: 30%;
   padding: 0.5rem 1rem;
   border-radius: 5px;
@@ -23,14 +23,14 @@
   box-shadow: none;
 }
 
-.banner-item div {
+.banner-item-bis div {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   width: 70%;
 }
 
-.banner-item > span {
+.banner-item-bis > span {
   font-size: 0.8rem;
   color: var(--primary-color);
 }

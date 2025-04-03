@@ -2,11 +2,11 @@ import "./BannerItemBis.css";
 
 const BannerItemBis = ({ title, linkLabel, specialClass }) => {
   return (
-    <div className={`banner-item ${specialClass}`}>
+    <div className={`banner-item-bis ${specialClass}`}>
       <div>
         <span>{title}</span>
       </div>
-      <span href="">{linkLabel}</span>
+      <span>{linkLabel}</span>
     </div>
   );
 };

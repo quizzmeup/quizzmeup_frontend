@@ -1,5 +1,4 @@
-import OpenButton from "../../components/OpenButton/OpenButton";
-import ResultsConsult from "../../components/ResultsConsult/ResultsConsult";
+import BannerItem from "../../components/BannerItem/BannerItem";
 import Loader from "../../components/Loader/Loader";
 import BannerItemBis from "../../components/BannerItemBis/BannerItemBis";
 import { Navigate } from "react-router-dom";
@@ -8,6 +7,7 @@ import { FaPlus } from "react-icons/fa6";
 import { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { getQuizzes } from "../../api/quiz";
+import { ROUTES } from "../../routes";
 
 const BackofficeHome = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -26,7 +26,7 @@ const BackofficeHome = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await getQuizzes(setData);
+        setData(await getQuizzes());
         setIsLoading(false);
       } catch (error) {
         console.error;
@@ -63,20 +63,22 @@ const BackofficeHome = () => {
         <div className="backoffice-consult">
           <h2>Résultats</h2>
           <div className="consult">
-            <div>
-              <ResultsConsult text="> Consulter par formulaire" />
-              <OpenButton />
-            </div>
-            <div>
-              <ResultsConsult text="> Consulter par utilisateur" />
-              <OpenButton />
-            </div>
+            <BannerItem
+              text="> Consulter par formulaire"
+              specialClassDiv="back-home-div"
+              specialClassButton="back-home-button"
+            />
+            <BannerItem
+              text="> Consulter par utilisateur"
+              specialClassDiv="back-home-div"
+              specialClassButton="back-home-button"
+            />
           </div>
         </div>
       </div>
     )
   ) : (
-    <Navigate to="/" />
+    <Navigate to={ROUTES.home} />
   );
 };
 

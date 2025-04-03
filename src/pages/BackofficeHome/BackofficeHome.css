@@ -5,13 +5,6 @@
   margin-bottom: 10px;
 }
 
-.consult > div {
-  display: flex;
-  align-items: center;
-  /* border: black solid 1px; */
-  gap: 15px;
-}
-
 .new-form {
   color: var(--bg-color);
   padding: 0.5rem 1.3rem;
@@ -24,6 +17,11 @@
   gap: 30px;
   align-items: center;
   font-family: var(--font-bold);
+  box-shadow: 5px 2px 12px rgb(196, 196, 196);
+}
+
+.new-form:hover {
+  box-shadow: none;
 }
 
 .backoffice-home h2 {
