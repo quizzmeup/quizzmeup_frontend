@@ -1,5 +1,7 @@
 import OpenButton from "../../components/OpenButton/OpenButton";
 import ResultsConsult from "../../components/ResultsConsult/ResultsConsult";
+import Loader from "../../components/Loader/Loader";
+import BannerItemBis from "../../components/BannerItemBis/BannerItemBis";
 import { Navigate } from "react-router-dom";
 import "./BackofficeHome.css";
 import { FaPlus } from "react-icons/fa6";
@@ -9,7 +11,7 @@ import { getQuizzes } from "../../api/quiz";
 
 const BackofficeHome = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
   const { token } = useAuth();
 
@@ -21,15 +23,13 @@ const BackofficeHome = () => {
     isAdmin = obj.isAdmin;
   }
 
-  let quiz;
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        quiz = await getQuizzes(setData);
+        await getQuizzes(setData);
         setIsLoading(false);
       } catch (error) {
-        console.log(error);
+        console.error;
       }
     };
     fetchData();
@@ -37,7 +37,7 @@ const BackofficeHome = () => {
 
   return token && isAdmin ? (
     isLoading ? (
-      <p>Chargement</p>
+      <Loader />
     ) : (
       <div className="backoffice-home container">
         <div className="backoffice-quiz">
@@ -47,14 +47,17 @@ const BackofficeHome = () => {
               <FaPlus />
               <span>Nouveau formulaire</span>
             </div>
-            {data.map((quiz) => {
-              return (
-                <div key={quiz._id} className="quiz-label">
-                  <span>{quiz.title}</span>
-                  <a>Editer</a>
-                </div>
-              );
-            })}
+            {data &&
+              data.map((quiz) => {
+                return (
+                  <BannerItemBis
+                    title={quiz.title}
+                    key={quiz._id}
+                    linkLabel="Editer"
+                    specialClass="shadowed"
+                  />
+                );
+              })}
           </div>
         </div>
         <div className="backoffice-consult">

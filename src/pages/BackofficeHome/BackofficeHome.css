@@ -31,27 +31,9 @@
   margin-top: 50px;
 }
 
-.quiz-label {
-  width: 30%;
-  background: linear-gradient(to right, #f4f5f7, #e7eaed);
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  font-family: var(--font-bold);
-  font-size: 1.1rem;
-  box-shadow: 5px 2px 12px rgb(196, 196, 196);
-  margin: 0.5rem 0px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.quiz-label a {
-  font-size: 0.8rem;
-}
-
 .backoffice-quiz > div {
   display: flex;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
