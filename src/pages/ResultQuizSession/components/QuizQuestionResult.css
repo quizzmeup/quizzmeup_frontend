@@ -1,8 +1,8 @@
 .qqr-wrapper {
   padding: 1.5rem;
   border-radius: 12px;
-  border: 2px solid #ddd;
-  background-color: #fefefe;
+  border: 2px solid;
+  background-color: var(--bg-color);
 }
 
 .qqr-correct {

@@ -24,7 +24,12 @@ const ResultQuizSession = () => {
     loadSubmission();
   }, [id]);
 
-  if (isLoading) return <Loader />;
+  if (isLoading)
+    return (
+      <div class="rqs-loader-wrapper">
+        <Loader />
+      </div>
+    );
   if (!submission) return <p>Soumission introuvable.</p>;
 
   const { quizVersion, user, cohort, score, answers } = submission;
