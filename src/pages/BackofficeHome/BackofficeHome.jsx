@@ -27,7 +27,7 @@ const BackofficeHome = () => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        setData(await getQuizzes());
+        setData(await getQuizzes(""));
         setIsLoading(false);
       } catch (error) {
         console.error(error);
@@ -68,6 +68,7 @@ const BackofficeHome = () => {
               text="> Consulter par formulaire"
               specialClassDiv="back-home-div"
               specialClassButton="back-home-button"
+              linkTo={ROUTES.resultByQuiz}
             />
             <BannerItem
               text="> Consulter par utilisateur"
