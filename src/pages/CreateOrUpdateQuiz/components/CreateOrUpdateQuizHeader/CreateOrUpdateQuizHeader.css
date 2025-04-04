@@ -1,0 +1,11 @@
+.header-CreateOrUpdateQuiz {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header-CreateOrUpdateQuiz input {
+  flex: 1;
+  padding: 0.5em;
+}
