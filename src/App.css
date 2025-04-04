@@ -2,12 +2,16 @@
 
 :root {
   --primary-color: #57b97d;
+  --primary-color-light: #d4edda;
+  --primary-color-xtra-light: #e9fbee;
   --secondary-color: #202020;
   --reacteur-color: #523ecd;
   --bg-color: #ffffff;
   --div-bg-color: #e7f8e9;
   --text-color: #000000;
   --error-color: #ff0505;
+  --error-color-light: #fdd;
+  --error-color-xtra-light: #fdecea;
   --font-family: "AvertaStd-Regular", sans-serif;
   --font-bold: "AvertaStd-Bold", sans-serif;
 
