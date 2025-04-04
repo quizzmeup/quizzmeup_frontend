@@ -1,0 +1,23 @@
+.answer-quiz-page {
+  height: calc(100vh - var(--header-height) - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color-light);
+  border-radius: 12px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+  /* padding-bottom: 30px; */
+}
+
+.answer-quiz-container {
+  /* min-height: 75vh; */
+  /* height: 100%; */
+  width: 100%;
+  max-width: 800px;
+  /* padding: 2rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}

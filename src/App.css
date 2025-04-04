@@ -3,6 +3,7 @@
 :root {
   --primary-color: #57b97d;
   --secondary-color: #202020;
+  --primary-color-light: #d4edda;
   --reacteur-color: #523ecd;
   --bg-color: #ffffff;
   --div-bg-color: #e7f8e9;
@@ -11,6 +12,7 @@
   --font-family: "AvertaStd-Regular", sans-serif;
   --font-bold: "AvertaStd-Bold", sans-serif;
 
+  --container-length: 1024px;
   --header-height: 80px;
 }
 
