@@ -1,19 +1,20 @@
-import "./ResultUsers.css";
+import "./Result.css";
 import SearchInput from "../../components/SearchInput/SearchInput";
 import { useAuth } from "../../contexts/AuthContext";
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import BannerItemBis from "../../components/BannerItemBis/BannerItemBis";
 import { ROUTES } from "../../routes";
-import { getUsers } from "../../api/users";
 import Loader from "../../components/Loader/Loader";
 
-const ResultUsers = () => {
+const Result = ({ request, pageTitle, placeholder, tagKey }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
 
   const { token } = useAuth();
+
+  console.log(pageTitle);
 
   let isAdmin;
   const storedUser = localStorage.getItem("userData");
@@ -25,8 +26,8 @@ const ResultUsers = () => {
   const fetchData = async () => {
     try {
       let filters = "";
-      filters += `?name=${search}`;
-      setData(await getUsers(filters));
+      filters += `?${tagKey}=${search}`;
+      setData(await request(filters));
       setIsLoading(false);
     } catch (error) {
       console.error(error);
@@ -47,18 +48,18 @@ const ResultUsers = () => {
     ) : (
       <div className="container ">
         <div className="result-background">
-          <h1>Résultats par utilisateurs</h1>
+          <h1>Résultats par {pageTitle}</h1>
           <SearchInput
-            placeholder="Rechercher un utilisateur"
+            placeholder={`Rechercher un ${placeholder}`}
             onChange={handleSearch}
             value={search}
           />
           {data &&
-            data.map((user) => {
+            data.map((elem) => {
               return (
                 <BannerItemBis
-                  key={user._id}
-                  title={user.name}
+                  key={elem._id}
+                  title={elem[tagKey]}
                   linkLabel="Consulter"
                   specialClass="search-results"
                 />
@@ -72,4 +73,4 @@ const ResultUsers = () => {
   );
 };
 
-export default ResultUsers;
+export default Result;

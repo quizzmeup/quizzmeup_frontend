@@ -3,4 +3,5 @@ export const ROUTES = {
   notFound: "*",
   backoffice: "/backoffice",
   resultUsers: "/result/users",
+  resultByQuiz: "/result/quizzes",
 };
