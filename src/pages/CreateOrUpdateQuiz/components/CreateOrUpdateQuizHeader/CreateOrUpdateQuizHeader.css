@@ -3,6 +3,11 @@
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
+  margin-bottom: 30px;
+}
+
+.content-createOrUpdateQuiz {
+  background-color: var(--div-bg-color);
 }
 
 .header-CreateOrUpdateQuiz input {

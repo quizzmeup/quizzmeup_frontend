@@ -5,6 +5,7 @@ import { getMostRecentQuizVersion } from "../../api/quiz";
 import { useToast } from "../../contexts/ToastContext";
 import CreateOrUpdateQuizHeader from "./components/CreateOrUpdateQuizHeader/CreateOrUpdateQuizHeader";
 import Loader from "../../components/Loader/Loader";
+import CreateOrUpdateQuizContent from "./components/CreateOrUpdateQuizContent/CreateOrUpdateQuizContent";
 
 const CreateOrUpdateQuiz = () => {
   const navigate = useNavigate();
@@ -33,9 +34,9 @@ const CreateOrUpdateQuiz = () => {
       const fetchMostRecentQuizVersion = async () => {
         const data = await getMostRecentQuizVersion(quiz_id, setError);
         setQuiz(data);
+        setIsLoading(false);
       };
       fetchMostRecentQuizVersion();
-      setIsLoading(false);
     } else {
       //initialize questions for create a new quiz
       setQuiz({ title: "", questions: [] });
@@ -47,9 +48,15 @@ const CreateOrUpdateQuiz = () => {
     <main className="createOrUpdateQuiz container">
       <Loader />
     </main>
+  ) : error ? (
+    <main className="createOrUpdateQuiz container">
+      <div className="error">{error}</div>
+    </main>
   ) : (
     <main className="createOrUpdateQuiz container">
+      {console.log(isLoading)}
       <CreateOrUpdateQuizHeader quiz={quiz} setQuiz={setQuiz} />
+      <CreateOrUpdateQuizContent quiz={quiz} setQuiz={setQuiz} />
     </main>
   );
 };
