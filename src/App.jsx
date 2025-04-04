@@ -17,7 +17,7 @@ import AdminModal from "./components/AdminModal/AdminModal";
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
 import BackofficeHome from "./pages/BackofficeHome/BackofficeHome";
-import createOrUpdateQuiz from "./pages/CreateOrUpdateQuiz/CreateOrUpdateQuiz";
+import CreateOrUpdateQuiz from "./pages/CreateOrUpdateQuiz/CreateOrUpdateQuiz";
 
 const AppContent = () => {
   return (
@@ -31,11 +31,11 @@ const AppContent = () => {
           <Route path={ROUTES.notFound} element={<NotFound />} />
           <Route path={ROUTES.backoffice} element={<BackofficeHome />} />
           <Route
-            pathe={ROUTES.createOrUpdateQuiz}
+            path={ROUTES.createOrUpdateQuiz}
             element={<CreateOrUpdateQuiz />}
           />
           <Route
-            pathe={ROUTES.createOrUpdateQuiz + "/:quiz_id"}
+            path={ROUTES.createOrUpdateQuiz + "/:quiz_id"}
             element={<CreateOrUpdateQuiz />}
           />
         </Route>

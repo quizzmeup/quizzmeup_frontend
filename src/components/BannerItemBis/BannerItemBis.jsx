@@ -1,8 +1,8 @@
 import "./BannerItemBis.css";
 
-const BannerItemBis = ({ title, linkLabel, specialClass }) => {
+const BannerItemBis = ({ title, linkLabel, specialClass, onClick }) => {
   return (
-    <div className={`banner-item-bis ${specialClass}`}>
+    <div className={`banner-item-bis ${specialClass}`} onClick={onClick}>
       <div>
         <span>{title}</span>
       </div>

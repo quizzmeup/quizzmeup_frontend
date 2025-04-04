@@ -1,7 +1,7 @@
 import BannerItem from "../../components/BannerItem/BannerItem";
 import Loader from "../../components/Loader/Loader";
 import BannerItemBis from "../../components/BannerItemBis/BannerItemBis";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import "./BackofficeHome.css";
 import { FaPlus } from "react-icons/fa6";
 import { useState, useEffect } from "react";
@@ -10,6 +10,8 @@ import { getQuizzes } from "../../api/quiz";
 import { ROUTES } from "../../routes";
 
 const BackofficeHome = () => {
+  const navigate = useNavigate();
+
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -43,7 +45,10 @@ const BackofficeHome = () => {
         <div className="backoffice-quiz">
           <h2>Formulaires</h2>
           <div>
-            <div className="new-form">
+            <div
+              className="new-form"
+              onClick={() => navigate(ROUTES.createOrUpdateQuiz)}
+            >
               <FaPlus />
               <span>Nouveau formulaire</span>
             </div>
@@ -55,6 +60,9 @@ const BackofficeHome = () => {
                     key={quiz._id}
                     linkLabel="Editer"
                     specialClass="shadowed"
+                    onClick={() =>
+                      navigate(ROUTES.createOrUpdateQuiz + "/" + quiz._id)
+                    }
                   />
                 );
               })}
