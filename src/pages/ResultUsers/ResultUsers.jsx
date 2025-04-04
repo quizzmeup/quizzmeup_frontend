@@ -29,7 +29,7 @@ const ResultUsers = () => {
       setData(await getUsers(filters));
       setIsLoading(false);
     } catch (error) {
-      console.error;
+      console.error(error);
     }
   };
 

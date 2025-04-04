@@ -30,7 +30,7 @@ const BackofficeHome = () => {
         setData(await getQuizzes());
         setIsLoading(false);
       } catch (error) {
-        console.error;
+        console.error(error);
       }
     };
     fetchData();

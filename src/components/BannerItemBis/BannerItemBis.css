@@ -11,6 +11,10 @@
   background: linear-gradient(to right, #f4f5f7, #e7eaed);
 }
 
+.banner-item-bis:hover {
+  box-shadow: none;
+}
+
 .shadowed {
   height: 45px;
   margin: 0.5rem 0px;
