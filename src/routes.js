@@ -1,5 +1,5 @@
 export const ROUTES = {
   home: "/",
   notFound: "*",
-  quizSessionResult: "/submissions/:id",
+  quizSubmissionShow: "/submissions/:id",
 };

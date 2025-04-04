@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchSubmissionById } from "../../api/submission";
 import Loader from "../../components/Loader/Loader";
 import QuizQuestionResult from "./components/QuizQuestionResult";
-import "./ResultQuizSession.css";
+import "./QuizSubmissionShow.css";
 
 const ResultQuizSession = () => {
   const { id } = useParams();

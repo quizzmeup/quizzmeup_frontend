@@ -24,7 +24,7 @@
 }
 
 .qqr-index {
-  background-color: gold;
+  background-color: #efb75d;
   border-radius: 50%;
   width: 2rem;
   height: 2rem;
@@ -43,7 +43,7 @@
 .qqr-score {
   font-family: var(--font-bold);
   font-size: 1.2rem;
-  background: gold;
+  background: #efb75d;
   padding: 0.25rem 0.5rem;
   border-radius: 6px;
   border: 1px solid #ccc;

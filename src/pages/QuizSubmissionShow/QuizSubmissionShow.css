@@ -74,7 +74,7 @@
 .rqs-score-value {
   font-size: 1.4rem;
   font-family: var(--font-bold);
-  background: gold;
+  background: #efb75d;
   padding: 0.4rem 0.75rem;
   border-radius: 50%;
   aspect-ratio: 1 / 1;
