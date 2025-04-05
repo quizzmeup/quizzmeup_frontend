@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { fetchSubmissionById } from "../../api/submission";
 import Loader from "../../components/Loader/Loader";
 import QuizQuestionResult from "./components/QuizQuestionResult";
+import { Navigate } from "react-router-dom";
+import { ROUTES } from "../../routes";
 import "./QuizSubmissionShow.css";
 
 const ResultQuizSession = () => {
@@ -26,11 +28,12 @@ const ResultQuizSession = () => {
 
   if (isLoading)
     return (
-      <div class="rqs-loader-wrapper">
+      <div className="rqs-loader-wrapper">
         <Loader />
       </div>
     );
-  if (!submission) return <p>Soumission introuvable.</p>;
+
+  if (!submission) return <Navigate to={ROUTES.notFound} />;
 
   const { quizVersion, user, cohort, score, answers } = submission;
 
