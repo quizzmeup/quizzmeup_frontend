@@ -4,8 +4,6 @@ import { ROUTES } from "../../../../routes";
 import { IoIosArrowBack } from "react-icons/io";
 
 const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
-  console.log(quiz);
-
   const handleTitleChange = (event) => {
     setQuiz((prevState) => {
       return { ...prevState, title: event.target.value };

@@ -17,7 +17,7 @@ const CreateOrUpdateQuiz = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  console.log(quiz);
+  console.log("quiz", quiz);
 
   useEffect(() => {
     //check if admin and redirect him to home if not
@@ -54,7 +54,6 @@ const CreateOrUpdateQuiz = () => {
     </main>
   ) : (
     <main className="createOrUpdateQuiz container">
-      {console.log(isLoading)}
       <CreateOrUpdateQuizHeader quiz={quiz} setQuiz={setQuiz} />
       <CreateOrUpdateQuizContent quiz={quiz} setQuiz={setQuiz} />
     </main>

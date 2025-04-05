@@ -10,7 +10,13 @@ const CreateOrUpdateQuizContent = ({ quiz, setQuiz }) => {
         Questions <span>Personaliser le formulaire</span>
       </h2>
       {quiz.questions.map((question, index) => (
-        <CreateQuestion question={question} setQuiz={setQuiz} index={index} />
+        <CreateQuestion
+          key={question._id}
+          question={question}
+          setQuiz={setQuiz}
+          index={index}
+          lastIndex={quiz.questions.length - 1}
+        />
       ))}
 
       <div className="buttons-add-question">
