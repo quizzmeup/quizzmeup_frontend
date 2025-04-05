@@ -2,5 +2,8 @@ export const ROUTES = {
   home: "/",
   notFound: "*",
   backoffice: "/backoffice",
-  answerQuiz: "quizzes/:quizId/answer",
+  answerQuiz: {
+    path: "/quizzes/:quizId/answer", // utilisé dans <Route />
+    build: (id) => `/quizzes/${id}/answer`, // utilisé dans navigate()
+  },
 };

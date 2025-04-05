@@ -30,7 +30,7 @@ const AppContent = () => {
           <Route path={ROUTES.home} element={<Home />} />
           <Route path={ROUTES.notFound} element={<NotFound />} />
           <Route path={ROUTES.backoffice} element={<BackofficeHome />} />
-          <Route path={ROUTES.answerQuiz} element={<AnswerQuiz />} />
+          <Route path={ROUTES.answerQuiz.path} element={<AnswerQuiz />} />
         </Route>
       </Routes>
     </Router>

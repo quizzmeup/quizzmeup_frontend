@@ -93,7 +93,7 @@ const AnswerQuiz = () => {
     }
   };
 
-  const updateAnswer = (questionId, submittedAnswers) => {
+  const updateSubmittedAnswer = (questionId, submittedAnswers) => {
     setAnswers((prev) =>
       prev.map((a) =>
         a.question === questionId ? { ...a, submittedAnswers } : a
@@ -104,11 +104,11 @@ const AnswerQuiz = () => {
   // 👉 Préparation des données pour QuestionDisplay
   const currentQuestion = quizVersion?.questions?.[currentIndex];
   const totalQuestions = quizVersion?.questions?.length || 0;
-  const currentAnswers = answers?.[currentIndex]?.submittedAnswers || [];
+  const currentAnswers = answers?.[currentIndex]?.submittedAnswers || []; // fallback [] si jamais answers[currentIndex] est absent
 
   const handleChangeAnswer = (submittedAnswers) => {
     if (!currentQuestion) return;
-    updateAnswer(currentQuestion._id, submittedAnswers);
+    updateSubmittedAnswer(currentQuestion._id, submittedAnswers);
   };
 
   const goToPrevious = () => {

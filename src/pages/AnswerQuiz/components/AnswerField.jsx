@@ -1,7 +1,7 @@
 import "./AnswerField.css";
 
 const AnswerField = ({ question, currentAnswers, onChange }) => {
-  const isQcm = question.propositions && question.propositions.length > 0;
+  const isQcm = question.propositions?.length > 0;
 
   const handleTextChange = (e) => {
     onChange([e.target.value]);
@@ -36,7 +36,7 @@ const AnswerField = ({ question, currentAnswers, onChange }) => {
         <textarea
           className="answer-textarea"
           placeholder="Tape ta réponse ici..."
-          value={currentAnswers[0] || ""}
+          value={currentAnswers[0] || ""} // Les réponses libres sont stockées dans un tableau avec un seul élément
           onChange={handleTextChange}
         />
       )}
