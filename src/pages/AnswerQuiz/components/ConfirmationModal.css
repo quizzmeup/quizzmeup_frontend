@@ -36,5 +36,11 @@
 
 .modal-actions .danger {
   background-color: var(--error-color);
+  border-color: var(--error-color);
   color: white;
+}
+
+.modal-actions .danger:hover {
+  background-color: white;
+  color: var(--error-color);
 }

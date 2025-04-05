@@ -22,7 +22,7 @@ const QuestionNavigator = ({
           Suivant
         </button>
       ) : (
-        <button className="auth-btn danger" onClick={openModal}>
+        <button className="auth-btn" onClick={openModal}>
           Soumettre
         </button>
       )}

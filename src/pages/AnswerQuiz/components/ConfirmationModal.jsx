@@ -9,11 +9,11 @@ const ConfirmationModal = ({ onConfirm, onCancel, isSubmitting }) => {
           Cette action est <strong>irréversible</strong>.
         </p>
         <div className="modal-actions">
-          <button className="auth-btn" onClick={onCancel}>
+          <button className="auth-btn danger" onClick={onCancel}>
             Annuler
           </button>
           <button
-            className="auth-btn danger"
+            className="auth-btn"
             onClick={onConfirm}
             disabled={isSubmitting}
           >

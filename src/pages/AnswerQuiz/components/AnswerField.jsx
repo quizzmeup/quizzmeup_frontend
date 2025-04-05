@@ -7,7 +7,7 @@ const AnswerField = ({ question, currentAnswers, onChange }) => {
     onChange([e.target.value]);
   };
 
-  const handleCheckboxChange = (prop) => {
+  const toggleProp = (prop) => {
     if (currentAnswers.includes(prop)) {
       onChange(currentAnswers.filter((p) => p !== prop));
     } else {
@@ -23,10 +23,9 @@ const AnswerField = ({ question, currentAnswers, onChange }) => {
             <li key={i} className="qcm-item">
               <label>
                 <input
-                  type="radio"
-                  name={`question-${question._id}`}
+                  type="checkbox"
                   checked={currentAnswers.includes(prop)}
-                  onChange={() => handleCheckboxChange(prop)}
+                  onChange={() => toggleProp(prop)}
                 />
                 {prop}
               </label>

@@ -3,16 +3,14 @@ import AnswerField from "./AnswerField";
 import QuestionNavigator from "./QuestionNavigator";
 
 const QuestionDisplay = ({
-  index,
-  total,
   question,
-  currentAnswers,
-  onChangeAnswer,
-  goToPrevious,
-  goToNext,
-  isLast,
+  answerControl,
+  navigation,
   openModal,
 }) => {
+  const { value: currentAnswers, onChange } = answerControl;
+  const { index, total, goToPrevious, goToNext, isLast } = navigation;
+
   return (
     <div className="question-display">
       <div className="question-header">
@@ -30,7 +28,7 @@ const QuestionDisplay = ({
       <AnswerField
         question={question}
         currentAnswers={currentAnswers}
-        onChange={onChangeAnswer}
+        onChange={onChange}
       />
 
       <QuestionNavigator

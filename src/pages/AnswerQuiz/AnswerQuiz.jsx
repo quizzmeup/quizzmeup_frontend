@@ -9,9 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { useToast } from "../../contexts/ToastContext";
 import { ROUTES } from "../../routes";
+import { handleApiError } from "../../utils/apiErrorHandler"; // ou où que tu l'aies mis
 import "./AnswerQuiz.css";
-
-const DEFAULT_QUESTION_COUNT = 10;
 
 const AnswerQuiz = () => {
   const { quizId } = useParams();
@@ -82,10 +81,13 @@ const AnswerQuiz = () => {
       const res = await createSubmission(quizVersion._id, payload);
       const submissionId = res.data._id;
 
-      navigate(ROUTES.home);
+      navigate(`/submissions/${submissionId}`);
     } catch (error) {
       console.error("Erreur lors de la soumission :", error);
-      showToast("Erreur lors de l'envoi de la soumission.", { type: "error" });
+      showToast(
+        `Erreur lors de la soumission : ${handleApiError(error)}`,
+        "error"
+      );
       setIsModalOpen(false);
       setIsSubmitting(false);
     }
@@ -99,6 +101,26 @@ const AnswerQuiz = () => {
     );
   };
 
+  // 👉 Préparation des données pour QuestionDisplay
+  const currentQuestion = quizVersion?.questions?.[currentIndex];
+  const totalQuestions = quizVersion?.questions?.length || 0;
+  const currentAnswers = answers?.[currentIndex]?.submittedAnswers || [];
+
+  const handleChangeAnswer = (submittedAnswers) => {
+    if (!currentQuestion) return;
+    updateAnswer(currentQuestion._id, submittedAnswers);
+  };
+
+  const goToPrevious = () => {
+    setCurrentIndex((i) => Math.max(0, i - 1));
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((i) => (i + 1 < totalQuestions ? i + 1 : i));
+  };
+
+  const isLast = currentIndex === totalQuestions - 1;
+
   return (
     <div className="container">
       <div className="answer-quiz-page">
@@ -107,7 +129,7 @@ const AnswerQuiz = () => {
             quiz && (
               <IntroScreen
                 title={quiz.title}
-                questionCount={quiz.questionsCount || DEFAULT_QUESTION_COUNT}
+                questionCount={quiz.questionsCount}
                 onStart={handleStart}
               />
             )
@@ -115,25 +137,18 @@ const AnswerQuiz = () => {
             <>
               {quizVersion && currentIndex < quizVersion.questions.length && (
                 <QuestionDisplay
-                  index={currentIndex}
-                  total={quizVersion.questions.length}
-                  question={quizVersion.questions[currentIndex]}
-                  currentAnswers={answers[currentIndex].submittedAnswers}
-                  onChangeAnswer={(submittedAnswers) =>
-                    updateAnswer(
-                      quizVersion.questions[currentIndex]._id,
-                      submittedAnswers
-                    )
-                  }
-                  goToPrevious={() =>
-                    setCurrentIndex((i) => Math.max(0, i - 1))
-                  }
-                  goToNext={() =>
-                    setCurrentIndex((i) =>
-                      i + 1 < quizVersion.questions.length ? i + 1 : i
-                    )
-                  }
-                  isLast={currentIndex === quizVersion.questions.length - 1}
+                  question={currentQuestion}
+                  answerControl={{
+                    value: currentAnswers,
+                    onChange: handleChangeAnswer,
+                  }}
+                  navigation={{
+                    index: currentIndex,
+                    total: totalQuestions,
+                    goToPrevious,
+                    goToNext,
+                    isLast,
+                  }}
                   openModal={() => setIsModalOpen(true)}
                 />
               )}
