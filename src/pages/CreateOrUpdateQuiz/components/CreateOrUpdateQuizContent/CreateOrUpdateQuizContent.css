@@ -1,6 +1,6 @@
 .content-createOrUpdateQuiz {
   padding: 2em;
-  border-radius: 5px;
+  border-radius: 0 0 5px 5px;
 }
 
 .created-question {
@@ -10,18 +10,4 @@
   padding-bottom: 2rem;
   border-bottom: 2px solid var(--text-color);
   margin-bottom: 2rem;
-}
-.question-header {
-  display: flex;
-  gap: 2rem;
-}
-
-.question-header input {
-  flex: 1;
-}
-
-.created-question textarea {
-  width: 50%;
-  height: 150px;
-  align-self: center;
 }

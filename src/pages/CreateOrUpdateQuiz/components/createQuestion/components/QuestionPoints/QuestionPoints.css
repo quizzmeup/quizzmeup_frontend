@@ -1,0 +1,27 @@
+.question-points {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.question-points h3 {
+  margin: 0;
+}
+
+.point {
+  width: 35px;
+  aspect-ratio: 1/1;
+  background-color: var(--bg-color);
+  border-radius: 5px;
+  border: 2px solid var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.point-selected {
+  border-color: var(--primary-color);
+  box-shadow: 2px 2px 5px var(--primary-color);
+}

@@ -20,8 +20,9 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
       return newObj;
     });
   };
+
   return (
-    <div className="header-CreateOrUpdateQuiz">
+    <div className={"header-CreateOrUpdateQuiz"}>
       <Link to={ROUTES.backoffice}>
         <IoIosArrowBack /> Formulaire
       </Link>
