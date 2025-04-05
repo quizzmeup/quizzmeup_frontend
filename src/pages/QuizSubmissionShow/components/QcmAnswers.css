@@ -1,0 +1,44 @@
+.qcm-propositions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding-left: 0;
+  list-style: none;
+}
+
+.qcm-proposition {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.qcm-checkbox {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.qcm-bullet {
+  width: 14px;
+  height: 14px;
+  border: 2px solid black;
+  border-radius: 50%;
+}
+
+.qcm-checked {
+  background-color: black;
+}
+
+.qcm-correct-proposition {
+  background-color: var(--primary-color-light);
+}
+
+.qcm-wrong-answer {
+  background-color: var(--error-color-light);
+}
