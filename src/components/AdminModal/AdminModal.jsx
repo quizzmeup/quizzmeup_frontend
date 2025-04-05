@@ -4,6 +4,7 @@ import { useModal } from "../../contexts/ModalContext";
 import { handleApiError } from "../../utils/apiErrorHandler";
 import { useToast } from "../../contexts/ToastContext";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 import "./AdminModal.css";
 
 const LoginModal = () => {
@@ -11,9 +12,13 @@ const LoginModal = () => {
 
   const { isAdminModalOpen, closeModals } = useModal();
   const { showToast } = useToast();
+  const { setUserData } = useAuth();
 
   const [adminPassword, setAdminPassword] = useState("");
   const [error, setError] = useState("");
+
+  const storedUser = localStorage.getItem("userData");
+  const storedUserObj = JSON.parse(storedUser);
 
   if (!isAdminModalOpen) return null;
 
@@ -30,8 +35,12 @@ const LoginModal = () => {
     }
 
     if (data.message) {
+      //modifie le statut isAdmin dans le local storage et dans le state userData si l'utilisateur est admin
+      storedUserObj.isAdmin = true;
+      setUserData(storedUserObj);
+      localStorage.setItem("userData", JSON.stringify(storedUserObj));
       handleClose();
-      navigate("/backoffice/backoffice");
+      navigate("/backoffice");
       showToast(data.message, "success");
     } else {
       setError("Aucun token reçu.");

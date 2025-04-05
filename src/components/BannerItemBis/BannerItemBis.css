@@ -1,0 +1,47 @@
+.banner-item-bis {
+  width: 30%;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: var(--font-bold);
+  font-size: 1.1rem;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #f4f5f7, #e7eaed);
+}
+
+.banner-item-bis:hover {
+  box-shadow: none;
+}
+
+.shadowed {
+  height: 45px;
+  margin: 0.5rem 0px;
+  padding: 0.5rem 1rem;
+  box-shadow: 5px 2px 12px rgb(196, 196, 196);
+}
+
+.shadowed:hover {
+  box-shadow: none;
+}
+
+.banner-item-bis div {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 70%;
+}
+
+.banner-item-bis > span {
+  font-size: 0.8rem;
+  color: var(--primary-color);
+}
+
+.search-results {
+  width: 100%;
+  margin: 0.7rem 0px;
+  height: 70px;
+  box-shadow: -3px 2px 8px rgb(196, 196, 196);
+  padding: 1rem 2rem;
+}

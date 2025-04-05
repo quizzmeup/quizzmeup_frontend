@@ -1,0 +1,38 @@
+.consult {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.new-form {
+  color: var(--bg-color);
+  padding: 0.5rem 1.3rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  background: linear-gradient(to right, #a4d9ba, var(--primary-color));
+  width: 30%;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  font-family: var(--font-bold);
+  box-shadow: 5px 2px 8px rgb(229, 228, 228);
+}
+
+.new-form:hover {
+  box-shadow: none;
+}
+
+.backoffice-home h2 {
+  font-size: 2rem;
+  margin-top: 50px;
+}
+
+.backoffice-quiz > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
