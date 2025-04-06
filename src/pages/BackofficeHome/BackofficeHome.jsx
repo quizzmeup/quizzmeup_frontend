@@ -28,10 +28,11 @@ const BackofficeHome = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setIsLoading(true);
         setData(await getQuizzes());
         setIsLoading(false);
       } catch (error) {
-        console.error;
+        console.error(error);
       }
     };
     fetchData();
@@ -80,6 +81,7 @@ const BackofficeHome = () => {
               text="> Consulter par utilisateur"
               specialClassDiv="back-home-div"
               specialClassButton="back-home-button"
+              linkTo={ROUTES.resultUsers}
             />
           </div>
         </div>

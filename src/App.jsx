@@ -17,6 +17,7 @@ import AdminModal from "./components/AdminModal/AdminModal";
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
 import BackofficeHome from "./pages/BackofficeHome/BackofficeHome";
+import ResultUsers from "./pages/ResultUsers/ResultUsers";
 import CreateOrUpdateQuiz from "./pages/CreateOrUpdateQuiz/CreateOrUpdateQuiz";
 
 const AppContent = () => {

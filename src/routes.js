@@ -3,4 +3,5 @@ export const ROUTES = {
   notFound: "*",
   backoffice: "/backoffice",
   createOrUpdateQuiz: "/backoffice/createOrUpdateQuiz",
+  resultUsers: "/result/users",
 };
