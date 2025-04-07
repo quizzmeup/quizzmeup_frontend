@@ -1,19 +1,8 @@
-const Point = ({ nbOfPoints, setNbOfPointElem, selected, setQuiz, index }) => {
-  const handleClickPoint = (event) => {
-    if (nbOfPoints === "+") {
-      return setNbOfPointElem((prevState) => prevState + 1);
-    }
-
-    setQuiz((prevState) => {
-      const newQuiz = structuredClone(prevState);
-      newQuiz.questions[index].points = nbOfPoints;
-      return newQuiz;
-    });
-  };
+const Point = ({ nbOfPoints, selected, onSelect }) => {
   return (
     <div
       className={selected ? "point point-selected" : "point"}
-      onClick={handleClickPoint}
+      onClick={() => onSelect(nbOfPoints)}
     >
       {nbOfPoints}
     </div>
