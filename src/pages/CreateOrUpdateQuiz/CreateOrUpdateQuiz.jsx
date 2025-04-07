@@ -51,12 +51,9 @@ const CreateOrUpdateQuiz = () => {
         setIsLoading(false);
       };
       fetchMostRecentQuizVersion();
+    } else {
+      setIsLoading(false);
     }
-    // else {
-    //   //initialize questions for create a new quiz
-    //   setQuiz({ title: "", questions: [] });
-    //   setIsLoading(false);
-    // }
   }, [quizId, setError]);
 
   return isLoading ? (
