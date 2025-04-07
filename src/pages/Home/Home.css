@@ -1,11 +1,10 @@
 main {
   width: 100%;
   height: calc(100vh - var(--header-height) - 60px);
-
-  background-color: rgb(238, 243, 240);
+  background-color: var(--div-bg-color);
 }
 
-.titre {
+.quiz-title {
   display: flex;
   flex-direction: row;
   align-items: baseline;
@@ -14,6 +13,13 @@ main {
   padding: 10px;
   font-size: 20px;
   text-decoration: underline;
+}
+
+.message {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  font-size: 22px;
 }
 
 .quiz-list {

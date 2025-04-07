@@ -13,10 +13,12 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   // Fonction pour récupérer les quiz
+  // quiz deja repondus  + quiz dispos
   const fetchData = async () => {
     setIsLoading(true);
     try {
       const response = await getQuizzes();
+
       setData(response.data);
       setIsLoading(false);
     } catch (error) {
@@ -34,17 +36,15 @@ const Home = () => {
     <Loader />
   ) : userData ? (
     <main className="container">
-      <h1 className="titre">Répondre à un questionnaire</h1>
+      <h1 className="quiz-title">Répondre à un questionnaire</h1>
       <div className="quiz-list">
         {data && data.length > 0 ? (
           data.map((elem, index) => (
             <div className="quiz-line" key={index}>
               <BannerItem
                 text={elem.title}
-                specialClassItem="back-component"
                 specialClassDiv="back-div"
                 specialClassButton="back-button"
-                // TO DO
                 linkTo={ROUTES.quiz + "/" + elem.id}
               />
             </div>
@@ -55,7 +55,11 @@ const Home = () => {
       </div>
     </main>
   ) : (
-    <h1>Connecte-toi ou crée un compte avant toute chose, merci.</h1>
+    <div className="message">
+      <h1>
+        Connecte-toi ou crée un compte avant de pouvoir profiter de QuizMeUp
+      </h1>
+    </div>
   );
 };
 
