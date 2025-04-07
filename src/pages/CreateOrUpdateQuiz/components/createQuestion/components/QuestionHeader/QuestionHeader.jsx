@@ -12,7 +12,7 @@ const QuestionHeader = ({ setQuiz, index, question, lastIndex }) => {
   const handleOnchangeTitle = (event) => {
     setQuiz((prevState) => {
       const newQuiz = structuredClone(prevState);
-      newQuiz.questions[index] = event.target.value;
+      newQuiz.questions[index].title = event.target.value;
       return newQuiz;
     });
   };
