@@ -1,30 +1,38 @@
 import AnswersInput from "./AnswersInput";
+import PossibleAnswerInput from "./PossibleAnswerInput";
 import RightWrongButton from "./RightWrongButton";
 import AddRemoveButton from "./AddRemoveButton";
 import { useState } from "react";
 
 const MultipleChoiceAnswers = ({
   index,
+  propositionIndex,
   proposition,
   isRightAnswer,
-  onChange,
+  setQuiz,
   question,
 }) => {
   const [rightAnswer, setRightAnswer] = useState(isRightAnswer[0]);
 
-  console.log(isRightAnswer[0]);
+  // console.log(isRightAnswer[0]);
 
-  const handleChangeRightAnswer = (event) => {
-    setRightAnswer(!rightAnswer[index]);
-  };
+  // const handleChangeRightAnswer = (event) => {
+  //   setRightAnswer(!rightAnswer[index]);
+  // };
 
   return (
     <div>
-      <AnswersInput value={proposition} onChange={onChange} />
+      {/* <AnswersInput value={proposition} onChange={onChange} /> */}
+      <PossibleAnswerInput
+        index={index}
+        proposition={proposition}
+        propositionIndex={propositionIndex}
+        setQuiz={setQuiz}
+      />
       <RightWrongButton
         isRightAnswer={isRightAnswer}
         index={index}
-        onClick={handleChangeRightAnswer}
+        onClick={() => {}}
       />
       {index === question.propositions.length - 1 && (
         <div>

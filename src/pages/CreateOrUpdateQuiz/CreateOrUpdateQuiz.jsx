@@ -10,7 +10,6 @@ import CreateOrUpdateQuizContent from "./components/CreateOrUpdateQuizContent/Cr
 const CreateOrUpdateQuiz = () => {
   const navigate = useNavigate();
   const { showToast } = useToast();
-  console.log("test");
   //check if admin and redirect him to home if not
   const userData = localStorage.getItem("userData");
   const storedUserObj = JSON.parse(userData);
@@ -21,7 +20,6 @@ const CreateOrUpdateQuiz = () => {
   }
 
   const { quizId } = useParams();
-  console.log(quizId);
 
   const [quiz, setQuiz] = useState(null);
   const [isLoading, setIsLoading] = useState(true);

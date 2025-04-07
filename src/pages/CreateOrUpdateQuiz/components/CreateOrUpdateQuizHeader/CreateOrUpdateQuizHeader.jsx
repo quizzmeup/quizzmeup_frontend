@@ -34,9 +34,11 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
         onChange={handleTitleChange}
       />
       <div className="button-header-createOrUpdateQuiz">
-        <button onClick={handleDeleteQuiz}>Reset</button>
-        <button>Sauvegarder</button>
-        <button>Publier</button>
+        <button disabled onClick={handleDeleteQuiz}>
+          Reset
+        </button>
+        <button disabled>Sauvegarder</button>
+        <button disabled>Publier</button>
       </div>
     </div>
   );
