@@ -1,16 +1,11 @@
-import { useAuth } from "../../contexts/AuthContext";
 import "./Home.css";
-import axios from "axios";
+import { useAuth } from "../../contexts/AuthContext";
 import { useState, useEffect } from "react";
 import { getQuizzes } from "../../api/home";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../routes";
-
 import BannerItem from "../../components/BannerItem/BannerItem";
-import BannerItemBis from "../../components/BannerItemBis/BannerItemBis";
 import Loader from "../../components/Loader/Loader";
-
-import { FaExternalLinkAlt } from "react-icons/fa";
 
 const Home = () => {
   const { userData } = useAuth();
@@ -39,13 +34,11 @@ const Home = () => {
     <Loader />
   ) : userData ? (
     <main className="container">
-      <div className="formulaire">
-        <h1 className="titre">Répondre à un questionnaire</h1>
-      </div>
-      <div className="formulaire">
+      <h1 className="titre">Répondre à un questionnaire</h1>
+      <div className="quiz-list">
         {data && data.length > 0 ? (
           data.map((elem, index) => (
-            <div className="line_formulaire" key={index}>
+            <div className="quiz-line" key={index}>
               <BannerItem
                 text={elem.title}
                 specialClassItem="back-component"
@@ -57,7 +50,7 @@ const Home = () => {
             </div>
           ))
         ) : (
-          <h1>Pas de formulaires disponible pour toi, désolé.</h1>
+          <h1>Aucun formulaire disponible 😢</h1>
         )}
       </div>
     </main>

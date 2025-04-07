@@ -4,13 +4,11 @@ import { Link } from "react-router-dom";
 
 const BannerItem = ({
   text,
-  specialClassItem,
   specialClassDiv,
   specialClassButton,
   linkTo,
 }) => {
   return (
-    <div className={`banner-item ${specialClassItem}`}>
       <div className={`banner-div ${specialClassDiv}`}>
         <span>{text}</span>
       </div>
@@ -19,7 +17,7 @@ const BannerItem = ({
           <RxOpenInNewWindow />
         </button>
       </Link>
-    </div>
+
   );
 };
 

@@ -16,14 +16,14 @@ main {
   text-decoration: underline;
 }
 
-.formulaire {
+.quiz-list {
   display: flex;
   flex-direction: column;
   flex: 1;
   align-items: center;
 }
 
-.line_formulaire {
+.quiz-line {
   display: flex;
   flex-direction: row;
   align-items: baseline;
