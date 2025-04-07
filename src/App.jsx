@@ -16,10 +16,12 @@ import AdminModal from "./components/AdminModal/AdminModal";
 // Pages
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
+import QuizSubmissionShow from "./pages/QuizSubmissionShow/QuizSubmissionShow";
 import BackofficeHome from "./pages/BackofficeHome/BackofficeHome";
 import SearchUsersPage from "./pages/SearchPage/SearchUsersPage";
 import SearchQuizzesPage from "./pages/SearchPage/SearchQuizzesPage";
 import SearchCohortsPage from "./pages/SearchPage/SearchCohortsPage";
+import SearchUsersByCohorts from "./pages/SearchPage/SearchUsersByCohorts";
 
 const AppContent = () => {
   return (
@@ -31,10 +33,22 @@ const AppContent = () => {
         <Route element={<Layout />}>
           <Route path={ROUTES.home} element={<Home />} />
           <Route path={ROUTES.notFound} element={<NotFound />} />
+
+          <Route
+            path={ROUTES.quizSubmissionShow}
+            element={<QuizSubmissionShow />}
+          />
           <Route path={ROUTES.backoffice} element={<BackofficeHome />} />
           <Route path={ROUTES.searchUsers} element={<SearchUsersPage />} />
           <Route path={ROUTES.searchQuizzes} element={<SearchQuizzesPage />} />
-          <Route path={ROUTES.searchCohorts} element={<SearchCohortsPage />} />
+          <Route
+            path={ROUTES.searchCohorts.path}
+            element={<SearchCohortsPage />}
+          />
+          <Route
+            path={ROUTES.searchUsersByCohorts.path}
+            element={<SearchUsersByCohorts />}
+          />
         </Route>
       </Routes>
     </Router>

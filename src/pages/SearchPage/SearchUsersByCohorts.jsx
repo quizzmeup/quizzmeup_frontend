@@ -3,15 +3,16 @@ import { Navigate } from "react-router-dom";
 import ResultCard from "../../components/ResultCard/ResultCard";
 import { ROUTES } from "../../routes";
 import Loader from "../../components/Loader/Loader";
-import { getCohortsWithSubmissions } from "../../api/cohorts";
+import { getUsersWithSubmissions } from "../../api/users";
 import { useParams } from "react-router-dom";
 import useSearchWithId from "../../hooks/useSearchWithId";
 
-const SearchCohortsPage = () => {
-  const { quizId } = useParams();
+const SearchUsersByCohorts = () => {
+  const { quizId, cohortId } = useParams();
   const { data, isLoading } = useSearchWithId(
-    getCohortsWithSubmissions,
-    quizId
+    getUsersWithSubmissions,
+    quizId,
+    cohortId
   );
 
   const { token } = useAuth();
@@ -23,15 +24,14 @@ const SearchCohortsPage = () => {
   return (
     <div className="container">
       <div className="search-page-layout">
-        <h1>Sessions</h1>
+        <h1>Elèves de la session</h1>
         {data.map((cohort) => {
           return (
             <ResultCard
-              key={cohort._id}
+              key={cohort.id}
               title={cohort.name}
               specialClass="search-results"
               actionLabel="Consulter"
-              linkTo={ROUTES.searchUsersByCohorts.build(quizId, cohort._id)}
             />
           );
         })}
@@ -40,4 +40,4 @@ const SearchCohortsPage = () => {
   );
 };
 
-export default SearchCohortsPage;
+export default SearchUsersByCohorts;
