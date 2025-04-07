@@ -28,18 +28,9 @@ const QuestionAnswers = ({ question, setQuiz, index }) => {
       )}
       {question.multipleChoices &&
         question.propositions.map((proposition, propositionIndex) => {
-          const isRightAnswer = [];
-          for (let i = 0; i < proposition.length; i++) {
-            // if (question.rightAnswers.includes(proposition)) {
-            //   isRightAnswer.push(true);
-            // } else {
-            //   isRightAnswer.push(false);
-            // }
-          }
           return (
             <MultipleChoiceAnswers
               key={propositionIndex}
-              isRightAnswer={isRightAnswer}
               proposition={proposition}
               index={index}
               propositionIndex={propositionIndex}

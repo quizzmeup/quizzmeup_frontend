@@ -28,12 +28,18 @@ const MultipleChoiceAnswers = ({
         setQuiz={setQuiz}
         index={index}
         isRightAnswer={isRightAnswer}
-      />
-      {index === question.propositions.length - 1 && (
-        <div>
-          <AddRemoveButton sign="+" />
-          <AddRemoveButton sign="-" />
-        </div>
+      />{" "}
+      {question.propositions.length > 2 && (
+        <AddRemoveButton
+          sign="-"
+          propositionIndex={propositionIndex}
+          setQuiz={setQuiz}
+          index={index}
+        />
+      )}
+      <div></div>
+      {propositionIndex === question.propositions.length - 1 && (
+        <AddRemoveButton sign="+" setQuiz={setQuiz} index={index} />
       )}
     </div>
   );
