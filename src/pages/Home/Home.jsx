@@ -9,17 +9,31 @@ import Loader from "../../components/Loader/Loader";
 
 const Home = () => {
   const { userData } = useAuth();
-  const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Fonction pour récupérer les quiz
-  // quiz deja repondus  + quiz dispos
+  const [availableQuizzes, setAvailableQuizzes] = useState([]);
+  const [submittedQuizzes, setSubmittedQuizzes] = useState([]);
+
+  // Fonction pour récupérer les quiz pour le user
+  // quiz deja repondus + quiz dispos
   const fetchData = async () => {
     setIsLoading(true);
     try {
       const response = await getQuizzes();
 
-      setData(response.data);
+      const allData = response.data;
+
+      // on a null si pas de soumission ou l'id de la soumission dans le champ "submissionId"
+      // on dispatch en 2 states
+      const dataAvailable = allData.filter(
+        (item) => item.submissionId === null
+      );
+      const dataSubmitted = allData.filter(
+        (item) => item.submissionId !== null
+      );
+
+      setAvailableQuizzes(dataAvailable);
+      setSubmittedQuizzes(dataSubmitted);
       setIsLoading(false);
     } catch (error) {
       console.error("Erreur lors du chargement :", error);
@@ -32,25 +46,58 @@ const Home = () => {
 
   const navigate = useNavigate();
 
-  return isLoading ? (
-    <Loader />
-  ) : userData ? (
+  return userData ? (
     <main className="container">
       <h1 className="quiz-title">Répondre à un questionnaire</h1>
       <div className="quiz-list">
-        {data && data.length > 0 ? (
-          data.map((elem, index) => (
-            <div className="quiz-line" key={index}>
-              <BannerItem
-                text={elem.title}
-                specialClassDiv="back-div"
-                specialClassButton="back-button"
-                linkTo={ROUTES.quiz + "/" + elem.id}
-              />
-            </div>
-          ))
+        {isLoading ? (
+          <Loader />
         ) : (
-          <h1>Aucun formulaire disponible 😢</h1>
+          <>
+            {availableQuizzes.length > 0 ? (
+              <>
+                <p>Liste des quiz disponibles.</p>
+                {availableQuizzes.map((quiz, index) => (
+                  <div className="quiz-line" key={index}>
+                    <BannerItem
+                      text={quiz.title}
+                      specialClassDiv="back-div"
+                      specialClassButton="back-button"
+                      linkTo={ROUTES.quiz + "/" + quiz.id}
+                    />
+                  </div>
+                ))}
+              </>
+            ) : (
+              <p>Aucun quiz disponible.</p>
+            )}
+
+            <br></br>
+            <br></br>
+
+            {submittedQuizzes.length > 0 ? (
+              <>
+                <p>Liste des Quiz soumis</p>
+
+                {submittedQuizzes.map((quiz, index) => (
+                  <div className="quiz-line" key={index}>
+                    <BannerItem
+                      text={quiz.title}
+                      specialClassDiv="back-div"
+                      specialClassButton="back-button"
+                      linkTo={ROUTES.quiz + "/" + quiz.id}
+                    />
+                  </div>
+                ))}
+              </>
+            ) : (
+              <p>Aucun quiz soumis.</p>
+            )}
+
+            {submittedQuizzes.length === 0 && availableQuizzes.length === 0 && (
+              <p>Aucun quiz disponible ou soumis.</p>
+            )}
+          </>
         )}
       </div>
     </main>
