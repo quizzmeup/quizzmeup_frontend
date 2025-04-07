@@ -1,6 +1,6 @@
 import BannerItem from "../../components/BannerItem/BannerItem";
 import Loader from "../../components/Loader/Loader";
-import BannerItemBis from "../../components/BannerItemBis/BannerItemBis";
+import BannerItemBis from "../../components/ResultCard/ResultCard";
 import { Navigate, useNavigate } from "react-router-dom";
 import "./BackofficeHome.css";
 import { FaPlus } from "react-icons/fa6";

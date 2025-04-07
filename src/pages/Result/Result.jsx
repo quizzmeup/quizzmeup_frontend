@@ -3,7 +3,7 @@ import SearchInput from "../../components/SearchInput/SearchInput";
 import { useAuth } from "../../contexts/AuthContext";
 import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
-import BannerItemBis from "../../components/BannerItemBis/BannerItemBis";
+import BannerItemBis from "../../components/ResultCard/ResultCard";
 import { ROUTES } from "../../routes";
 import Loader from "../../components/Loader/Loader";
 
