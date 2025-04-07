@@ -16,6 +16,7 @@ import AdminModal from "./components/AdminModal/AdminModal";
 // Pages
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
+import QuizSubmissionShow from "./pages/QuizSubmissionShow/QuizSubmissionShow";
 import BackofficeHome from "./pages/BackofficeHome/BackofficeHome";
 import ResultUsers from "./pages/ResultUsers/ResultUsers";
 
@@ -29,6 +30,11 @@ const AppContent = () => {
         <Route element={<Layout />}>
           <Route path={ROUTES.home} element={<Home />} />
           <Route path={ROUTES.notFound} element={<NotFound />} />
+
+          <Route
+            path={ROUTES.quizSubmissionShow}
+            element={<QuizSubmissionShow />}
+          />
           <Route path={ROUTES.backoffice} element={<BackofficeHome />} />
           <Route path={ROUTES.resultUsers} element={<ResultUsers />} />
         </Route>
