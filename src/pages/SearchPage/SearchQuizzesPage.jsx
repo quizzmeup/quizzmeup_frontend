@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 import ResultCard from "../../components/ResultCard/ResultCard";
 import { ROUTES } from "../../routes";
 import Loader from "../../components/Loader/Loader";
-import useSearchResults from "./hook/useSearchResults";
+import useSearchResults from "../../hooks/useSearchResults";
 import { getQuizzes } from "../../api/quiz";
 import SearchPageLayout from "./SearchPageLayout";
 
