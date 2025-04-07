@@ -30,3 +30,36 @@ export const handleClickQuestionOptions = (
     return newQuiz;
   });
 };
+
+export const handleClickOptionToUp = (index, setQuiz) => {
+  setQuiz((prevState) => {
+    const newQuiz = structuredClone(prevState);
+    const newQuizQuestions = newQuiz.questions.toSpliced(index, 1);
+    newQuizQuestions.splice(index - 1, 0, prevState.questions[index]);
+    newQuiz.questions = newQuizQuestions;
+    return newQuiz;
+  });
+};
+
+export const handleClickOptionToDown = (index, setQuiz) => {
+  setQuiz((prevState) => {
+    const newQuiz = structuredClone(prevState);
+    const newQuizQuestions = newQuiz.questions.toSpliced(index, 1);
+    newQuizQuestions.splice(index + 1, 0, prevState.questions[index]);
+    newQuiz.questions = newQuizQuestions;
+    return newQuiz;
+  });
+};
+
+export const handleClickOptionDelete = (index, setQuiz) => {
+  setQuiz((prevState) => {
+    const newQuiz = structuredClone(prevState);
+    const newQuizQuestions = newQuiz.questions.toSpliced(index, 1);
+    newQuiz.questions = newQuizQuestions;
+    return newQuiz;
+  });
+};
+
+export const toggleDisplayTextArea = (codeInput, setCodeInput) => {
+  return setCodeInput(!codeInput);
+};

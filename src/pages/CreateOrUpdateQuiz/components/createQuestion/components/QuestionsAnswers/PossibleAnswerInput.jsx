@@ -23,6 +23,7 @@ const PossibleAnswerInput = ({
 
   return (
     <input
+      aria-label="Réponse possible"
       type="text"
       value={proposition}
       onChange={handlePossibleAnswerChange}

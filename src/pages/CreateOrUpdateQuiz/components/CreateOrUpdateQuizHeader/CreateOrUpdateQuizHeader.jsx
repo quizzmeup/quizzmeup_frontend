@@ -27,6 +27,7 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
         <IoIosArrowBack /> Formulaire
       </Link>
       <input
+        aria-label="Titre du quiz"
         type="text"
         name="title"
         placeholder="Veuillez renseigner le nom de votre quiz"

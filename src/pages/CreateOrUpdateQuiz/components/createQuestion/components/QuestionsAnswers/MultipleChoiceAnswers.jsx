@@ -36,7 +36,6 @@ const MultipleChoiceAnswers = ({
           index={index}
         />
       )}
-      <div></div>
       {propositionIndex === question.propositions.length - 1 && (
         <AddRemoveButton sign="+" setQuiz={setQuiz} index={index} />
       )}

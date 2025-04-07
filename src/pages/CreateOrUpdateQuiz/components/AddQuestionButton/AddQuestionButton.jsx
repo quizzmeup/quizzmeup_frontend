@@ -34,10 +34,16 @@ const addQuestionButton = ({ setQuiz }) => {
   };
   return (
     <div className="buttons-add-question">
-      <button onClick={() => handleClick("freeAnswerQuestion")}>
+      <button
+        aria-label="Ajouter une question à réponse libre"
+        onClick={() => handleClick("freeAnswerQuestion")}
+      >
         <LuFileSpreadsheet /> Ajouter une question Texte
       </button>
-      <button onClick={() => handleClick("QCMQuestion")}>
+      <button
+        aria-label="Ajouter une question QCM"
+        onClick={() => handleClick("QCMQuestion")}
+      >
         <FaCheck /> Ajouter une question QCM
       </button>
     </div>

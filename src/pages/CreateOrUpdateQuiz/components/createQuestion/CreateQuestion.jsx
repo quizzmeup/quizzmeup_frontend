@@ -5,7 +5,7 @@ import QuestionAnswers from "./components/QuestionsAnswers/QuestionAnswers";
 
 const CreateQuestion = ({ index, lastIndex, question, setQuiz }) => {
   return (
-    <div className="created-question">
+    <div className="create-question">
       <QuestionHeader
         index={index}
         lastIndex={lastIndex}

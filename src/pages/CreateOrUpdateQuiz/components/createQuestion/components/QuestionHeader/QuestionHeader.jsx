@@ -3,7 +3,12 @@ import { LuFileSpreadsheet, LuTrash } from "react-icons/lu";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { FaCheck, FaCode } from "react-icons/fa6";
 import { useEffect, useState } from "react";
-import { handleClickQuestionOptions } from "../../../../createQuestionsUtils";
+import {
+  handleClickOptionToUp,
+  handleClickOptionDelete,
+  handleClickOptionToDown,
+  toggleDisplayTextArea,
+} from "../../../../createQuestionsUtils";
 
 const QuestionHeader = ({ setQuiz, index, question, lastIndex }) => {
   const [codeInput, setCodeInput] = useState(false);
@@ -38,6 +43,7 @@ const QuestionHeader = ({ setQuiz, index, question, lastIndex }) => {
           {question.multipleChoices ? <FaCheck /> : <LuFileSpreadsheet />}
         </div>
         <input
+          aria-label="Titre de la question"
           type="text"
           placeholder="Votre question"
           value={question.title}
@@ -46,57 +52,23 @@ const QuestionHeader = ({ setQuiz, index, question, lastIndex }) => {
 
         <div className="question-options">
           <button
-            onClick={() =>
-              handleClickQuestionOptions(
-                "toggleTextArea",
-                setQuiz,
-                index,
-                codeInput,
-                setCodeInput
-              )
-            }
+            onClick={() => toggleDisplayTextArea(codeInput, setCodeInput)}
           >
             <FaCode />
           </button>
           <button
-            onClick={() =>
-              handleClickQuestionOptions(
-                "toUp",
-                setQuiz,
-                index,
-                codeInput,
-                setCodeInput
-              )
-            }
+            onClick={() => handleClickOptionToUp(index, setQuiz)}
             disabled={index === 0}
           >
             <FaChevronUp />
           </button>
           <button
-            onClick={() =>
-              handleClickQuestionOptions(
-                "toDown",
-                setQuiz,
-                index,
-                codeInput,
-                setCodeInput
-              )
-            }
-            disabled={index === lastIndex}
+            onClick={() => handleClickOptionToDown(index, setQuiz)}
+            disabled={lastIndex}
           >
             <FaChevronDown />
           </button>
-          <button
-            onClick={() =>
-              handleClickQuestionOptions(
-                "delete",
-                setQuiz,
-                index,
-                codeInput,
-                setCodeInput
-              )
-            }
-          >
+          <button onClick={() => handleClickOptionDelete(index, setQuiz)}>
             <LuTrash />
           </button>
         </div>
@@ -105,6 +77,7 @@ const QuestionHeader = ({ setQuiz, index, question, lastIndex }) => {
         <textarea
           value={question.markdownCode}
           onChange={handleOnChangeMarkDown}
+          placeholder="Extrait de code (facultatif)"
         ></textarea>
       )}
     </div>
