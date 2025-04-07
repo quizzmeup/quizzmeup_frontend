@@ -17,11 +17,8 @@ import AdminModal from "./components/AdminModal/AdminModal";
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
 import BackofficeHome from "./pages/BackofficeHome/BackofficeHome";
-import Result from "./pages/Result/Result";
-
-// Raquêtes api
-import { getUsers } from "./api/users";
-import { getQuizzes } from "./api/quiz";
+import SearchUsersPage from "./pages/SearchPage/SearchUsersPage";
+import SearchQuizzesPage from "./pages/SearchPage/SearchQuizzesPage";
 
 const AppContent = () => {
   return (
@@ -34,28 +31,8 @@ const AppContent = () => {
           <Route path={ROUTES.home} element={<Home />} />
           <Route path={ROUTES.notFound} element={<NotFound />} />
           <Route path={ROUTES.backoffice} element={<BackofficeHome />} />
-          <Route
-            path={ROUTES.resultUsers}
-            element={
-              <Result
-                pageTitle="utilisateurs"
-                request={getUsers}
-                placeholder="utilisateur"
-                tagKey="name"
-              />
-            }
-          />
-          <Route
-            path={ROUTES.resultByQuiz}
-            element={
-              <Result
-                pageTitle="formulaires"
-                request={getQuizzes}
-                placeholder="formulaire"
-                tagKey="title"
-              />
-            }
-          />
+          <Route path={ROUTES.searchUsers} element={<SearchUsersPage />} />
+          <Route path={ROUTES.searchQuizzes} element={<SearchQuizzesPage />} />
         </Route>
       </Routes>
     </Router>

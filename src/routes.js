@@ -2,6 +2,6 @@ export const ROUTES = {
   home: "/",
   notFound: "*",
   backoffice: "/backoffice",
-  resultUsers: "/result/users",
-  resultByQuiz: "/result/quizzes",
+  searchUsers: "/search/users",
+  searchQuizzes: "/search/quizzes",
 };

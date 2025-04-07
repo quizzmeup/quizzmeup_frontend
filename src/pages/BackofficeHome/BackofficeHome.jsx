@@ -59,7 +59,7 @@ const BackofficeHome = () => {
                   <BannerItemBis
                     title={quiz.title}
                     key={quiz._id}
-                    linkLabel="Editer"
+                    actionLabel="Editer"
                     specialClass="shadowed"
                     onClick={() =>
                       navigate(ROUTES.createOrUpdateQuiz + "/" + quiz._id)
@@ -76,12 +76,13 @@ const BackofficeHome = () => {
               text="> Consulter par formulaire"
               specialClassDiv="back-home-div"
               specialClassButton="back-home-button"
+              linkTo={ROUTES.searchQuizzes}
             />
             <BannerItem
               text="> Consulter par utilisateur"
               specialClassDiv="back-home-div"
               specialClassButton="back-home-button"
-              linkTo={ROUTES.resultUsers}
+              linkTo={ROUTES.searchUsers}
             />
           </div>
         </div>

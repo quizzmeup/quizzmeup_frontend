@@ -1,11 +1,9 @@
 import "./ResultCard.css";
 
-const ResultCard = ({ title, actionLabel, specialClass }) => {
+const ResultCard = ({ title, actionLabel, specialClass, onClick }) => {
   return (
-    <div className={`banner-item-bis ${specialClass}`}>
-      <div>
-        <span>{title}</span>
-      </div>
+    <div className={`result-card ${specialClass}`}>
+      <span>{title}</span>
       <span>{actionLabel}</span>
     </div>
   );

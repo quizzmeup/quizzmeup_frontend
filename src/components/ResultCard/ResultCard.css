@@ -1,4 +1,4 @@
-.banner-item-bis {
+.result-card {
   width: 30%;
   border-radius: 5px;
   cursor: pointer;
@@ -11,7 +11,7 @@
   background: linear-gradient(to right, #f4f5f7, #e7eaed);
 }
 
-.banner-item-bis:hover {
+.result-card:hover {
   box-shadow: none;
 }
 
@@ -26,14 +26,14 @@
   box-shadow: none;
 }
 
-.banner-item-bis div {
+.result-card span:first-child {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   width: 70%;
 }
 
-.banner-item-bis > span {
+.result-card span:nth-child(2) {
   font-size: 0.8rem;
   color: var(--primary-color);
 }
