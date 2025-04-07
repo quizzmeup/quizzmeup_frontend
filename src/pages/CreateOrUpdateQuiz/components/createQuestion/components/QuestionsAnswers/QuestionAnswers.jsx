@@ -1,8 +1,5 @@
 import AnswersInput from "./AnswersInput";
-import RightWrongButton from "./RightWrongButton";
-import AddRemoveButton from "./AddRemoveButton";
 import MultipleChoiceAnswers from "./MultipleChoiceAnswers";
-import { useState } from "react";
 
 const QuestionAnswers = ({ question, setQuiz, index }) => {
   const handleOnchangeAnswer = (event) => {
@@ -19,9 +16,6 @@ const QuestionAnswers = ({ question, setQuiz, index }) => {
       </h3>
       {!question.multipleChoices && (
         <AnswersInput
-          // question={question}
-          // setQuiz={setQuiz}
-          // index={index}
           value={question.rightAnswers}
           onChange={handleOnchangeAnswer}
         />

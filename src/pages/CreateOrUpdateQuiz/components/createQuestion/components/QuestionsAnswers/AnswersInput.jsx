@@ -1,4 +1,4 @@
-const AnswersInput = ({ question, setQuiz, index, onChange, value }) => {
+const AnswersInput = ({ onChange, value }) => {
   return (
     <div>
       <input

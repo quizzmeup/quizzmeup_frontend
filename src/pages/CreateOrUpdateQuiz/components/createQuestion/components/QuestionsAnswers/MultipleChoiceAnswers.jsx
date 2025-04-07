@@ -1,4 +1,3 @@
-import AnswersInput from "./AnswersInput";
 import PossibleAnswerInput from "./PossibleAnswerInput";
 import RightWrongButton from "./RightWrongButton";
 import AddRemoveButton from "./AddRemoveButton";

@@ -1,6 +1,5 @@
 import "./CreateOrUpdateQuizContent.css";
-import { LuFileSpreadsheet } from "react-icons/lu";
-import { FaCheck } from "react-icons/fa6";
+import AddQuestionButton from "../AddQuestionButton/AddQuestionButton";
 import CreateQuestion from "../createQuestion/CreateQuestion";
 
 const CreateOrUpdateQuizContent = ({ quiz, setQuiz }) => {
@@ -19,14 +18,7 @@ const CreateOrUpdateQuizContent = ({ quiz, setQuiz }) => {
         />
       ))}
 
-      <div className="buttons-add-question">
-        <button>
-          <LuFileSpreadsheet /> Ajouter une question Texte
-        </button>
-        <button>
-          <FaCheck /> Ajouter une question QCM
-        </button>
-      </div>
+      <AddQuestionButton setQuiz={setQuiz} />
     </div>
   );
 };
