@@ -4,4 +4,5 @@ export const ROUTES = {
   backoffice: "/backoffice",
   searchUsers: "/search/users",
   searchQuizzes: "/search/quizzes",
+  searchCohorts: "/search/quizzes/cohorts",
 };

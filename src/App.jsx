@@ -19,6 +19,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import BackofficeHome from "./pages/BackofficeHome/BackofficeHome";
 import SearchUsersPage from "./pages/SearchPage/SearchUsersPage";
 import SearchQuizzesPage from "./pages/SearchPage/SearchQuizzesPage";
+import SearchCohortsPage from "./pages/SearchPage/SearchCohortsPage";
 
 const AppContent = () => {
   return (
@@ -33,6 +34,7 @@ const AppContent = () => {
           <Route path={ROUTES.backoffice} element={<BackofficeHome />} />
           <Route path={ROUTES.searchUsers} element={<SearchUsersPage />} />
           <Route path={ROUTES.searchQuizzes} element={<SearchQuizzesPage />} />
+          <Route path={ROUTES.searchCohorts} element={<SearchCohortsPage />} />
         </Route>
       </Routes>
     </Router>
