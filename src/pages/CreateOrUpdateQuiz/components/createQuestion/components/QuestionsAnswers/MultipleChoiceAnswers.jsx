@@ -22,7 +22,6 @@ const MultipleChoiceAnswers = ({
 
   return (
     <div>
-      {/* <AnswersInput value={proposition} onChange={onChange} /> */}
       <PossibleAnswerInput
         index={index}
         proposition={proposition}
@@ -30,9 +29,10 @@ const MultipleChoiceAnswers = ({
         setQuiz={setQuiz}
       />
       <RightWrongButton
-        isRightAnswer={isRightAnswer}
+        question={question}
+        proposition={proposition}
+        setQuiz={setQuiz}
         index={index}
-        onClick={() => {}}
       />
       {index === question.propositions.length - 1 && (
         <div>
