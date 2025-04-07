@@ -48,22 +48,22 @@ const BackofficeHome = () => {
           <div>
             <div
               className="new-form"
-              onClick={() => navigate(ROUTES.createOrUpdateQuiz)}
+              onClick={() => navigate(ROUTES.quizCreate)}
             >
               <FaPlus />
               <span>Nouveau formulaire</span>
             </div>
             {data &&
               data.map((quiz) => {
+                console.log(ROUTES.quizEdit.build(quiz.id));
+
                 return (
                   <BannerItemBis
                     title={quiz.title}
-                    key={quiz._id}
+                    key={quiz.id}
                     linkLabel="Editer"
                     specialClass="shadowed"
-                    onClick={() =>
-                      navigate(ROUTES.createOrUpdateQuiz + "/" + quiz._id)
-                    }
+                    onClick={() => navigate(ROUTES.quizEdit.build(quiz.id))}
                   />
                 );
               })}

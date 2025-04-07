@@ -10,7 +10,7 @@ import CreateOrUpdateQuizContent from "./components/CreateOrUpdateQuizContent/Cr
 const CreateOrUpdateQuiz = () => {
   const navigate = useNavigate();
   const { showToast } = useToast();
-
+  console.log("test");
   //check if admin and redirect him to home if not
   const userData = localStorage.getItem("userData");
   const storedUserObj = JSON.parse(userData);
@@ -20,19 +20,20 @@ const CreateOrUpdateQuiz = () => {
     showToast("vous devez être administrateur pour pouvoir créer un quiz");
   }
 
-  const { quiz_id } = useParams();
+  const { quizId } = useParams();
+  console.log(quizId);
 
   const [quiz, setQuiz] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // console.log("quiz", quiz);
+  console.log("quiz", quiz);
 
   useEffect(() => {
-    if (quiz_id) {
+    if (quizId) {
       //initialize questions for update a quiz
       const fetchMostRecentQuizVersion = async () => {
-        const data = await getMostRecentQuizVersion(quiz_id, setError);
+        const data = await getMostRecentQuizVersion(quizId, setError);
         setQuiz(data);
         setIsLoading(false);
       };
@@ -42,7 +43,7 @@ const CreateOrUpdateQuiz = () => {
       setQuiz({ title: "", questions: [] });
       setIsLoading(false);
     }
-  }, [quiz_id, setError, navigate, showToast]);
+  }, [quizId, setError, navigate, showToast]);
 
   return isLoading ? (
     <main className="createOrUpdateQuiz container">

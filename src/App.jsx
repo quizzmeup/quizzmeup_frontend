@@ -31,14 +31,16 @@ const AppContent = () => {
           <Route path={ROUTES.home} element={<Home />} />
           <Route path={ROUTES.notFound} element={<NotFound />} />
           <Route path={ROUTES.backoffice} element={<BackofficeHome />} />
-          <Route
+          <Route path={ROUTES.quizCreate} element={<CreateOrUpdateQuiz />} />
+          <Route path={ROUTES.quizEdit.path} element={<CreateOrUpdateQuiz />} />
+          {/* <Route
             path={ROUTES.createOrUpdateQuiz}
             element={<CreateOrUpdateQuiz />}
           />
           <Route
             path={ROUTES.createOrUpdateQuiz + "/:quiz_id"}
             element={<CreateOrUpdateQuiz />}
-          />
+          /> */}
           <Route path={ROUTES.resultUsers} element={<ResultUsers />} />
         </Route>
       </Routes>

@@ -12,7 +12,7 @@ export const getMostRecentQuizVersion = async (quiz_id, setError) => {
       return null;
     } else {
       const response = await api.get(
-        `/api/quizzes/${quiz_id}/most_recent_quiz_version`
+        `/api/quizzes/${quiz_id}/most_recent_quiz_version?includeUnpublished=true`
       );
       return response.data;
     }
