@@ -55,8 +55,6 @@ const BackofficeHome = () => {
             </div>
             {data &&
               data.map((quiz) => {
-                console.log(ROUTES.quizEdit.build(quiz.id));
-
                 return (
                   <BannerItemBis
                     title={quiz.title}

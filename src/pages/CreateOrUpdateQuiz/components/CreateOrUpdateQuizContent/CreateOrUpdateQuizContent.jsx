@@ -10,7 +10,7 @@ const CreateOrUpdateQuizContent = ({ quiz, setQuiz }) => {
       </h2>
       {quiz.questions.map((question, index) => (
         <CreateQuestion
-          key={question._id}
+          key={index}
           question={question}
           setQuiz={setQuiz}
           index={index}

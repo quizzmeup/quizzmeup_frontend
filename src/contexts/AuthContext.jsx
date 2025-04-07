@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
+  console.log(userData);
   // Initialisation au chargement de l'app
   useEffect(() => {
     const storedToken = Cookies.get(QUIZZMEUP_FRONTEND_AUTH_TOKEN_COOKIE_NAME);

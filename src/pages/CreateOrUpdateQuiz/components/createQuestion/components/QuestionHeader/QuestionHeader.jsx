@@ -2,17 +2,31 @@ import "./questionHeader.css";
 import { LuFileSpreadsheet, LuTrash } from "react-icons/lu";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { FaCheck, FaCode } from "react-icons/fa6";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { handleClickQuestionOptions } from "../../../../createQuestionsUtils";
 
 const QuestionHeader = ({ setQuiz, index, question, lastIndex }) => {
   const [codeInput, setCodeInput] = useState(false);
+
+  useEffect(() => {
+    if (question.markdownCode) {
+      setCodeInput(true);
+    }
+  }, [question.markdownCode]);
 
   //Handle form functions
   const handleOnchangeTitle = (event) => {
     setQuiz((prevState) => {
       const newQuiz = structuredClone(prevState);
       newQuiz.questions[index].title = event.target.value;
+      return newQuiz;
+    });
+  };
+
+  const handleOnChangeMarkDown = (event) => {
+    setQuiz((prevState) => {
+      const newQuiz = structuredClone(prevState);
+      newQuiz.questions[index].markdownCode = event.target.value;
       return newQuiz;
     });
   };
@@ -87,7 +101,12 @@ const QuestionHeader = ({ setQuiz, index, question, lastIndex }) => {
           </button>
         </div>
       </div>
-      {codeInput && <textarea>```js ````</textarea>}
+      {codeInput && (
+        <textarea
+          value={question.markdownCode}
+          onChange={handleOnChangeMarkDown}
+        ></textarea>
+      )}
     </div>
   );
 };
