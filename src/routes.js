@@ -13,4 +13,8 @@ export const ROUTES = {
     path: "/search/quizzes/:quizId/cohorts/:cohortId/users",
     build: (id, id2) => `/search/quizzes/${id}/cohorts/${id2}/users`,
   },
+  userSubmissionList: {
+    path: "/search/users/:userId/submissions",
+    build: (id) => `/search/users/${id}/submissions`,
+  },
 };

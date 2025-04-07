@@ -27,7 +27,7 @@ const SearchUsersPage = () => {
         <ResultCard
           key={user._id}
           title={user.name}
-          linkTo={`/submissions/user/${user._id}`}
+          linkTo={ROUTES.userSubmissionList.build(user._id)}
           specialClass="search-results"
           actionLabel="Consulter"
         />

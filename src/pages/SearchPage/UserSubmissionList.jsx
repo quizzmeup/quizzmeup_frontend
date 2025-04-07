@@ -3,17 +3,13 @@ import { Navigate } from "react-router-dom";
 import ResultCard from "../../components/ResultCard/ResultCard";
 import { ROUTES } from "../../routes";
 import Loader from "../../components/Loader/Loader";
-import { getUsersWithSubmissions } from "../../api/users";
+import { fetchSubmissionByUserId } from "../../api/submission";
 import { useParams } from "react-router-dom";
 import useSearchWithId from "../../hooks/useSearchWithId";
 
-const SearchUsersByCohorts = () => {
-  const { quizId, cohortId } = useParams();
-  const { data, isLoading } = useSearchWithId(
-    getUsersWithSubmissions,
-    quizId,
-    cohortId
-  );
+const UserSubmissionList = () => {
+  const { userId } = useParams();
+  const { data, isLoading } = useSearchWithId(fetchSubmissionByUserId, userId);
 
   const { token } = useAuth();
   const userIsAdmin = JSON.parse(localStorage.getItem("userData"))?.isAdmin;
@@ -21,18 +17,20 @@ const SearchUsersByCohorts = () => {
   if (!token || !userIsAdmin) return <Navigate to={ROUTES.home} />;
   if (isLoading) return <Loader />;
 
+  console.log(data);
+
   return (
     <div className="container">
       <div className="search-page-layout">
-        <h1>Elèves de la session</h1>
-        {data.map((user) => {
+        <h1>Liste des formulaires complétés</h1>
+        {data.map((submission) => {
           return (
             <ResultCard
-              key={user.id}
-              title={user.name}
+              key={submission._id}
+              title={submission.quizVersion.title}
               specialClass="search-results"
               actionLabel="Consulter"
-              linkTo={`/submissions/${user.submissionId}`}
+              linkTo={`/submissions/${submission._id}`}
             />
           );
         })}
@@ -41,4 +39,4 @@ const SearchUsersByCohorts = () => {
   );
 };
 
-export default SearchUsersByCohorts;
+export default UserSubmissionList;

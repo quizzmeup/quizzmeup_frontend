@@ -22,6 +22,7 @@ import SearchUsersPage from "./pages/SearchPage/SearchUsersPage";
 import SearchQuizzesPage from "./pages/SearchPage/SearchQuizzesPage";
 import SearchCohortsPage from "./pages/SearchPage/SearchCohortsPage";
 import SearchUsersByCohorts from "./pages/SearchPage/SearchUsersByCohorts";
+import UserSubmissionList from "./pages/SearchPage/UserSubmissionList";
 
 const AppContent = () => {
   return (
@@ -40,6 +41,10 @@ const AppContent = () => {
           />
           <Route path={ROUTES.backoffice} element={<BackofficeHome />} />
           <Route path={ROUTES.searchUsers} element={<SearchUsersPage />} />
+          <Route
+            path={ROUTES.userSubmissionList.path}
+            element={<UserSubmissionList />}
+          />
           <Route path={ROUTES.searchQuizzes} element={<SearchQuizzesPage />} />
           <Route
             path={ROUTES.searchCohorts.path}
