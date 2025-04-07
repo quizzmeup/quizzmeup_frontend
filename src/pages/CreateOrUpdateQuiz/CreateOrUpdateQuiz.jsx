@@ -1,37 +1,14 @@
 import { useEffect, useState } from "react";
 import "./CreateOrUpdateQuiz.css";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import { getMostRecentQuizVersion } from "../../api/quiz";
-import { useToast } from "../../contexts/ToastContext";
 import CreateOrUpdateQuizHeader from "./components/CreateOrUpdateQuizHeader/CreateOrUpdateQuizHeader";
 import Loader from "../../components/Loader/Loader";
 import CreateOrUpdateQuizContent from "./components/CreateOrUpdateQuizContent/CreateOrUpdateQuizContent";
 import { useAuth } from "../../contexts/AuthContext";
 
 const CreateOrUpdateQuiz = () => {
-  const navigate = useNavigate();
-  const { showToast } = useToast();
-  //check if admin and redirect him to home if not
-  // const userData = localStorage.getItem("userData");
-  // const storedUserObj = JSON.parse(userData);
-
-  const { userData, isLoading: authIsLoading } = useAuth();
-  console.log(userData);
-  if (!userData || !userData.isAdmin) {
-    navigate("/");
-    showToast("vous devez être administrateur pour pouvoir créer un quiz");
-  }
-
-  // useEffect(() => {
-  //   if (authIsLoading) {
-  //     if (!userData || !userData.isAdmin) {
-  //       console.log("test3");
-
-  //       navigate("/");
-  //       showToast("vous devez être administrateur pour pouvoir créer un quiz");
-  //     }
-  //   }
-  // }, [userData, navigate, showToast, authIsLoading]);
+  const { userData } = useAuth();
 
   const { quizId } = useParams();
 
@@ -42,8 +19,6 @@ const CreateOrUpdateQuiz = () => {
 
   useEffect(() => {
     if (quizId) {
-      console.log("test2");
-
       //initialize questions for update a quiz
       const fetchMostRecentQuizVersion = async () => {
         const data = await getMostRecentQuizVersion(quizId, setError);
@@ -56,6 +31,11 @@ const CreateOrUpdateQuiz = () => {
     }
   }, [quizId, setError]);
 
+  //Redirection if user is not admin
+  if (!userData || !userData.isAdmin) {
+    return <Navigate to={"/"} />;
+  }
+
   return isLoading ? (
     <main className="createOrUpdateQuiz container">
       <Loader />
@@ -66,8 +46,6 @@ const CreateOrUpdateQuiz = () => {
     </main>
   ) : (
     <main className="createOrUpdateQuiz container">
-      {console.log("test4")}
-
       <CreateOrUpdateQuizHeader quiz={quiz} setQuiz={setQuiz} />
       <CreateOrUpdateQuizContent quiz={quiz} setQuiz={setQuiz} />
     </main>
