@@ -14,8 +14,6 @@ const Result = ({ request, pageTitle, placeholder, tagKey }) => {
 
   const { token } = useAuth();
 
-  console.log(pageTitle);
-
   let isAdmin;
   const storedUser = localStorage.getItem("userData");
   if (storedUser) {
