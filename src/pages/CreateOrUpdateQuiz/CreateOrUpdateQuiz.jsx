@@ -11,6 +11,15 @@ const CreateOrUpdateQuiz = () => {
   const navigate = useNavigate();
   const { showToast } = useToast();
 
+  //check if admin and redirect him to home if not
+  const userData = localStorage.getItem("userData");
+  const storedUserObj = JSON.parse(userData);
+
+  if (!storedUserObj || !storedUserObj.isAdmin) {
+    navigate("/");
+    showToast("vous devez être administrateur pour pouvoir créer un quiz");
+  }
+
   const { quiz_id } = useParams();
 
   const [quiz, setQuiz] = useState(null);
@@ -20,15 +29,6 @@ const CreateOrUpdateQuiz = () => {
   // console.log("quiz", quiz);
 
   useEffect(() => {
-    //check if admin and redirect him to home if not
-    const userData = localStorage.getItem("userData");
-    const storedUserObj = JSON.parse(userData);
-
-    if (!storedUserObj || !storedUserObj.isAdmin) {
-      navigate("/");
-      showToast("vous devez être administrateur pour pouvoir créer un quiz");
-    }
-
     if (quiz_id) {
       //initialize questions for update a quiz
       const fetchMostRecentQuizVersion = async () => {
