@@ -10,5 +10,5 @@ const AnswersInput = ({ question, setQuiz, index, onChange, value }) => {
     </div>
   );
 };
-
+//
 export default AnswersInput;

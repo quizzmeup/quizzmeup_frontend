@@ -50,5 +50,5 @@ const QuestionAnswers = ({ question, setQuiz, index }) => {
     </div>
   );
 };
-
+//
 export default QuestionAnswers;

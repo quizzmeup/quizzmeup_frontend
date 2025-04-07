@@ -8,5 +8,5 @@ const RightWrongButton = ({ index, isRightAnswer, onClick }) => {
     </button>
   );
 };
-
+//
 export default RightWrongButton;
