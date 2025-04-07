@@ -1,10 +1,9 @@
 export const ROUTES = {
   home: "/",
   notFound: "*",
-<<<<<<< HEAD
   quizSubmissionShow: "/submissions/:id",
-=======
   backoffice: "/backoffice",
+  searchUsers: "/search/users",
+  searchQuizzes: "/search/quizzes",
   resultUsers: "/result/users",
->>>>>>> master
 };

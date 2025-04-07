@@ -18,7 +18,8 @@ import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
 import QuizSubmissionShow from "./pages/QuizSubmissionShow/QuizSubmissionShow";
 import BackofficeHome from "./pages/BackofficeHome/BackofficeHome";
-import ResultUsers from "./pages/ResultUsers/ResultUsers";
+import SearchUsersPage from "./pages/SearchPage/SearchUsersPage";
+import SearchQuizzesPage from "./pages/SearchPage/SearchQuizzesPage";
 
 const AppContent = () => {
   return (
@@ -36,7 +37,8 @@ const AppContent = () => {
             element={<QuizSubmissionShow />}
           />
           <Route path={ROUTES.backoffice} element={<BackofficeHome />} />
-          <Route path={ROUTES.resultUsers} element={<ResultUsers />} />
+          <Route path={ROUTES.searchUsers} element={<SearchUsersPage />} />
+          <Route path={ROUTES.searchQuizzes} element={<SearchQuizzesPage />} />
         </Route>
       </Routes>
     </Router>
