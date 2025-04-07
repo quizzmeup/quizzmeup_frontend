@@ -1,11 +1,7 @@
-import { useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 
-const RightWrongButton = ({ index, question, proposition, setQuiz }) => {
-  //check if this proposition is include in the rightAnswers array and set the rightAnswers selection logo
-  const isRightAnswer = question.rightAnswers.includes(proposition);
-
+const RightWrongButton = ({ index, isRightAnswer, proposition, setQuiz }) => {
   const handleClick = () => {
     setQuiz((prevState) => {
       const newQuiz = structuredClone(prevState);

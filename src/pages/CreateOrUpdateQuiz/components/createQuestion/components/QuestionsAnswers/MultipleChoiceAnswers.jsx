@@ -2,23 +2,16 @@ import AnswersInput from "./AnswersInput";
 import PossibleAnswerInput from "./PossibleAnswerInput";
 import RightWrongButton from "./RightWrongButton";
 import AddRemoveButton from "./AddRemoveButton";
-import { useState } from "react";
 
 const MultipleChoiceAnswers = ({
   index,
   propositionIndex,
   proposition,
-  isRightAnswer,
   setQuiz,
   question,
 }) => {
-  const [rightAnswer, setRightAnswer] = useState(isRightAnswer[0]);
-
-  // console.log(isRightAnswer[0]);
-
-  // const handleChangeRightAnswer = (event) => {
-  //   setRightAnswer(!rightAnswer[index]);
-  // };
+  //check if this proposition is include in the rightAnswers array and set the rightAnswers selection logo
+  const isRightAnswer = question.rightAnswers.includes(proposition);
 
   return (
     <div>
@@ -27,12 +20,14 @@ const MultipleChoiceAnswers = ({
         proposition={proposition}
         propositionIndex={propositionIndex}
         setQuiz={setQuiz}
+        isRightAnswer={isRightAnswer}
       />
       <RightWrongButton
         question={question}
         proposition={proposition}
         setQuiz={setQuiz}
         index={index}
+        isRightAnswer={isRightAnswer}
       />
       {index === question.propositions.length - 1 && (
         <div>

@@ -24,7 +24,6 @@ const CreateOrUpdateQuiz = () => {
   const [quiz, setQuiz] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-
   console.log("quiz", quiz);
 
   useEffect(() => {
