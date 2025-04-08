@@ -1,7 +1,10 @@
 export const ROUTES = {
   home: "/",
   notFound: "*",
-  quizSubmissionShow: "/submissions/:id",
+  quizSubmissionShow: {
+    path: "/submissions/:id",
+    build: (id) => `/submissions/${id}`,
+  },
   backoffice: "/backoffice",
 
   answerQuiz: {
