@@ -3,16 +3,32 @@ import { Navigate } from "react-router-dom";
 import ResultCard from "../../components/ResultCard/ResultCard";
 import { ROUTES } from "../../routes";
 import Loader from "../../components/Loader/Loader";
-import { fetchSubmissionsByUserId } from "../../api/submission";
 import { useParams } from "react-router-dom";
-import useSearchWithId from "../../hooks/useSearchWithId";
+import { useState, useEffect } from "react";
+import { fetchSubmissionsByUserId } from "../../api/submission";
 
 const UserSubmissionList = () => {
   const { userId } = useParams();
-  const { data, isLoading } = useSearchWithId(fetchSubmissionsByUserId, userId);
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const { token } = useAuth();
-  const userIsAdmin = JSON.parse(localStorage.getItem("userData"))?.isAdmin;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await fetchSubmissionsByUserId(userId);
+        setData(result);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const { userData, token } = useAuth();
+  const userIsAdmin = userData?.isAdmin;
 
   if (!token || !userIsAdmin) return <Navigate to={ROUTES.home} />;
   if (isLoading) return <Loader />;
