@@ -63,8 +63,7 @@ const Home = () => {
                       text={quiz.title}
                       specialClassDiv="back-div"
                       specialClassButton="back-button"
-                      // TODO
-                      linkTo={ROUTES.answerQuizz + "/" + quiz.id}
+                      linkTo={ROUTES.answerQuiz.build(quiz.id)}
                     />
                   </div>
                 ))}
@@ -86,7 +85,9 @@ const Home = () => {
                       text={quiz.title}
                       specialClassDiv="back-div"
                       specialClassButton="back-button"
-                      linkTo={ROUTES.quizSubmissionShow + "/" + quiz.id}
+                      linkTo={ROUTES.quizSubmissionShow.build(
+                        quiz.submissionId
+                      )}
                     />
                   </div>
                 ))}

@@ -37,7 +37,7 @@ const AppContent = () => {
           <Route path={ROUTES.notFound} element={<NotFound />} />
 
           <Route
-            path={ROUTES.quizSubmissionShow}
+            path={ROUTES.quizSubmissionShow.path}
             element={<QuizSubmissionShow />}
           />
           <Route path={ROUTES.backoffice} element={<BackofficeHome />} />
