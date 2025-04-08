@@ -91,7 +91,7 @@ const BackofficeHome = () => {
           <h2>Sessions</h2>
           <div className="cohort-manager-link">
             <BannerItem
-              text="> Gérer les cohortes"
+              text="> Gérer les Sessions"
               specialClassDiv="back-home-div"
               specialClassButton="back-home-button"
               linkTo={ROUTES.cohortManager}

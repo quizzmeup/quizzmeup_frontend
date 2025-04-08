@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getCohorts, createCohort } from "../../api/cohort";
 import { useToast } from "../../contexts/ToastContext";
 import Loader from "../../components/Loader/Loader";
+import { handleApiError } from "../../utils/apiErrorHandler";
 import "./CohortManager.css";
 
 const CohortManager = () => {
@@ -16,7 +17,7 @@ const CohortManager = () => {
         const res = await getCohorts();
         setCohorts(res.data);
       } catch (error) {
-        showToast("Erreur lors du chargement des cohortes", error);
+        showToast(`Erreur lors du chargement des sessions: ${error}`, "error");
       } finally {
         setLoading(false);
       }
@@ -35,19 +36,23 @@ const CohortManager = () => {
       setNewCohortName("");
       showToast("Cohorte créée avec succès", "success");
     } catch (error) {
-      showToast("Erreur lors de la création de la cohorte", error);
+      console.log("error:", handleApiError(error));
+      showToast(
+        `Erreur lors de la création de la session: ${handleApiError(error)}`,
+        "error"
+      );
     }
   };
 
   return (
     <div className="container">
       <div className="cohort-manager-page">
-        <h1>Gestion des cohortes</h1>
+        <h1>Gestion des Sessions</h1>
 
         <form className="cohort-form" onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="Nom de la nouvelle cohorte"
+            placeholder="Nom de la nouvelle session"
             value={newCohortName}
             onChange={(e) => setNewCohortName(e.target.value)}
           />
