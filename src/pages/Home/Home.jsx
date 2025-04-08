@@ -2,7 +2,6 @@ import "./Home.css";
 import { useAuth } from "../../contexts/AuthContext";
 import { useState, useEffect } from "react";
 import { getQuizzes } from "../../api/home";
-import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../routes";
 import BannerItem from "../../components/BannerItem/BannerItem";
 import Loader from "../../components/Loader/Loader";
@@ -43,8 +42,6 @@ const Home = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
-  const navigate = useNavigate();
 
   return userData ? (
     <main className="container">
