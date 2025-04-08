@@ -2,6 +2,7 @@
   padding: 2em;
   border-radius: 5px;
   background-color: var(--div-bg-color);
+  margin: auto;
 }
 
 .create-or-update-quiz-container h2 {

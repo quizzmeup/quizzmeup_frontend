@@ -12,7 +12,8 @@ const MultipleChoiceAnswers = ({
   question,
 }) => {
   //check if this proposition is include in the rightAnswers array and set the rightAnswers selection logo
-  const isRightAnswer = question.rightAnswers.includes(proposition);
+  const isRightAnswer =
+    proposition && question.rightAnswers.includes(proposition);
 
   return (
     <div className="QCM-answers">
