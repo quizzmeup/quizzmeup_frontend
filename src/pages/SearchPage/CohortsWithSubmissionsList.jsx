@@ -5,17 +5,31 @@ import { ROUTES } from "../../routes";
 import Loader from "../../components/Loader/Loader";
 import { getCohortsWithSubmissions } from "../../api/cohorts";
 import { useParams } from "react-router-dom";
-import useSearchWithId from "../../hooks/useSearchWithId";
+import { useState, useEffect } from "react";
 
-const SearchCohortsPage = () => {
+const CohortsWithSubmissionsList = () => {
   const { quizId } = useParams();
-  const { data, isLoading } = useSearchWithId(
-    getCohortsWithSubmissions,
-    quizId
-  );
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await getCohortsWithSubmissions(quizId);
+        setData(result);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const { token } = useAuth();
-  const userIsAdmin = JSON.parse(localStorage.getItem("userData"))?.isAdmin;
+  const { userData } = useAuth();
+  const userIsAdmin = userData?.isAdmin;
 
   if (!token || !userIsAdmin) return <Navigate to={ROUTES.home} />;
   if (isLoading) return <Loader />;
@@ -31,7 +45,10 @@ const SearchCohortsPage = () => {
               title={cohort.name}
               specialClass="search-results"
               actionLabel="Consulter"
-              linkTo={ROUTES.searchUsersByCohorts.build(quizId, cohort._id)}
+              linkTo={ROUTES.cohortUsersWithSubmissionList.build(
+                quizId,
+                cohort._id
+              )}
             />
           );
         })}
@@ -40,4 +57,4 @@ const SearchCohortsPage = () => {
   );
 };
 
-export default SearchCohortsPage;
+export default CohortsWithSubmissionsList;

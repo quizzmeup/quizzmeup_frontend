@@ -5,11 +5,11 @@ export const ROUTES = {
   backoffice: "/backoffice",
   searchUsers: "/search/users",
   searchQuizzes: "/search/quizzes",
-  searchCohorts: {
+  cohortsWithSubmissionsList: {
     path: "/search/quizzes/:quizId/cohorts",
     build: (id) => `/search/quizzes/${id}/cohorts`,
   },
-  searchUsersByCohorts: {
+  cohortUsersWithSubmissionList: {
     path: "/search/quizzes/:quizId/cohorts/:cohortId/users",
     build: (id, id2) => `/search/quizzes/${id}/cohorts/${id2}/users`,
   },

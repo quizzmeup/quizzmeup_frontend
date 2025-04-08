@@ -3,13 +3,13 @@ import { Navigate } from "react-router-dom";
 import ResultCard from "../../components/ResultCard/ResultCard";
 import { ROUTES } from "../../routes";
 import Loader from "../../components/Loader/Loader";
-import { fetchSubmissionByUserId } from "../../api/submission";
+import { fetchSubmissionsByUserId } from "../../api/submission";
 import { useParams } from "react-router-dom";
 import useSearchWithId from "../../hooks/useSearchWithId";
 
 const UserSubmissionList = () => {
   const { userId } = useParams();
-  const { data, isLoading } = useSearchWithId(fetchSubmissionByUserId, userId);
+  const { data, isLoading } = useSearchWithId(fetchSubmissionsByUserId, userId);
 
   const { token } = useAuth();
   const userIsAdmin = JSON.parse(localStorage.getItem("userData"))?.isAdmin;

@@ -5,18 +5,30 @@ import { ROUTES } from "../../routes";
 import Loader from "../../components/Loader/Loader";
 import { getUsersWithSubmissions } from "../../api/users";
 import { useParams } from "react-router-dom";
-import useSearchWithId from "../../hooks/useSearchWithId";
+import { useState, useEffect } from "react";
 
-const SearchUsersByCohorts = () => {
+const CohortUsersWithSubmissionList = () => {
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { quizId, cohortId } = useParams();
-  const { data, isLoading } = useSearchWithId(
-    getUsersWithSubmissions,
-    quizId,
-    cohortId
-  );
 
-  const { token } = useAuth();
-  const userIsAdmin = JSON.parse(localStorage.getItem("userData"))?.isAdmin;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await getUsersWithSubmissions(quizId, cohortId);
+        setData(result);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const { userData, token } = useAuth();
+  const userIsAdmin = userData?.isAdmin;
 
   if (!token || !userIsAdmin) return <Navigate to={ROUTES.home} />;
   if (isLoading) return <Loader />;
@@ -41,4 +53,4 @@ const SearchUsersByCohorts = () => {
   );
 };
 
-export default SearchUsersByCohorts;
+export default CohortUsersWithSubmissionList;

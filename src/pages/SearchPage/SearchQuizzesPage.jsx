@@ -27,7 +27,7 @@ const SearchQuizzesPage = () => {
         <ResultCard
           key={quiz.id}
           title={quiz.title}
-          linkTo={ROUTES.searchCohorts.build(quiz.id)}
+          linkTo={ROUTES.cohortsWithSubmissionsList.build(quiz.id)}
           specialClass="search-results"
           actionLabel="Consulter"
         />
