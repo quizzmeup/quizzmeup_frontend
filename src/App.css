@@ -2,15 +2,22 @@
 
 :root {
   --primary-color: #57b97d;
+  --primary-color-light: #d4edda;
+  --primary-color-xtra-light: #e9fbee;
+  --primary-color-dark: #2c7a7b;
   --secondary-color: #202020;
+  --primary-color-light: #d4edda;
   --reacteur-color: #523ecd;
   --bg-color: #ffffff;
   --div-bg-color: #e7f8e9;
   --text-color: #000000;
   --error-color: #ff0505;
+  --error-color-light: #fdd;
+  --error-color-xtra-light: #fdecea;
   --font-family: "AvertaStd-Regular", sans-serif;
   --font-bold: "AvertaStd-Bold", sans-serif;
 
+  --container-length: 1024px;
   --header-height: 80px;
 }
 

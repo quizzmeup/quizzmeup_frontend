@@ -17,7 +17,7 @@
   gap: 30px;
   align-items: center;
   font-family: var(--font-bold);
-  box-shadow: 5px 2px 12px rgb(196, 196, 196);
+  box-shadow: 5px 2px 8px rgb(229, 228, 228);
 }
 
 .new-form:hover {
@@ -32,6 +32,7 @@
 .backoffice-quiz > div {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
   flex-wrap: wrap;
 }

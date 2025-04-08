@@ -1,0 +1,17 @@
+.answer-quiz-page {
+  height: calc(100vh - var(--header-height) - 60px);
+  background-color: var(--primary-color-light);
+  border-radius: 12px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.answer-quiz-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
