@@ -4,7 +4,7 @@ import CreateQuestion from "../createQuestion/CreateQuestion";
 
 const CreateOrUpdateQuizContent = ({ quiz, setQuiz }) => {
   return (
-    <div className="creat-or-update-quiz-container">
+    <div className="create-or-update-quiz-container">
       <h2>
         Questions du quiz <span>Personaliser le formulaire</span>
       </h2>

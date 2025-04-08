@@ -1,4 +1,14 @@
-.content-createOrUpdateQuiz {
+.create-or-update-quiz-container {
   padding: 2em;
-  border-radius: 0 0 5px 5px;
+  border-radius: 5px;
+  background-color: var(--div-bg-color);
+}
+
+.create-or-update-quiz-container h2 {
+  margin-bottom: 3em;
+}
+
+.create-or-update-quiz-container h2 span {
+  margin-left: 1em;
+  color: var(--primary-color);
 }

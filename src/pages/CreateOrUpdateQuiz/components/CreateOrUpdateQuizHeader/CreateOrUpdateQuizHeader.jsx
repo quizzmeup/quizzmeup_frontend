@@ -2,6 +2,7 @@ import "./CreateOrUpdateQuizHeader.css";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../../../routes";
 import { IoIosArrowBack } from "react-icons/io";
+import { LuTrash2 } from "react-icons/lu";
 
 const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
   const handleTitleChange = (event) => {
@@ -35,11 +36,15 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
         onChange={handleTitleChange}
       />
       <div className="button-header-createOrUpdateQuiz">
-        <button disabled onClick={handleDeleteQuiz}>
-          Reset
+        <button disabled className="auth-btn logout" onClick={handleDeleteQuiz}>
+          <LuTrash2 size={20} />
         </button>
-        <button disabled>Sauvegarder</button>
-        <button disabled>Publier</button>
+        <button className="auth-btn" disabled>
+          Sauvegarder
+        </button>
+        <button className="auth-btn" disabled>
+          Publier
+        </button>
       </div>
     </div>
   );

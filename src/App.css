@@ -3,14 +3,15 @@
 :root {
   --primary-color: #57b97d;
   --secondary-color: #202020;
+  --quaternary-color: #f3b140;
   --reacteur-color: #523ecd;
   --bg-color: #ffffff;
   --div-bg-color: #e7f8e9;
   --text-color: #000000;
   --error-color: #ff0505;
+  --secondary-error-color: #ff7064;
   --font-family: "AvertaStd-Regular", sans-serif;
   --font-bold: "AvertaStd-Bold", sans-serif;
-
   --header-height: 80px;
 }
 

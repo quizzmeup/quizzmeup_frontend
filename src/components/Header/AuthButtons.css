@@ -12,6 +12,9 @@
   font-size: 1.1rem;
   border: 2px solid var(--primary-color);
   background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .student-auth {
@@ -25,10 +28,12 @@
 }
 
 .auth-btn.logout {
-  background-color: black;
+  background-color: var(--bg-color);
+  color: var(--secondary-error-color);
+  border-color: var(--secondary-error-color);
 }
 
 .auth-btn.logout:hover {
-  background-color: white;
-  color: var(--secondary-color);
+  color: var(--bg-color);
+  background-color: var(--secondary-error-color);
 }

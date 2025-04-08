@@ -23,5 +23,5 @@
 
 .point-selected {
   border-color: var(--primary-color);
-  box-shadow: 2px 2px 5px var(--primary-color);
+  color: var(--primary-color);
 }

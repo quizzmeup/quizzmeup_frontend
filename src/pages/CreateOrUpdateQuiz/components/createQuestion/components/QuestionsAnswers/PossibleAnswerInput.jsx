@@ -1,3 +1,4 @@
+import "./QuestionsAnswers.css";
 const PossibleAnswerInput = ({
   index,
   proposition,
@@ -23,6 +24,11 @@ const PossibleAnswerInput = ({
 
   return (
     <input
+      className={
+        isRightAnswer
+          ? "answer-inputs box-shadow-create-question good-answer-input"
+          : "answer-inputs wrong-answer-input"
+      }
       aria-label="Réponse possible"
       type="text"
       value={proposition}

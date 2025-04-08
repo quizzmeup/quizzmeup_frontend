@@ -1,6 +1,8 @@
+import "./QuestionsAnswers.css";
 import PossibleAnswerInput from "./PossibleAnswerInput";
 import RightWrongButton from "./RightWrongButton";
-import AddRemoveButton from "./AddRemoveButton";
+import AddAnswerButton from "./AddAnswerButton";
+import RemoveAnswerButton from "./RemoveAnswerButton";
 
 const MultipleChoiceAnswers = ({
   index,
@@ -13,7 +15,15 @@ const MultipleChoiceAnswers = ({
   const isRightAnswer = question.rightAnswers.includes(proposition);
 
   return (
-    <div>
+    <div className="QCM-answers">
+      {question.propositions.length > 2 && (
+        <RemoveAnswerButton
+          sign="trash"
+          propositionIndex={propositionIndex}
+          setQuiz={setQuiz}
+          index={index}
+        />
+      )}
       <PossibleAnswerInput
         index={index}
         proposition={proposition}
@@ -27,17 +37,9 @@ const MultipleChoiceAnswers = ({
         setQuiz={setQuiz}
         index={index}
         isRightAnswer={isRightAnswer}
-      />{" "}
-      {question.propositions.length > 2 && (
-        <AddRemoveButton
-          sign="-"
-          propositionIndex={propositionIndex}
-          setQuiz={setQuiz}
-          index={index}
-        />
-      )}
+      />
       {propositionIndex === question.propositions.length - 1 && (
-        <AddRemoveButton sign="+" setQuiz={setQuiz} index={index} />
+        <AddAnswerButton sign="+" setQuiz={setQuiz} index={index} />
       )}
     </div>
   );

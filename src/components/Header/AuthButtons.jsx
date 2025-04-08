@@ -23,7 +23,7 @@ const AuthButtons = () => {
           <>
             <button
               type="button"
-              className="auth-btn "
+              className="auth-btn logout"
               onClick={() => {
                 handleLogout();
                 showToast("Vous êtes déconnecté", "success");

@@ -39,8 +39,12 @@ const QuestionHeader = ({ setQuiz, index, question, lastIndex }) => {
     <div className="question-header">
       <div>
         <div className="question-type">
-          {index + 1}-
-          {question.multipleChoices ? <FaCheck /> : <LuFileSpreadsheet />}
+          <span>{index + 1}</span> <span>-</span>
+          {question.multipleChoices ? (
+            <FaCheck color="#ffffff" size={20} />
+          ) : (
+            <LuFileSpreadsheet color="#ffffff" size={20} />
+          )}
         </div>
         <input
           aria-label="Titre de la question"
@@ -52,9 +56,10 @@ const QuestionHeader = ({ setQuiz, index, question, lastIndex }) => {
 
         <div className="question-options">
           <button
+            className={codeInput && "box-shadow-create-question"}
             onClick={() => toggleDisplayTextArea(codeInput, setCodeInput)}
           >
-            <FaCode />
+            <FaCode size={17} />
           </button>
           <button
             onClick={() => handleClickOptionToUp(index, setQuiz)}

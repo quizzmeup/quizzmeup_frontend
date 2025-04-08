@@ -1,3 +1,4 @@
+import "./QuestionsAnswers.css";
 import AnswersInput from "./AnswersInput";
 import MultipleChoiceAnswers from "./MultipleChoiceAnswers";
 
@@ -10,9 +11,11 @@ const QuestionAnswers = ({ question, setQuiz, index }) => {
     });
   };
   return (
-    <div>
+    <div className="question-answer">
       <h3>
-        {question.multipleChoices ? "Réponses possibles" : "Réponse attendue"}
+        {question.multipleChoices
+          ? "Réponses possibles :"
+          : "Réponse attendue :"}
       </h3>
       {!question.multipleChoices && (
         <AnswersInput

@@ -1,3 +1,4 @@
+import "./QuestionsAnswers.css";
 import { LuTrash } from "react-icons/lu";
 
 const AddRemoveButton = ({ sign, propositionIndex, setQuiz, index }) => {
@@ -6,7 +7,7 @@ const AddRemoveButton = ({ sign, propositionIndex, setQuiz, index }) => {
       const newQuiz = structuredClone(prevSate);
 
       //delete a possible answer
-      if (sign === "-") {
+      if (sign === "trash") {
         newQuiz.questions[index].propositions.splice(propositionIndex, 1);
       } else {
         newQuiz.questions[index].propositions.push("");
@@ -16,7 +17,9 @@ const AddRemoveButton = ({ sign, propositionIndex, setQuiz, index }) => {
     });
   };
   return (
-    <button onClick={handleClick}>{sign === "-" ? <LuTrash /> : sign}</button>
+    <button onClick={handleClick}>
+      {sign === "trash" ? <LuTrash /> : sign}
+    </button>
   );
 };
 //
