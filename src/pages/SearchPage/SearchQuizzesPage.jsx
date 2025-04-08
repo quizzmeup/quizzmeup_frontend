@@ -1,5 +1,5 @@
 import { useAuth } from "../../contexts/AuthContext";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import ResultCard from "../../components/ResultCard/ResultCard";
 import { ROUTES } from "../../routes";
@@ -25,9 +25,9 @@ const SearchQuizzesPage = () => {
     >
       {data.map((quiz) => (
         <ResultCard
-          key={quiz._id}
+          key={quiz.id}
           title={quiz.title}
-          linkTo={`/search/quizzes/cohorts`}
+          linkTo={ROUTES.cohortsWithSubmissionsList.build(quiz.id)}
           specialClass="search-results"
           actionLabel="Consulter"
         />

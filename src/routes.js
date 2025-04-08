@@ -5,5 +5,16 @@ export const ROUTES = {
   backoffice: "/backoffice",
   searchUsers: "/search/users",
   searchQuizzes: "/search/quizzes",
-  resultUsers: "/result/users",
+  cohortsWithSubmissionsList: {
+    path: "/search/quizzes/:quizId/cohorts",
+    build: (id) => `/search/quizzes/${id}/cohorts`,
+  },
+  cohortUsersWithSubmissionList: {
+    path: "/search/quizzes/:quizId/cohorts/:cohortId/users",
+    build: (id, id2) => `/search/quizzes/${id}/cohorts/${id2}/users`,
+  },
+  userSubmissionList: {
+    path: "/search/users/:userId/submissions",
+    build: (id) => `/search/users/${id}/submissions`,
+  },
 };
