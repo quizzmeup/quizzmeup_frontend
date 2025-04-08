@@ -6,4 +6,5 @@ export const ROUTES = {
   searchUsers: "/search/users",
   searchQuizzes: "/search/quizzes",
   resultUsers: "/result/users",
+  cohortManager: "/backoffice/cohorts",
 };
