@@ -17,12 +17,13 @@ const UserSubmissionList = () => {
   if (!token || !userIsAdmin) return <Navigate to={ROUTES.home} />;
   if (isLoading) return <Loader />;
 
-  console.log(data);
-
   return (
     <div className="container">
       <div className="search-page-layout">
         <h1>Liste des formulaires complétés</h1>
+        {data.length === 0 && (
+          <span>Cet élève n'a pas complété de formulaire</span>
+        )}
         {data.map((submission) => {
           return (
             <ResultCard
