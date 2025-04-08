@@ -8,6 +8,7 @@ const CreateOrUpdateQuizContent = ({ quiz, setQuiz }) => {
       <h2>
         Questions du quiz <span>Personaliser le formulaire</span>
       </h2>
+      {console.log(quiz)}
       {quiz.questions.map((question, index) => {
         let lastIndex = false;
         if (quiz.questions.length - 1 === index) {

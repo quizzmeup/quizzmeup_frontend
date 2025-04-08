@@ -20,3 +20,9 @@ export const getMostRecentQuizVersion = async (quiz_id, setError) => {
     setError(handleApiError(error));
   }
 };
+
+export const postQuiz = async (payload) => {
+  const response = await api.post("/api/quizzes", payload);
+  console.log(response.data);
+  return response.data;
+};
