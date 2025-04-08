@@ -21,6 +21,7 @@ import BackofficeHome from "./pages/BackofficeHome/BackofficeHome";
 import AnswerQuiz from "./pages/AnswerQuiz/AnswerQuiz";
 import SearchUsersPage from "./pages/SearchPage/SearchUsersPage";
 import SearchQuizzesPage from "./pages/SearchPage/SearchQuizzesPage";
+import CohortManager from "./pages/CohortManager/CohortManager";
 import CohortsWithSubmissionsList from "./pages/SearchPage/CohortsWithSubmissionsList";
 import CohortUsersWithSubmissionList from "./pages/SearchPage/CohortUsersWithSubmissionList";
 import UserSubmissionList from "./pages/SearchPage/UserSubmissionList";
@@ -48,6 +49,7 @@ const AppContent = () => {
             element={<UserSubmissionList />}
           />
           <Route path={ROUTES.searchQuizzes} element={<SearchQuizzesPage />} />
+          <Route path={ROUTES.cohortManager} element={<CohortManager />} />
           <Route
             path={ROUTES.cohortsWithSubmissionsList.path}
             element={<CohortsWithSubmissionsList />}

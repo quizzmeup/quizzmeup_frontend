@@ -28,4 +28,5 @@ export const ROUTES = {
     path: "/search/users/:userId/submissions",
     build: (id) => `/search/users/${id}/submissions`,
   },
+  cohortManager: "/backoffice/cohorts",
 };
