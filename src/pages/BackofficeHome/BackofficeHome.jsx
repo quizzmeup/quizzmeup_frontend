@@ -58,7 +58,7 @@ const BackofficeHome = () => {
                 return (
                   <BannerItemBis
                     title={quiz.title}
-                    key={quiz._id}
+                    key={quiz.id}
                     actionLabel="Editer"
                     specialClass="shadowed"
                     onClick={() =>

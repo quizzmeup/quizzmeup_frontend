@@ -18,9 +18,13 @@ import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
 import QuizSubmissionShow from "./pages/QuizSubmissionShow/QuizSubmissionShow";
 import BackofficeHome from "./pages/BackofficeHome/BackofficeHome";
+import AnswerQuiz from "./pages/AnswerQuiz/AnswerQuiz";
 import SearchUsersPage from "./pages/SearchPage/SearchUsersPage";
 import SearchQuizzesPage from "./pages/SearchPage/SearchQuizzesPage";
 import CohortManager from "./pages/CohortManager/CohortManager";
+import CohortsWithSubmissionsList from "./pages/SearchPage/CohortsWithSubmissionsList";
+import CohortUsersWithSubmissionList from "./pages/SearchPage/CohortUsersWithSubmissionList";
+import UserSubmissionList from "./pages/SearchPage/UserSubmissionList";
 
 const AppContent = () => {
   return (
@@ -34,13 +38,26 @@ const AppContent = () => {
           <Route path={ROUTES.notFound} element={<NotFound />} />
 
           <Route
-            path={ROUTES.quizSubmissionShow}
+            path={ROUTES.quizSubmissionShow.path}
             element={<QuizSubmissionShow />}
           />
           <Route path={ROUTES.backoffice} element={<BackofficeHome />} />
+          <Route path={ROUTES.answerQuiz.path} element={<AnswerQuiz />} />
           <Route path={ROUTES.searchUsers} element={<SearchUsersPage />} />
+          <Route
+            path={ROUTES.userSubmissionList.path}
+            element={<UserSubmissionList />}
+          />
           <Route path={ROUTES.searchQuizzes} element={<SearchQuizzesPage />} />
           <Route path={ROUTES.cohortManager} element={<CohortManager />} />
+          <Route
+            path={ROUTES.cohortsWithSubmissionsList.path}
+            element={<CohortsWithSubmissionsList />}
+          />
+          <Route
+            path={ROUTES.cohortUsersWithSubmissionList.path}
+            element={<CohortUsersWithSubmissionList />}
+          />
         </Route>
       </Routes>
     </Router>
