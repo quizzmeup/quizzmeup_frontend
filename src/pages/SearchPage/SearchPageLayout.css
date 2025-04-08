@@ -1,0 +1,6 @@
+.search-page-layout {
+  background-color: var(--div-bg-color);
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+}

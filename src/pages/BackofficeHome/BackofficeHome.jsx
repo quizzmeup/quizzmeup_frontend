@@ -1,7 +1,7 @@
 import BannerItem from "../../components/BannerItem/BannerItem";
 import Loader from "../../components/Loader/Loader";
-import BannerItemBis from "../../components/BannerItemBis/BannerItemBis";
-import { Navigate } from "react-router-dom";
+import BannerItemBis from "../../components/ResultCard/ResultCard";
+import { Navigate, useNavigate } from "react-router-dom";
 import "./BackofficeHome.css";
 import { FaPlus } from "react-icons/fa6";
 import { useState, useEffect } from "react";
@@ -10,6 +10,8 @@ import { getQuizzes } from "../../api/quiz";
 import { ROUTES } from "../../routes";
 
 const BackofficeHome = () => {
+  const navigate = useNavigate();
+
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -26,10 +28,11 @@ const BackofficeHome = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setIsLoading(true);
         setData(await getQuizzes());
         setIsLoading(false);
       } catch (error) {
-        console.error;
+        console.error(error);
       }
     };
     fetchData();
@@ -43,7 +46,10 @@ const BackofficeHome = () => {
         <div className="backoffice-quiz">
           <h2>Formulaires</h2>
           <div>
-            <div className="new-form">
+            <div
+              className="new-form"
+              onClick={() => navigate(ROUTES.createOrUpdateQuiz)}
+            >
               <FaPlus />
               <span>Nouveau formulaire</span>
             </div>
@@ -52,9 +58,12 @@ const BackofficeHome = () => {
                 return (
                   <BannerItemBis
                     title={quiz.title}
-                    key={quiz._id}
-                    linkLabel="Editer"
+                    key={quiz.id}
+                    actionLabel="Editer"
                     specialClass="shadowed"
+                    onClick={() =>
+                      navigate(ROUTES.createOrUpdateQuiz + "/" + quiz._id)
+                    }
                   />
                 );
               })}
@@ -67,11 +76,13 @@ const BackofficeHome = () => {
               text="> Consulter par formulaire"
               specialClassDiv="back-home-div"
               specialClassButton="back-home-button"
+              linkTo={ROUTES.searchQuizzes}
             />
             <BannerItem
               text="> Consulter par utilisateur"
               specialClassDiv="back-home-div"
               specialClassButton="back-home-button"
+              linkTo={ROUTES.searchUsers}
             />
           </div>
         </div>
