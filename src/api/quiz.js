@@ -23,6 +23,6 @@ export const getMostRecentQuizVersion = async (quiz_id, setError) => {
 
 export const postQuiz = async (payload) => {
   const response = await api.post("/api/quizzes", payload);
-  console.log(response.data);
+  console.log("rep create quiz", response.data);
   return response.data;
 };

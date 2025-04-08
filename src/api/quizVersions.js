@@ -15,7 +15,7 @@ export const putQuizVersionId = async (id) => {
   return response.data;
 };
 
-export const postQuizVersionId = async (payload) => {
+export const postQuizVersionId = async (quizId, payload) => {
   const response = await api.post(
     `/api/quizzes/${quizId}/quiz_versions`,
     payload

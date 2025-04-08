@@ -25,9 +25,9 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
   const { showToast } = useToast();
 
   // fonction de creation d'un quiz
+  let dataQuiz;
   const createNewQuiz = async () => {
     console.log("new quiz en cours   =>" + quiz.title);
-    let dataQuiz;
     try {
       setIsLoading(true);
       dataQuiz = await postQuiz({ title: quiz.title });
@@ -35,6 +35,8 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
       //console.log(await postQuiz({ title: quiz.title }));
       //console.log("setdataquiz renseigne");
       setIsLoading(false);
+      console.log("here dataquiz", dataQuiz);
+
       return dataQuiz;
     } catch (error) {
       console.error(error);
@@ -52,6 +54,8 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
 
       setIsLoading(true);
       await postQuizVersionId(Id, quiz);
+      console.log("quizversioncreated");
+
       setIsLoading(false);
     } catch (error) {
       console.error(error);
@@ -78,7 +82,7 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
   };
 
   //TODO
-  const handleSaveQuiz = () => {
+  const handleSaveQuiz = async () => {
     // putQuizVersionId
     // postQuizVersionId
     // si quizId est null => on est en mode creation de nouveau quiz (donc on cree d'abord un quiz puis un quizversion V1 avec l'id du quiz)
@@ -104,7 +108,9 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
       // mode creation
     } else {
       // on cree le nouveau quiz
-      const dataQuiz = createNewQuiz();
+      const dataQuiz = await createNewQuiz();
+      console.log("new quiz créé", dataQuiz);
+
       console.log("new quiz crééééé");
       // on cree le nouveau quizVersion avec le titre V1
 
