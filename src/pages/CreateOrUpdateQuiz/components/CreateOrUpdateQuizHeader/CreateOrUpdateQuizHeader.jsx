@@ -17,27 +17,30 @@ import { useToast } from "../../../../contexts/ToastContext";
 
 const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
   const [isLoading, setIsLoading] = useState(false);
-  //const [data, setData] = useState();
-  //const [dataQuiz, setDataQuiz] = useState();
-  //const [dataQuizVersion, setDataQuizVersion] = useState();
-
   const navigate = useNavigate();
   const { showToast } = useToast();
 
+  const incrementVersion = (title) => {
+    const parts = title.split(" ");
+    const lastPart = parts[parts.length - 1];
+
+    if (lastPart.startsWith("v") && !isNaN(parseInt(lastPart.slice(1)))) {
+      const number = parseInt(lastPart.slice(1), 10) + 1;
+      parts[parts.length - 1] = "v" + number;
+    } else {
+      parts.push("v1");
+    }
+
+    return parts.join(" ");
+  };
+
   // fonction de creation d'un quiz
-  let dataQuiz;
   const createNewQuiz = async () => {
-    console.log("new quiz en cours   =>" + quiz.title);
     try {
       setIsLoading(true);
-      dataQuiz = await postQuiz({ title: quiz.title });
-
-      //console.log(await postQuiz({ title: quiz.title }));
-      //console.log("setdataquiz renseigne");
+      const dataQuiz = await postQuiz({ title: quiz.title });
       setIsLoading(false);
-      console.log("here dataquiz", dataQuiz);
-
-      return dataQuiz;
+      return dataQuiz; // on retourne l'id du quiz créé
     } catch (error) {
       console.error(error);
     }
@@ -45,17 +48,9 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
 
   // fonction de creation d'un quizVersion
   const createNewQuizVersion = async (Id, quiz) => {
-    //console.log("new quizVersion en cours   =>" + quiz.title);
-
-    // console.log("quiz = " + quiz);
-
     try {
-      console.log(" --------------------ID = " + Id);
-
       setIsLoading(true);
       await postQuizVersionId(Id, quiz);
-      console.log("quizversioncreated");
-
       setIsLoading(false);
     } catch (error) {
       console.error(error);
@@ -81,7 +76,6 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
     }
   };
 
-  //TODO
   const handleSaveQuiz = async () => {
     // putQuizVersionId
     // postQuizVersionId
@@ -90,41 +84,40 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
 
     // mode edition
     if (quiz.quizId) {
-      console.log("quiz.quizId = " + quiz.quizId);
-
       // si il existe des soumissions on cree un nouveau quizVersion en incrementant la version
       if (quiz.hasSubmissions) {
-        // on repasse en mode creation
-        //
-        //
+        // on cree le nouveau quizVersion avec le titre vX + 1
+        const newQuizVersion = structuredClone(quiz);
+        newQuizVersion.title = incrementVersion(newQuizVersion.title);
+        // on vide les id des questions, c'est regénéré par le back
+        newQuizVersion.questions.forEach((question) => {
+          question._id = null;
+        });
+
+        setQuiz(newQuizVersion);
+        createNewQuizVersion(newQuizVersion.quizId, newQuizVersion);
+        showToast(
+          "Le quiz a bien été sauvegardé dans sa nouvelle version",
+          "success"
+        );
       } else {
         // on est en edition
+        // TODO
+        //
+        //
+        //
+        //
       }
-
-      //
-
-      //
-
       // mode creation
     } else {
       // on cree le nouveau quiz
-      const dataQuiz = await createNewQuiz();
-      console.log("new quiz créé", dataQuiz);
-
-      console.log("new quiz crééééé");
-      // on cree le nouveau quizVersion avec le titre V1
-
-      setQuiz((prevState) => {
-        const newQuiz = structuredClone(prevState);
-        newQuiz.title = newQuiz.title + " V1";
-        return newQuiz;
-      });
-
-      console.log("----- dataQuiz._id =" + dataQuiz._id);
-
-      createNewQuizVersion(dataQuiz._id, quiz);
-
-      console.log("new quizVersion crééééé");
+      const newQuiz = await createNewQuiz();
+      // on cree le nouveau quizVersion avec le titre v1
+      const newQuizVersion = structuredClone(quiz);
+      newQuizVersion.title = incrementVersion(newQuizVersion.title);
+      setQuiz(newQuizVersion);
+      createNewQuizVersion(newQuiz._id, newQuizVersion);
+      showToast("Le quiz a bien été créé", "success");
     }
   };
 
