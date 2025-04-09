@@ -18,6 +18,7 @@ import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
 import QuizSubmissionShow from "./pages/QuizSubmissionShow/QuizSubmissionShow";
 import BackofficeHome from "./pages/BackofficeHome/BackofficeHome";
+import CreateOrUpdateQuiz from "./pages/CreateOrUpdateQuiz/CreateOrUpdateQuiz";
 import AnswerQuiz from "./pages/AnswerQuiz/AnswerQuiz";
 import SearchUsersPage from "./pages/SearchPage/SearchUsersPage";
 import SearchQuizzesPage from "./pages/SearchPage/SearchQuizzesPage";
@@ -42,6 +43,8 @@ const AppContent = () => {
             element={<QuizSubmissionShow />}
           />
           <Route path={ROUTES.backoffice} element={<BackofficeHome />} />
+          <Route path={ROUTES.quizCreate} element={<CreateOrUpdateQuiz />} />
+          <Route path={ROUTES.quizEdit.path} element={<CreateOrUpdateQuiz />} />
           <Route path={ROUTES.answerQuiz.path} element={<AnswerQuiz />} />
           <Route path={ROUTES.searchUsers} element={<SearchUsersPage />} />
           <Route

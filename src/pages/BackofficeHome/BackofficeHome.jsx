@@ -1,6 +1,6 @@
 import BannerItem from "../../components/BannerItem/BannerItem";
 import Loader from "../../components/Loader/Loader";
-import BannerItemBis from "../../components/ResultCard/ResultCard";
+import ResultCard from "../../components/ResultCard/ResultCard";
 import { Navigate, useNavigate } from "react-router-dom";
 import "./BackofficeHome.css";
 import { FaPlus } from "react-icons/fa6";
@@ -48,7 +48,7 @@ const BackofficeHome = () => {
           <div>
             <div
               className="new-form"
-              onClick={() => navigate(ROUTES.createOrUpdateQuiz)}
+              onClick={() => navigate(ROUTES.quizCreate)}
             >
               <FaPlus />
               <span>Nouveau formulaire</span>
@@ -56,14 +56,12 @@ const BackofficeHome = () => {
             {data &&
               data.map((quiz) => {
                 return (
-                  <BannerItemBis
+                  <ResultCard
                     title={quiz.title}
                     key={quiz.id}
                     actionLabel="Editer"
                     specialClass="shadowed"
-                    onClick={() =>
-                      navigate(ROUTES.createOrUpdateQuiz + "/" + quiz._id)
-                    }
+                    linkTo={ROUTES.quizEdit.build(quiz.id)}
                   />
                 );
               })}

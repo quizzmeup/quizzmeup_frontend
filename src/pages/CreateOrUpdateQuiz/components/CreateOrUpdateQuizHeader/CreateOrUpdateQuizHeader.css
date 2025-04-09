@@ -1,0 +1,42 @@
+.header-create-or-update-quiz {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 2em 0;
+  margin-top: -30px;
+  margin-bottom: 20px;
+  margin-right: -1px; /* fix a small vertical green line (createQuestion background) when scroll */
+  background-color: var(--bg-color);
+  position: sticky;
+  top: 80px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.header-create-or-update-quiz a {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+
+.header-create-or-update-quiz input {
+  flex: 1;
+  padding: 0.4em 0.5em;
+  text-align: center;
+  font-family: var(--font-bold);
+  font-size: 1.2em;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  outline: none;
+}
+
+.header-create-or-update-quiz input::placeholder {
+  font-family: var(--font-family);
+  font-size: 0.8em;
+  opacity: 0.5;
+}
+
+.button-header-create-or-update-quiz {
+  display: flex;
+  gap: 0.5em;
+}

@@ -6,6 +6,12 @@ export const ROUTES = {
     build: (id) => `/submissions/${id}`,
   },
   backoffice: "/backoffice",
+  quizCreate: "/backoffice/quizzes/new",
+  quizEdit: {
+    path: "/backoffice/quizzes/:quizId/edit",
+    build: (quizId) => `/backoffice/quizzes/${quizId}/edit`,
+  },
+  resultUsers: "/result/users",
 
   answerQuiz: {
     path: "/quizzes/:quizId/answer", // utilisé dans <Route />
