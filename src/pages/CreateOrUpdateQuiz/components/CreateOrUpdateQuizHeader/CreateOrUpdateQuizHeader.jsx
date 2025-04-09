@@ -2,8 +2,8 @@ import "./CreateOrUpdateQuizHeader.css";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../../../routes";
 import { IoIosArrowBack } from "react-icons/io";
-import { useState, useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   delQuizVersionId,
   publishQuizVersionId,
@@ -85,8 +85,6 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
     if (quiz.quizId) {
       // si il existe des soumissions on cree un nouveau quizVersion en incrementant la version
       if (quiz.hasSubmissions) {
-        console.log("-------------------hasSubmissions");
-
         try {
           // on cree le nouveau quizVersion avec le titre vX + 1
           const newQuizVersion = structuredClone(quiz);
@@ -107,10 +105,6 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
         }
       } else {
         // il n'y a pas de soumissions donc on modifie le quizversion existant
-        console.log("---------------------has   NO    Submissions");
-        console.log("---------------------quiz._id = " + quiz._id);
-        console.log("---------------------quiz = " + quiz);
-
         try {
           setIsLoading(true);
           await putQuizVersionId(quiz._id, quiz);
@@ -121,8 +115,6 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
         }
       }
     } else {
-      console.log("---------------------creation");
-
       try {
         // on cree le nouveau quiz
         const newQuiz = await createNewQuiz();
@@ -151,24 +143,26 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
   };
 
   return (
-    <div className={"header-CreateOrUpdateQuiz"}>
-      <Link to={ROUTES.backoffice}>
-        <IoIosArrowBack /> Formulaire
-      </Link>
-      <input
-        aria-label="Titre du quiz"
-        type="text"
-        name="title"
-        placeholder="Veuillez renseigner le nom de votre quiz"
-        value={quiz.title}
-        onChange={handleTitleChange}
-      />
-      <div className="button-header-createOrUpdateQuiz">
-        <button onClick={handleDeleteQuiz}>Reset</button>
-        <button onClick={handleSaveQuiz}>Sauvegarder</button>
-        <button onClick={handlePublishQuiz}>Publier</button>
+    !isLoading && (
+      <div className={"header-CreateOrUpdateQuiz"}>
+        <Link to={ROUTES.backoffice}>
+          <IoIosArrowBack /> Formulaire
+        </Link>
+        <input
+          aria-label="Titre du quiz"
+          type="text"
+          name="title"
+          placeholder="Veuillez renseigner le nom de votre quiz"
+          value={quiz.title}
+          onChange={handleTitleChange}
+        />
+        <div className="button-header-createOrUpdateQuiz">
+          <button onClick={handleDeleteQuiz}>Reset</button>
+          <button onClick={handleSaveQuiz}>Sauvegarder</button>
+          <button onClick={handlePublishQuiz}>Publier</button>
+        </div>
       </div>
-    </div>
+    )
   );
 };
 export default CreateOrUpdateQuizHeader;

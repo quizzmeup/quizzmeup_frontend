@@ -10,8 +10,8 @@ export const publishQuizVersionId = async (id) => {
   return response.data;
 };
 
-export const putQuizVersionId = async (id) => {
-  const response = await api.put(`/api/quiz_versions/${id}`);
+export const putQuizVersionId = async (id, payload) => {
+  const response = await api.put(`/api/quiz_versions/${id}`, payload);
   return response.data;
 };
 
