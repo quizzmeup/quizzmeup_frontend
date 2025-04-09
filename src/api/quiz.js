@@ -1,24 +1,23 @@
 import api from "./client";
-import { handleApiError } from "../utils/apiErrorHandler";
 
-export const getQuizzes = async () => {
-  const response = await api.get("/api/quizzes");
+export const getQuizzes = async (filters = "") => {
+  const response = await api.get(`/api/quizzes${filters}`);
   return response.data;
 };
 
-export const getMostRecentQuizVersion = async (quiz_id, setError) => {
-  try {
-    if (!quiz_id) {
-      return null;
-    } else {
-      const response = await api.get(
-        `/api/quizzes/${quiz_id}/most_recent_quiz_version?includeUnpublished=true`
-      );
-      return response.data;
-    }
-  } catch (error) {
-    setError(handleApiError(error));
-  }
+export const getMostRecentQuizVersionWithUnpublished = async (quiz_id) => {
+  const response = await api.get(
+    `/api/quizzes/${quiz_id}/most_recent_quiz_version?includeUnpublished=true`
+  );
+  return response.data;
+};
+
+export const fetchMostRecentQuizVersion = (quizId) => {
+  return api.get(`api/quizzes/${quizId}/most_recent_quiz_version`);
+};
+
+export const fetchQuizShow = (quizId) => {
+  return api.get(`api/quizzes/${quizId}`);
 };
 
 export const postQuiz = async (payload) => {

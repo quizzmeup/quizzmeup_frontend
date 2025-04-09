@@ -1,8 +1,8 @@
-import "./addQuestionButton.css";
+import "./AddQuestionButton.css";
 import { LuFileSpreadsheet } from "react-icons/lu";
 import { FaCheck } from "react-icons/fa6";
 
-const addQuestionButton = ({ setQuiz }) => {
+const AddQuestionButton = ({ setQuiz }) => {
   const freeAnswersQuestionSchema = {
     markdownCode: "",
     multipleChoices: false,
@@ -24,10 +24,16 @@ const addQuestionButton = ({ setQuiz }) => {
   const handleClick = (questionType) => {
     setQuiz((prevState) => {
       const newQuiz = structuredClone(prevState);
-      if (questionType === "QCMQuestion") {
-        newQuiz.questions.push(QCMQuestionSchema);
-      } else {
-        newQuiz.questions.push(freeAnswersQuestionSchema);
+
+      switch (questionType) {
+        case "QCM":
+          newQuiz.questions.push(QCMQuestionSchema);
+          break;
+        case "free":
+          newQuiz.questions.push(freeAnswersQuestionSchema);
+          break;
+        default:
+          throw new Error("Type de question inconnue");
       }
       return newQuiz;
     });
@@ -36,17 +42,17 @@ const addQuestionButton = ({ setQuiz }) => {
     <div className="buttons-add-question">
       <button
         aria-label="Ajouter une question à réponse libre"
-        onClick={() => handleClick("freeAnswerQuestion")}
+        onClick={() => handleClick("free")}
       >
         <LuFileSpreadsheet /> Ajouter une question Texte
       </button>
       <button
         aria-label="Ajouter une question QCM"
-        onClick={() => handleClick("QCMQuestion")}
+        onClick={() => handleClick("QCM")}
       >
         <FaCheck /> Ajouter une question QCM
       </button>
     </div>
   );
 };
-export default addQuestionButton;
+export default AddQuestionButton;

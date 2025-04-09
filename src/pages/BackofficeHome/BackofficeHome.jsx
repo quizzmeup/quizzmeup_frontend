@@ -1,6 +1,6 @@
 import BannerItem from "../../components/BannerItem/BannerItem";
 import Loader from "../../components/Loader/Loader";
-import BannerItemBis from "../../components/BannerItemBis/BannerItemBis";
+import ResultCard from "../../components/ResultCard/ResultCard";
 import { Navigate, useNavigate } from "react-router-dom";
 import "./BackofficeHome.css";
 import { FaPlus } from "react-icons/fa6";
@@ -56,12 +56,12 @@ const BackofficeHome = () => {
             {data &&
               data.map((quiz) => {
                 return (
-                  <BannerItemBis
+                  <ResultCard
                     title={quiz.title}
                     key={quiz.id}
-                    linkLabel="Editer"
+                    actionLabel="Editer"
                     specialClass="shadowed"
-                    onClick={() => navigate(ROUTES.quizEdit.build(quiz.id))}
+                    linkTo={ROUTES.quizEdit.build(quiz.id)}
                   />
                 );
               })}
@@ -74,12 +74,25 @@ const BackofficeHome = () => {
               text="> Consulter par formulaire"
               specialClassDiv="back-home-div"
               specialClassButton="back-home-button"
+              linkTo={ROUTES.searchQuizzes}
             />
             <BannerItem
               text="> Consulter par utilisateur"
               specialClassDiv="back-home-div"
               specialClassButton="back-home-button"
-              linkTo={ROUTES.resultUsers}
+              linkTo={ROUTES.searchUsers}
+            />
+          </div>
+        </div>
+
+        <div className="backoffice-cohorts">
+          <h2>Sessions</h2>
+          <div className="cohort-manager-link">
+            <BannerItem
+              text="> Gérer les Sessions"
+              specialClassDiv="back-home-div"
+              specialClassButton="back-home-button"
+              linkTo={ROUTES.cohortManager}
             />
           </div>
         </div>

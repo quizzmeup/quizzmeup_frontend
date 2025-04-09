@@ -1,0 +1,23 @@
+.fa-free-answers {
+  margin-top: 1rem;
+}
+
+.fa-label {
+  margin-top: 0.5rem;
+}
+
+.fa-answer {
+  padding: 0.5rem;
+  border-radius: 6px;
+  margin-bottom: 0.25rem;
+}
+
+.fa-right-answer {
+  background: var(--primary-color-light);
+  border: 1px solid var(--primary-color);
+}
+
+.fa-wrong-answer {
+  background: var(--error-color-light);
+  border: 1px solid var(--error-color);
+}

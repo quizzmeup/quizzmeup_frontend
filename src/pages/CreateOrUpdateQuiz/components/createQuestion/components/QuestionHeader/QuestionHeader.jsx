@@ -7,11 +7,18 @@ import {
   handleClickOptionToUp,
   handleClickOptionDelete,
   handleClickOptionToDown,
-  toggleDisplayTextArea,
-} from "../../../../createQuestionsUtils";
+} from "./createQuestionsUtils";
 
-const QuestionHeader = ({ setQuiz, index, question, lastIndex }) => {
+const QuestionHeader = ({ setQuiz, index, question, isLastIndex }) => {
   const [codeInput, setCodeInput] = useState(false);
+
+  const updatequestionField = (field, value) => {
+    setQuiz((prevState) => {
+      const newQuiz = structuredClone(prevState);
+      newQuiz.questions[index][field] = value;
+      return newQuiz;
+    });
+  };
 
   useEffect(() => {
     if (question.markdownCode) {
@@ -21,26 +28,22 @@ const QuestionHeader = ({ setQuiz, index, question, lastIndex }) => {
 
   //Handle form functions
   const handleOnchangeTitle = (event) => {
-    setQuiz((prevState) => {
-      const newQuiz = structuredClone(prevState);
-      newQuiz.questions[index].title = event.target.value;
-      return newQuiz;
-    });
+    updatequestionField("title", event.target.value);
   };
 
   const handleOnChangeMarkDown = (event) => {
-    setQuiz((prevState) => {
-      const newQuiz = structuredClone(prevState);
-      newQuiz.questions[index].markdownCode = event.target.value;
-      return newQuiz;
-    });
+    updatequestionField("markdownCode", event.target.value);
   };
   return (
     <div className="question-header">
       <div>
         <div className="question-type">
-          {index + 1}-
-          {question.multipleChoices ? <FaCheck /> : <LuFileSpreadsheet />}
+          <span>{index + 1}</span> <span>-</span>
+          {question.multipleChoices ? (
+            <FaCheck color="#ffffff" size={20} />
+          ) : (
+            <LuFileSpreadsheet color="#ffffff" size={20} />
+          )}
         </div>
         <input
           aria-label="Titre de la question"
@@ -52,9 +55,10 @@ const QuestionHeader = ({ setQuiz, index, question, lastIndex }) => {
 
         <div className="question-options">
           <button
-            onClick={() => toggleDisplayTextArea(codeInput, setCodeInput)}
+            className={codeInput ? "box-shadow-create-question" : undefined}
+            onClick={() => setCodeInput((prevState) => !prevState)}
           >
-            <FaCode />
+            <FaCode size={17} />
           </button>
           <button
             onClick={() => handleClickOptionToUp(index, setQuiz)}
@@ -64,7 +68,7 @@ const QuestionHeader = ({ setQuiz, index, question, lastIndex }) => {
           </button>
           <button
             onClick={() => handleClickOptionToDown(index, setQuiz)}
-            disabled={lastIndex}
+            disabled={isLastIndex}
           >
             <FaChevronDown />
           </button>

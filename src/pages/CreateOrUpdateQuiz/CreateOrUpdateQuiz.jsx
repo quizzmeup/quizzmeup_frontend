@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import "./CreateOrUpdateQuiz.css";
 import { useParams, Navigate } from "react-router-dom";
-import { getMostRecentQuizVersion } from "../../api/quiz";
+import { getMostRecentQuizVersionWithUnpublished } from "../../api/quiz";
 import CreateOrUpdateQuizHeader from "./components/CreateOrUpdateQuizHeader/CreateOrUpdateQuizHeader";
 import Loader from "../../components/Loader/Loader";
 import CreateOrUpdateQuizContent from "./components/CreateOrUpdateQuizContent/CreateOrUpdateQuizContent";
 import { useAuth } from "../../contexts/AuthContext";
+import { handleApiError } from "../../utils/apiErrorHandler";
 
 const CreateOrUpdateQuiz = () => {
   const { userData } = useAuth();
@@ -15,21 +16,25 @@ const CreateOrUpdateQuiz = () => {
   const [quiz, setQuiz] = useState({ title: "", questions: [] });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  console.log("quiz", quiz);
 
   useEffect(() => {
     if (quizId) {
       //initialize questions for update a quiz
       const fetchMostRecentQuizVersion = async () => {
-        const data = await getMostRecentQuizVersion(quizId, setError);
-        setQuiz(data);
-        setIsLoading(false);
+        try {
+          const data = await getMostRecentQuizVersionWithUnpublished(quizId);
+          setQuiz(data);
+        } catch (error) {
+          setError(handleApiError(error));
+        } finally {
+          setIsLoading(false);
+        }
       };
       fetchMostRecentQuizVersion();
     } else {
       setIsLoading(false);
     }
-  }, [quizId, setError]);
+  }, [quizId]);
 
   //Redirection if user is not admin
   if (!userData || !userData.isAdmin) {
@@ -37,16 +42,16 @@ const CreateOrUpdateQuiz = () => {
   }
 
   return isLoading ? (
-    <main className="createOrUpdateQuiz container">
+    <main className="create-or-update-quiz container">
       <Loader />
     </main>
   ) : error ? (
-    <main className="createOrUpdateQuiz container">
+    <main className="create-or-update-quiz container">
       <div className="error">{error}</div>
     </main>
   ) : (
-    <main className="createOrUpdateQuiz container">
-      <CreateOrUpdateQuizHeader quiz={quiz} setQuiz={setQuiz} />
+    <main className="create-or-update-quiz container">
+      <CreateOrUpdateQuizHeader quiz={quiz} setQuiz={setQuiz} quizId={quizId} />
       <CreateOrUpdateQuizContent quiz={quiz} setQuiz={setQuiz} />
     </main>
   );

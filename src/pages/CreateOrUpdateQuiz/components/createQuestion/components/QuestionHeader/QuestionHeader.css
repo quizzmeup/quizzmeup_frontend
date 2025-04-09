@@ -4,17 +4,62 @@
   gap: 1em;
 }
 
-.question-header div:first-child {
+.question-header > div:first-child {
   display: flex;
-  gap: 2rem;
 }
 
 .question-header input {
+  margin-left: 1.5em;
+  margin-right: 0.5em;
+  padding: 0 0.5em;
+  outline: none;
+  border-radius: 5px;
+  border: 2px solid var(--text-color);
   flex: 1;
+  height: 35px;
 }
 
 .question-header textarea {
   width: 50%;
   height: 150px;
   align-self: center;
+}
+
+.question-header .question-type {
+  background-color: var(--quaternary-color);
+  color: var(--bg-color);
+  padding: 0.3em 0.5em;
+  border-radius: 5px;
+  display: flex;
+  gap: 0.5em;
+  justify-content: space-around;
+}
+
+.question-options {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.question-options button {
+  width: 35px;
+  height: 35px;
+  background-color: var(--bg-color);
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.question-options button:last-child {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.question-options button:last-child:hover {
+  color: var(--text-color);
+}
+
+.question-header textarea {
+  padding: 0.5em;
 }

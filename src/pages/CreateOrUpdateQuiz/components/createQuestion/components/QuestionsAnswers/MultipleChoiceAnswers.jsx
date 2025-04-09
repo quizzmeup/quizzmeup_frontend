@@ -1,6 +1,8 @@
+import "./QuestionsAnswers.css";
 import PossibleAnswerInput from "./PossibleAnswerInput";
 import RightWrongButton from "./RightWrongButton";
-import AddRemoveButton from "./AddRemoveButton";
+import AddAnswerButton from "./AddAnswerButton";
+import RemoveAnswerButton from "./RemoveAnswerButton";
 
 const MultipleChoiceAnswers = ({
   index,
@@ -10,10 +12,18 @@ const MultipleChoiceAnswers = ({
   question,
 }) => {
   //check if this proposition is include in the rightAnswers array and set the rightAnswers selection logo
-  const isRightAnswer = question.rightAnswers.includes(proposition);
+  const isRightAnswer =
+    proposition && question.rightAnswers.includes(proposition);
 
   return (
-    <div>
+    <div className="multiple-choice-answers">
+      {question.propositions.length > 2 && (
+        <RemoveAnswerButton
+          propositionIndex={propositionIndex}
+          setQuiz={setQuiz}
+          index={index}
+        />
+      )}
       <PossibleAnswerInput
         index={index}
         proposition={proposition}
@@ -27,17 +37,9 @@ const MultipleChoiceAnswers = ({
         setQuiz={setQuiz}
         index={index}
         isRightAnswer={isRightAnswer}
-      />{" "}
-      {question.propositions.length > 2 && (
-        <AddRemoveButton
-          sign="-"
-          propositionIndex={propositionIndex}
-          setQuiz={setQuiz}
-          index={index}
-        />
-      )}
+      />
       {propositionIndex === question.propositions.length - 1 && (
-        <AddRemoveButton sign="+" setQuiz={setQuiz} index={index} />
+        <AddAnswerButton icon="+" setQuiz={setQuiz} index={index} />
       )}
     </div>
   );

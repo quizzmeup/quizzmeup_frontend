@@ -7,8 +7,6 @@ const QuestionPoints = ({ question, setQuiz, index }) => {
     question.points > 4 ? question.points : 4
   );
   const onSelect = (nbOfPoints) => {
-    console.log(nbOfPoints);
-
     if (nbOfPoints === "+") {
       return setNbOfPointElem((prevState) => prevState + 1);
     }
@@ -19,22 +17,16 @@ const QuestionPoints = ({ question, setQuiz, index }) => {
       return newQuiz;
     });
   };
+
   const displayPointsElement = [
-    <Point
-      key={"+"}
-      nbOfPoints={"+"}
-      onSelect={() => setNbOfPointElem((prevState) => prevState + 1)}
-    />,
+    <Point key={"+"} nbOfPoints={"+"} onSelect={() => onSelect("+")} />,
   ];
   for (let i = 0; i < nbOfPointsElem; i++) {
     displayPointsElement.unshift(
       <Point
         key={i}
         nbOfPoints={nbOfPointsElem - i}
-        setNbOfPointElem={setNbOfPointElem}
-        setQuiz={setQuiz}
         selected={nbOfPointsElem - i === question.points}
-        index={index}
         onSelect={onSelect}
       />
     );

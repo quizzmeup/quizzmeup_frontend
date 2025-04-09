@@ -4,6 +4,7 @@ import { ROUTES } from "../../../../routes";
 import { IoIosArrowBack } from "react-icons/io";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Loader from "../../../../components/Loader/Loader";
 import {
   delQuizVersionId,
   publishQuizVersionId,
@@ -142,27 +143,37 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
     }
   };
 
+  if (isLoading) return <Loader />;
+
   return (
-    !isLoading && (
-      <div className={"header-CreateOrUpdateQuiz"}>
-        <Link to={ROUTES.backoffice}>
-          <IoIosArrowBack /> Formulaire
-        </Link>
-        <input
-          aria-label="Titre du quiz"
-          type="text"
-          name="title"
-          placeholder="Veuillez renseigner le nom de votre quiz"
-          value={quiz.title}
-          onChange={handleTitleChange}
-        />
-        <div className="button-header-createOrUpdateQuiz">
-          <button onClick={handleDeleteQuiz}>Reset</button>
-          <button onClick={handleSaveQuiz}>Sauvegarder</button>
-          <button onClick={handlePublishQuiz}>Publier</button>
-        </div>
+    <div className={"header-create-or-update-quiz"}>
+      <Link to={ROUTES.backoffice}>
+        <IoIosArrowBack /> Back-office
+      </Link>
+      <input
+        aria-label="Titre du quiz"
+        type="text"
+        name="title"
+        placeholder="Veuillez renseigner le nom de votre quiz"
+        value={quiz.title}
+        onChange={handleTitleChange}
+        disabled={quiz.quizId}
+      />
+      <div className="button-header-create-or-update-quiz">
+        {quiz.quizId && (
+          <button className="auth-btn logout" onClick={handleDeleteQuiz}>
+            <LuTrash2 size={20} />
+          </button>
+        )}
+
+        <button className="auth-btn" onClick={handleSaveQuiz}>
+          Sauvegarder
+        </button>
+        <button className="auth-btn" onClick={handlePublishQuiz}>
+          Publier
+        </button>
       </div>
-    )
+    </div>
   );
 };
 export default CreateOrUpdateQuizHeader;

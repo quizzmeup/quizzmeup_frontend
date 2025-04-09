@@ -22,7 +22,14 @@ const RightWrongButton = ({ index, isRightAnswer, proposition, setQuiz }) => {
     }
   };
   return (
-    <button onClick={handleClick}>
+    <button
+      onClick={handleClick}
+      className={
+        isRightAnswer
+          ? "QCM-good-answer-choice-button QCM-good-answer box-shadow-create-question"
+          : "QCM-good-answer-choice-button QCM-wrong-aswer box-shadow-create-question"
+      }
+    >
       {isRightAnswer ? <FaCheck /> : <ImCross />}
     </button>
   );
