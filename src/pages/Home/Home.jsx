@@ -41,7 +41,21 @@ const Home = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [userData]);
+
+  const getQuizDisplayStatus = () => {
+    if (submittedQuizzes.length === 0 && availableQuizzes.length === 0) {
+      return "none";
+    } else if (submittedQuizzes.length === 0) {
+      return "noSubmitted";
+    } else if (availableQuizzes.length === 0) {
+      return "noAvailable";
+    }
+
+    return "ok";
+  };
+
+  const status = getQuizDisplayStatus();
 
   return userData ? (
     <main className="container">
@@ -51,57 +65,59 @@ const Home = () => {
           <Loader />
         ) : (
           <>
-            {availableQuizzes.length > 0 ? (
-              <>
-                <p>Liste des quiz disponibles.</p>
-                {availableQuizzes.map((quiz, index) => (
-                  <div className="quiz-line" key={index}>
-                    <BannerItem
-                      text={quiz.title}
-                      specialClassDiv="back-div"
-                      specialClassButton="back-button"
-                      linkTo={ROUTES.answerQuiz.build(quiz.id)}
-                    />
-                  </div>
-                ))}
-              </>
-            ) : (
+            {status === "noAvailable" ? (
               <p>Aucun quiz disponible.</p>
-            )}
-
-            <br></br>
-            <br></br>
-
-            {submittedQuizzes.length > 0 ? (
-              <>
-                <p>Liste des Quiz soumis</p>
-
-                {submittedQuizzes.map((quiz, index) => (
-                  <div className="quiz-line" key={index}>
-                    <BannerItem
-                      text={quiz.title}
-                      specialClassDiv="back-div"
-                      specialClassButton="back-button"
-                      linkTo={ROUTES.quizSubmissionShow.build(
-                        quiz.submissionId
-                      )}
-                    />
-                  </div>
-                ))}
-              </>
             ) : (
-              <p>Aucun quiz soumis.</p>
+              availableQuizzes.length > 0 && (
+                <>
+                  <p>Liste des quiz disponibles</p>
+                  {availableQuizzes.map((quiz, index) => (
+                    <div className="quiz-line" key={index}>
+                      <BannerItem
+                        text={quiz.title}
+                        specialClassDiv="back-div"
+                        specialClassButton="back-button"
+                        linkTo={ROUTES.answerQuiz.build(quiz.id)}
+                      />
+                    </div>
+                  ))}
+                </>
+              )
             )}
 
-            {submittedQuizzes.length === 0 && availableQuizzes.length === 0 && (
-              <p>Aucun quiz disponible ou soumis.</p>
+            <br></br>
+            <br></br>
+
+            {status === "noSubmitted" ? (
+              <p>Aucun quiz soumis</p>
+            ) : (
+              submittedQuizzes.length > 0 && (
+                <>
+                  <p>Liste des Quiz soumis</p>
+
+                  {submittedQuizzes.map((quiz, index) => (
+                    <div className="quiz-line" key={index}>
+                      <BannerItem
+                        text={quiz.title}
+                        specialClassDiv="back-div"
+                        specialClassButton="back-button"
+                        linkTo={ROUTES.quizSubmissionShow.build(
+                          quiz.submissionId
+                        )}
+                      />
+                    </div>
+                  ))}
+                </>
+              )
             )}
+
+            {status === "none" && <p>Aucun quiz disponible ou soumis</p>}
           </>
         )}
       </div>
     </main>
   ) : (
-    <div className="message">
+    <div className="message container">
       <h1>
         Connecte-toi ou crée un compte avant de pouvoir profiter de QuizMeUp
       </h1>
