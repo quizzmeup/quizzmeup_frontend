@@ -20,6 +20,7 @@ main {
   justify-content: center;
   padding: 50px;
   font-size: 22px;
+  text-align: center;
 }
 
 .quiz-list {
