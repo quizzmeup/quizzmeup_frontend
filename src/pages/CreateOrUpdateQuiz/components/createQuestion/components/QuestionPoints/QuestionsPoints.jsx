@@ -17,6 +17,7 @@ const QuestionPoints = ({ question, setQuiz, index }) => {
       return newQuiz;
     });
   };
+
   const displayPointsElement = [
     <Point key={"+"} nbOfPoints={"+"} onSelect={() => onSelect("+")} />,
   ];

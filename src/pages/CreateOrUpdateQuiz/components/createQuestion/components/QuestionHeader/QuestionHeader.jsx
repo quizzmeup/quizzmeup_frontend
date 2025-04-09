@@ -12,6 +12,14 @@ import {
 const QuestionHeader = ({ setQuiz, index, question, isLastIndex }) => {
   const [codeInput, setCodeInput] = useState(false);
 
+  const updatequestionField = (field, value) => {
+    setQuiz((prevState) => {
+      const newQuiz = structuredClone(prevState);
+      newQuiz.questions[index][field] = value;
+      return newQuiz;
+    });
+  };
+
   useEffect(() => {
     if (question.markdownCode) {
       setCodeInput(true);
@@ -20,19 +28,11 @@ const QuestionHeader = ({ setQuiz, index, question, isLastIndex }) => {
 
   //Handle form functions
   const handleOnchangeTitle = (event) => {
-    setQuiz((prevState) => {
-      const newQuiz = structuredClone(prevState);
-      newQuiz.questions[index].title = event.target.value;
-      return newQuiz;
-    });
+    updatequestionField("title", event.target.value);
   };
 
   const handleOnChangeMarkDown = (event) => {
-    setQuiz((prevState) => {
-      const newQuiz = structuredClone(prevState);
-      newQuiz.questions[index].markdownCode = event.target.value;
-      return newQuiz;
-    });
+    updatequestionField("markdownCode", event.target.value);
   };
   return (
     <div className="question-header">
