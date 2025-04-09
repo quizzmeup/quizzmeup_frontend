@@ -5,7 +5,7 @@ export const getQuizzes = async () => {
   return response.data;
 };
 
-export const getMostRecentQuizVersion = async (quiz_id) => {
+export const getMostRecentQuizVersionWithUnpublished = async (quiz_id) => {
   const response = await api.get(
     `/api/quizzes/${quiz_id}/most_recent_quiz_version?includeUnpublished=true`
   );

@@ -33,14 +33,6 @@ const AppContent = () => {
           <Route path={ROUTES.backoffice} element={<BackofficeHome />} />
           <Route path={ROUTES.quizCreate} element={<CreateOrUpdateQuiz />} />
           <Route path={ROUTES.quizEdit.path} element={<CreateOrUpdateQuiz />} />
-          {/* <Route
-            path={ROUTES.createOrUpdateQuiz}
-            element={<CreateOrUpdateQuiz />}
-          />
-          <Route
-            path={ROUTES.createOrUpdateQuiz + "/:quiz_id"}
-            element={<CreateOrUpdateQuiz />}
-          /> */}
           <Route path={ROUTES.resultUsers} element={<ResultUsers />} />
         </Route>
       </Routes>

@@ -30,9 +30,12 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz, quizId }) => {
         disabled={quizId}
       />
       <div className="button-header-create-or-update-quiz">
-        <button disabled className="auth-btn logout" onClick={handleDeleteQuiz}>
-          <LuTrash2 size={20} />
-        </button>
+        {quizId && (
+          <button className="auth-btn logout" onClick={handleDeleteQuiz}>
+            <LuTrash2 size={20} />
+          </button>
+        )}
+
         <button className="auth-btn" disabled>
           Sauvegarder
         </button>

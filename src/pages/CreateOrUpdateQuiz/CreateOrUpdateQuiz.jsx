@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./CreateOrUpdateQuiz.css";
 import { useParams, Navigate } from "react-router-dom";
-import { getMostRecentQuizVersion } from "../../api/quiz";
+import { getMostRecentQuizVersionWithUnpublished } from "../../api/quiz";
 import CreateOrUpdateQuizHeader from "./components/CreateOrUpdateQuizHeader/CreateOrUpdateQuizHeader";
 import Loader from "../../components/Loader/Loader";
 import CreateOrUpdateQuizContent from "./components/CreateOrUpdateQuizContent/CreateOrUpdateQuizContent";
@@ -22,7 +22,7 @@ const CreateOrUpdateQuiz = () => {
       //initialize questions for update a quiz
       const fetchMostRecentQuizVersion = async () => {
         try {
-          const data = await getMostRecentQuizVersion(quizId);
+          const data = await getMostRecentQuizVersionWithUnpublished(quizId);
           setQuiz(data);
         } catch (error) {
           setError(handleApiError(error));
