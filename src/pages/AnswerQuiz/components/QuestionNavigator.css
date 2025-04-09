@@ -1,0 +1,20 @@
+.question-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 20px;
+}
+
+.question-nav .auth-btn {
+  min-width: 120px;
+}
+
+.question-nav .auth-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.question-nav .danger {
+  background-color: var(--error-color);
+  color: white;
+}
