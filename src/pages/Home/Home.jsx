@@ -43,15 +43,19 @@ const Home = () => {
     fetchData();
   }, [userData]);
 
-  const handleDisplayMessages = () => {
+  const getQuizDisplayStatus = () => {
     if (submittedQuizzes.length === 0 && availableQuizzes.length === 0) {
-      return 0;
+      return "none";
     } else if (submittedQuizzes.length === 0) {
       return "noSubmitted";
     } else if (availableQuizzes.length === 0) {
       return "noAvailable";
     }
+
+    return "ok";
   };
+
+  const status = getQuizDisplayStatus();
 
   return userData ? (
     <main className="container">
@@ -61,7 +65,7 @@ const Home = () => {
           <Loader />
         ) : (
           <>
-            {handleDisplayMessages() === "noAvailable" ? (
+            {status === "noAvailable" ? (
               <p>Aucun quiz disponible.</p>
             ) : (
               availableQuizzes.length > 0 && (
@@ -84,7 +88,7 @@ const Home = () => {
             <br></br>
             <br></br>
 
-            {handleDisplayMessages() === "noSubmitted" ? (
+            {status === "noSubmitted" ? (
               <p>Aucun quiz soumis</p>
             ) : (
               submittedQuizzes.length > 0 && (
@@ -107,9 +111,7 @@ const Home = () => {
               )
             )}
 
-            {handleDisplayMessages() === 0 && (
-              <p>Aucun quiz disponible ou soumis</p>
-            )}
+            {status === "none" && <p>Aucun quiz disponible ou soumis</p>}
           </>
         )}
       </div>
