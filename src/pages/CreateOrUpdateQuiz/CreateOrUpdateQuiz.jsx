@@ -15,7 +15,7 @@ const CreateOrUpdateQuiz = () => {
   const [quiz, setQuiz] = useState({ title: "", questions: [] });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  console.log("quiz", quiz);
+  // console.log("quiz", quiz);
 
   useEffect(() => {
     if (quizId) {
@@ -46,7 +46,7 @@ const CreateOrUpdateQuiz = () => {
     </main>
   ) : (
     <main className="createOrUpdateQuiz container">
-      <CreateOrUpdateQuizHeader quiz={quiz} setQuiz={setQuiz} />
+      <CreateOrUpdateQuizHeader quiz={quiz} setQuiz={setQuiz} quizId={quizId} />
       <CreateOrUpdateQuizContent quiz={quiz} setQuiz={setQuiz} />
     </main>
   );

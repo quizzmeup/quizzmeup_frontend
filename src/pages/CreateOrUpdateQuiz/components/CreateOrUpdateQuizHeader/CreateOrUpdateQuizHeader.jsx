@@ -4,7 +4,7 @@ import { ROUTES } from "../../../../routes";
 import { IoIosArrowBack } from "react-icons/io";
 import { LuTrash2 } from "react-icons/lu";
 
-const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
+const CreateOrUpdateQuizHeader = ({ quiz, setQuiz, quizId }) => {
   const handleTitleChange = (event) => {
     setQuiz((prevState) => {
       return { ...prevState, title: event.target.value };
@@ -34,6 +34,7 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
         placeholder="Veuillez renseigner le nom de votre quiz"
         value={quiz.title}
         onChange={handleTitleChange}
+        disabled={quizId}
       />
       <div className="button-header-createOrUpdateQuiz">
         <button disabled className="auth-btn logout" onClick={handleDeleteQuiz}>
