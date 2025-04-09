@@ -16,10 +16,9 @@ const MultipleChoiceAnswers = ({
     proposition && question.rightAnswers.includes(proposition);
 
   return (
-    <div className="QCM-answers">
+    <div className="multiple-choice-answers">
       {question.propositions.length > 2 && (
         <RemoveAnswerButton
-          sign="trash"
           propositionIndex={propositionIndex}
           setQuiz={setQuiz}
           index={index}
@@ -40,7 +39,7 @@ const MultipleChoiceAnswers = ({
         isRightAnswer={isRightAnswer}
       />
       {propositionIndex === question.propositions.length - 1 && (
-        <AddAnswerButton sign="+" setQuiz={setQuiz} index={index} />
+        <AddAnswerButton icon="+" setQuiz={setQuiz} index={index} />
       )}
     </div>
   );

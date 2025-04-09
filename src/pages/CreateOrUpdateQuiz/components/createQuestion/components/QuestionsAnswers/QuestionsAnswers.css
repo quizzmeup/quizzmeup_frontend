@@ -11,7 +11,7 @@
   padding: 0.7em;
 }
 
-.QCM-answers {
+.multiple-choice-answers {
   display: flex;
   gap: 0.5em;
   margin-bottom: 1em;

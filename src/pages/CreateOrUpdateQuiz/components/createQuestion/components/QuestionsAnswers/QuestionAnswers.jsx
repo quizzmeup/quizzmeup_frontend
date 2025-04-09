@@ -1,15 +1,16 @@
 import "./QuestionsAnswers.css";
-import AnswersInput from "./AnswersInput";
+import FreeAnswersInput from "./FreeAnswersInput";
 import MultipleChoiceAnswers from "./MultipleChoiceAnswers";
 
 const QuestionAnswers = ({ question, setQuiz, index }) => {
   const handleOnchangeAnswer = (event) => {
     setQuiz((prevState) => {
       const newQuiz = structuredClone(prevState);
-      newQuiz.questions[index].rightAnswers = event.target.value;
+      newQuiz.questions[index].rightAnswers = [event.target.value];
       return newQuiz;
     });
   };
+
   return (
     <div className="question-answer">
       <h3>
@@ -18,7 +19,7 @@ const QuestionAnswers = ({ question, setQuiz, index }) => {
           : "Réponse attendue :"}
       </h3>
       {!question.multipleChoices && (
-        <AnswersInput
+        <FreeAnswersInput
           value={question.rightAnswers}
           onChange={handleOnchangeAnswer}
         />

@@ -1,6 +1,6 @@
 import "./QuestionsAnswers.css";
 
-const AddAnswerButton = ({ sign, setQuiz, index }) => {
+const AddAnswerButton = ({ icon, setQuiz, index }) => {
   const handleClick = () => {
     setQuiz((prevSate) => {
       const newQuiz = structuredClone(prevSate);
@@ -10,7 +10,7 @@ const AddAnswerButton = ({ sign, setQuiz, index }) => {
   };
   return (
     <button className={"add-answer-button"} onClick={handleClick}>
-      {sign}
+      {icon}
     </button>
   );
 };

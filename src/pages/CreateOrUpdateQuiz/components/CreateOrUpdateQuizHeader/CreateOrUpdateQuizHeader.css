@@ -1,4 +1,4 @@
-.header-CreateOrUpdateQuiz {
+.header-create-or-update-quiz {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,17 +13,13 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.content-createOrUpdateQuiz {
-  background-color: var(--div-bg-color);
-}
-
-.header-CreateOrUpdateQuiz a {
+.header-create-or-update-quiz a {
   display: flex;
   gap: 0.5em;
   align-items: center;
 }
 
-.header-CreateOrUpdateQuiz input {
+.header-create-or-update-quiz input {
   flex: 1;
   padding: 0.4em 0.5em;
   text-align: center;
@@ -34,13 +30,13 @@
   outline: none;
 }
 
-.header-CreateOrUpdateQuiz input::placeholder {
+.header-create-or-update-quiz input::placeholder {
   font-family: var(--font-family);
   font-size: 0.8em;
   opacity: 0.5;
 }
 
-.button-header-createOrUpdateQuiz {
+.button-header-create-or-update-quiz {
   display: flex;
   gap: 0.5em;
 }

@@ -3,12 +3,12 @@ import QuestionHeader from "./components/QuestionHeader/QuestionHeader";
 import QuestionPoints from "./components/QuestionPoints/QuestionsPoints";
 import QuestionAnswers from "./components/QuestionsAnswers/QuestionAnswers";
 
-const CreateQuestion = ({ index, lastIndex, question, setQuiz }) => {
+const CreateQuestion = ({ index, isLastIndex, question, setQuiz }) => {
   return (
     <div className="create-question">
       <QuestionHeader
         index={index}
-        lastIndex={lastIndex}
+        isLastIndex={isLastIndex}
         question={question}
         setQuiz={setQuiz}
       />

@@ -59,7 +59,3 @@ export const handleClickOptionDelete = (index, setQuiz) => {
     return newQuiz;
   });
 };
-
-export const toggleDisplayTextArea = (codeInput, setCodeInput) => {
-  return setCodeInput(!codeInput);
-};

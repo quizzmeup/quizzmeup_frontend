@@ -12,20 +12,13 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz, quizId }) => {
   };
 
   const handleDeleteQuiz = () => {
-    setQuiz((prevState) => {
-      const newObj = structuredClone(prevState);
-
-      newObj.title = "";
-      newObj.questions = [];
-
-      return newObj;
-    });
+    setQuiz({ title: "", questions: [] });
   };
 
   return (
-    <div className={"header-CreateOrUpdateQuiz"}>
+    <div className={"header-create-or-update-quiz"}>
       <Link to={ROUTES.backoffice}>
-        <IoIosArrowBack /> Formulaire
+        <IoIosArrowBack /> Back-office
       </Link>
       <input
         aria-label="Titre du quiz"
@@ -36,7 +29,7 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz, quizId }) => {
         onChange={handleTitleChange}
         disabled={quizId}
       />
-      <div className="button-header-createOrUpdateQuiz">
+      <div className="button-header-create-or-update-quiz">
         <button disabled className="auth-btn logout" onClick={handleDeleteQuiz}>
           <LuTrash2 size={20} />
         </button>

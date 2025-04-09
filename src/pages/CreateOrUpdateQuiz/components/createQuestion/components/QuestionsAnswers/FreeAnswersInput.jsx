@@ -1,12 +1,12 @@
 import "./QuestionsAnswers.css";
-const AnswersInput = ({ onChange, value }) => {
+const FreeAnswersInput = ({ onChange, value }) => {
   return (
     <div>
       <input
         className="answer-inputs box-shadow-create-question"
         aria-label="Réponse attendue"
         type="text"
-        placeholder="Votre réponse"
+        placeholder="Tapez la réponse attendue"
         value={value}
         onChange={onChange}
       />
@@ -14,4 +14,4 @@ const AnswersInput = ({ onChange, value }) => {
   );
 };
 //
-export default AnswersInput;
+export default FreeAnswersInput;

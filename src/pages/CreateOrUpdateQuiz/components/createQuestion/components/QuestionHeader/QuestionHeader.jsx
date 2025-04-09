@@ -7,10 +7,9 @@ import {
   handleClickOptionToUp,
   handleClickOptionDelete,
   handleClickOptionToDown,
-  toggleDisplayTextArea,
-} from "../../../../createQuestionsUtils";
+} from "./createQuestionsUtils";
 
-const QuestionHeader = ({ setQuiz, index, question, lastIndex }) => {
+const QuestionHeader = ({ setQuiz, index, question, isLastIndex }) => {
   const [codeInput, setCodeInput] = useState(false);
 
   useEffect(() => {
@@ -56,8 +55,8 @@ const QuestionHeader = ({ setQuiz, index, question, lastIndex }) => {
 
         <div className="question-options">
           <button
-            className={codeInput && "box-shadow-create-question"}
-            onClick={() => toggleDisplayTextArea(codeInput, setCodeInput)}
+            className={codeInput ? "box-shadow-create-question" : undefined}
+            onClick={() => setCodeInput((prevState) => !prevState)}
           >
             <FaCode size={17} />
           </button>
@@ -69,7 +68,7 @@ const QuestionHeader = ({ setQuiz, index, question, lastIndex }) => {
           </button>
           <button
             onClick={() => handleClickOptionToDown(index, setQuiz)}
-            disabled={lastIndex}
+            disabled={isLastIndex}
           >
             <FaChevronDown />
           </button>
