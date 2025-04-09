@@ -76,48 +76,65 @@ const CreateOrUpdateQuizHeader = ({ quiz, setQuiz }) => {
     }
   };
 
+  //////////////////////////////////
+
   const handleSaveQuiz = async () => {
-    // putQuizVersionId
-    // postQuizVersionId
     // si quizId est null => on est en mode creation de nouveau quiz (donc on cree d'abord un quiz puis un quizversion V1 avec l'id du quiz)
     // sinon on est en mode creation / edition de quizversion
 
-    // mode edition
     if (quiz.quizId) {
       // si il existe des soumissions on cree un nouveau quizVersion en incrementant la version
       if (quiz.hasSubmissions) {
-        // on cree le nouveau quizVersion avec le titre vX + 1
+        console.log("-------------------hasSubmissions");
+
+        try {
+          // on cree le nouveau quizVersion avec le titre vX + 1
+          const newQuizVersion = structuredClone(quiz);
+          newQuizVersion.title = incrementVersion(newQuizVersion.title);
+          // on vide les id des questions, c'est regénéré par le back
+          newQuizVersion.questions.forEach((question) => {
+            question._id = null;
+          });
+
+          setQuiz(newQuizVersion);
+          createNewQuizVersion(newQuizVersion.quizId, newQuizVersion);
+          showToast(
+            "Le quiz a bien été sauvegardé dans sa nouvelle version",
+            "success"
+          );
+        } catch (error) {
+          console.error(error);
+        }
+      } else {
+        // il n'y a pas de soumissions donc on modifie le quizversion existant
+        console.log("---------------------has   NO    Submissions");
+        console.log("---------------------quiz._id = " + quiz._id);
+        console.log("---------------------quiz = " + quiz);
+
+        try {
+          setIsLoading(true);
+          await putQuizVersionId(quiz._id, quiz);
+          setIsLoading(false);
+          showToast("Le quiz a bien été modifié", "success");
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    } else {
+      console.log("---------------------creation");
+
+      try {
+        // on cree le nouveau quiz
+        const newQuiz = await createNewQuiz();
+        // on cree le nouveau quizVersion avec le titre v1
         const newQuizVersion = structuredClone(quiz);
         newQuizVersion.title = incrementVersion(newQuizVersion.title);
-        // on vide les id des questions, c'est regénéré par le back
-        newQuizVersion.questions.forEach((question) => {
-          question._id = null;
-        });
-
         setQuiz(newQuizVersion);
-        createNewQuizVersion(newQuizVersion.quizId, newQuizVersion);
-        showToast(
-          "Le quiz a bien été sauvegardé dans sa nouvelle version",
-          "success"
-        );
-      } else {
-        // on est en edition
-        // TODO
-        //
-        //
-        //
-        //
+        createNewQuizVersion(newQuiz._id, newQuizVersion);
+        showToast("Le quiz a bien été créé", "success");
+      } catch (error) {
+        console.error(error);
       }
-      // mode creation
-    } else {
-      // on cree le nouveau quiz
-      const newQuiz = await createNewQuiz();
-      // on cree le nouveau quizVersion avec le titre v1
-      const newQuizVersion = structuredClone(quiz);
-      newQuizVersion.title = incrementVersion(newQuizVersion.title);
-      setQuiz(newQuizVersion);
-      createNewQuizVersion(newQuiz._id, newQuizVersion);
-      showToast("Le quiz a bien été créé", "success");
     }
   };
 
