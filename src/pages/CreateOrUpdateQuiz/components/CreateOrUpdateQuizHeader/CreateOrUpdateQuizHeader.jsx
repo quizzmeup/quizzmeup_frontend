@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../../../routes";
 import { IoIosArrowBack } from "react-icons/io";
 import { LuTrash2 } from "react-icons/lu";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Loader from "../../../../components/Loader/Loader";
 import { useToast } from "../../../../contexts/ToastContext";
 import { handleApiError } from "../../../../utils/apiErrorHandler";
@@ -16,8 +16,13 @@ import {
 
 const CreateOrUpdateQuizHeader = ({ quizVersion, setQuizVersion }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isExistingQuiz, setIsExistingQuiz] = useState(false);
   const navigate = useNavigate();
   const { showToast } = useToast();
+
+  useEffect(() => {
+    setIsExistingQuiz(quizVersion.quizId ? true : false);
+  }, [quizVersion.quizId]);
 
   const handleTitleChange = (event) => {
     setQuizVersion((prev) => ({ ...prev, title: event.target.value }));
@@ -83,9 +88,8 @@ const CreateOrUpdateQuizHeader = ({ quizVersion, setQuizVersion }) => {
         onChange={handleTitleChange}
         disabled={quizVersion.quizId}
       />
-
       <div className="button-header-create-or-update-quiz">
-        {quizVersion.quizId && (
+        {isExistingQuiz && (
           <button className="auth-btn logout" onClick={handleDelete}>
             <LuTrash2 size={20} />
           </button>
@@ -93,9 +97,11 @@ const CreateOrUpdateQuizHeader = ({ quizVersion, setQuizVersion }) => {
         <button className="auth-btn" onClick={handleSubmit}>
           Sauvegarder
         </button>
-        <button className="auth-btn" onClick={handlePublish}>
-          Publier
-        </button>
+        {isExistingQuiz && (
+          <button className="auth-btn" onClick={handlePublish}>
+            Publier
+          </button>
+        )}
       </div>
     </div>
   );

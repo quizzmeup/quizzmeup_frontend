@@ -56,9 +56,12 @@ export const submitQuizVersion = async ({
     ...structuredClone(quizVersion),
     title: `${createdQuiz.title} v1`,
   };
-
   setQuizVersion(firstVersion);
-  await createQuizVersion(createdQuiz._id, firstVersion);
+  const createdQuizVersion = await createQuizVersion(
+    createdQuiz._id,
+    firstVersion
+  );
+  setQuizVersion(createdQuizVersion);
   showToast("Le quiz a bien été créé", "success");
 };
 
