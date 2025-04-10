@@ -26,13 +26,17 @@
 
 .backoffice-home h2 {
   font-size: 2rem;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 .backoffice-quiz > div {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  column-gap: 51px;
+  row-gap: 20px;
   flex-wrap: wrap;
+}
+
+.backoffice-cohorts {
+  margin-bottom: 80px;
 }
