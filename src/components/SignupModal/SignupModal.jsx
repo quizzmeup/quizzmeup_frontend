@@ -16,14 +16,20 @@ const SignupModal = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [disabledSubmit, setDisabledSubmit] = useState(false);
 
   //check if passwords match
   useEffect(() => {
-    if (confirmPassword) {
-      if (password !== confirmPassword) {
+    if (password) {
+      if (password.length < 8) {
+        setError("Votre mot de passe doit contenir au moins 8 caractères");
+        setDisabledSubmit(true);
+      } else if (confirmPassword && password !== confirmPassword) {
         setError("Les deux mots de passe doivent être identiques");
+        setDisabledSubmit(true);
       } else {
         setError("");
+        setDisabledSubmit(false);
       }
     }
   }, [password, confirmPassword]);
@@ -36,14 +42,6 @@ const SignupModal = () => {
 
     let data;
     try {
-      //check the length off the password
-      if (password.length < 8) {
-        throw {
-          passwordError:
-            "Votre mot de passe doit contenir au moins 8 caractères",
-        };
-      }
-
       data = await signup({ name, email, password });
     } catch (err) {
       err.passwordError
@@ -112,7 +110,9 @@ const SignupModal = () => {
 
           {error && <p className="error-message">{error}</p>}
 
-          <button type="submit">Créer un compte</button>
+          <button type="submit" disabled={disabledSubmit}>
+            Créer un compte
+          </button>
 
           <p className="modal-footer">
             Déjà un compte?{" "}
