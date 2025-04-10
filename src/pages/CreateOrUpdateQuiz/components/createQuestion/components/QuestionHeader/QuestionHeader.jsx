@@ -1,4 +1,4 @@
-import "./questionHeader.css";
+import "./QuestionHeader.css";
 import { LuFileSpreadsheet, LuTrash } from "react-icons/lu";
 import { FaChevronUp, FaChevronDown } from "react-icons/fa";
 import { FaCheck, FaCode } from "react-icons/fa6";
