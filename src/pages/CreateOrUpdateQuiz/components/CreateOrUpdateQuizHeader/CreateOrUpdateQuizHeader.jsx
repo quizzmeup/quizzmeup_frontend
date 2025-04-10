@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../../../routes";
 import { IoIosArrowBack } from "react-icons/io";
 import { LuTrash2 } from "react-icons/lu";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Loader from "../../../../components/Loader/Loader";
 import { useToast } from "../../../../contexts/ToastContext";
 
@@ -15,8 +15,16 @@ import {
 
 const CreateOrUpdateQuizHeader = ({ quizVersion, setQuizVersion }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isExistingQuiz, setIsExistingQuiz] = useState(false);
+
+  console.log("isExistingQuiz = " + isExistingQuiz);
+
   const navigate = useNavigate();
   const { showToast } = useToast();
+
+  useEffect(() => {
+    setIsExistingQuiz(quizVersion.quizId ? true : false);
+  }, [quizVersion.quizId]);
 
   const handleTitleChange = (event) => {
     setQuizVersion((prev) => ({ ...prev, title: event.target.value }));
@@ -89,7 +97,11 @@ const CreateOrUpdateQuizHeader = ({ quizVersion, setQuizVersion }) => {
         <button className="auth-btn" onClick={handleSubmit}>
           Sauvegarder
         </button>
-        <button className="auth-btn" onClick={handlePublish}>
+        <button
+          className={!isExistingQuiz ? "auth-btn testbut" : "auth-btn"}
+          disabled={!isExistingQuiz}
+          onClick={handlePublish}
+        >
           Publier
         </button>
       </div>
