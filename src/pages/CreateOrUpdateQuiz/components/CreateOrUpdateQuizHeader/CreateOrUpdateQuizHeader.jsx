@@ -6,6 +6,7 @@ import { LuTrash2 } from "react-icons/lu";
 import { useState } from "react";
 import Loader from "../../../../components/Loader/Loader";
 import { useToast } from "../../../../contexts/ToastContext";
+import { handleApiError } from "../../../../utils/apiErrorHandler";
 
 import {
   submitQuizVersion,
@@ -28,6 +29,7 @@ const CreateOrUpdateQuizHeader = ({ quizVersion, setQuizVersion }) => {
       await submitQuizVersion({ quizVersion, setQuizVersion, showToast });
     } catch (error) {
       console.error(error);
+      showToast(handleApiError(error), "error");
     } finally {
       setIsLoading(false);
     }
@@ -43,6 +45,7 @@ const CreateOrUpdateQuizHeader = ({ quizVersion, setQuizVersion }) => {
       });
     } catch (error) {
       console.error(error);
+      showToast(handleApiError(error), "error");
     } finally {
       setIsLoading(false);
     }
@@ -57,6 +60,7 @@ const CreateOrUpdateQuizHeader = ({ quizVersion, setQuizVersion }) => {
       });
     } catch (error) {
       console.error(error);
+      showToast(handleApiError(error), "error");
     } finally {
       setIsLoading(false);
     }
