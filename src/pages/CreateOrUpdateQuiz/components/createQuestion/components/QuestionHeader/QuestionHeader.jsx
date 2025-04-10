@@ -9,11 +9,11 @@ import {
   handleClickOptionToDown,
 } from "./createQuestionsUtils";
 
-const QuestionHeader = ({ setQuiz, index, question, isLastIndex }) => {
+const QuestionHeader = ({ setQuizVersion, index, question, isLastIndex }) => {
   const [codeInput, setCodeInput] = useState(false);
 
   const updatequestionField = (field, value) => {
-    setQuiz((prevState) => {
+    setQuizVersion((prevState) => {
       const newQuiz = structuredClone(prevState);
       newQuiz.questions[index][field] = value;
       return newQuiz;
@@ -61,18 +61,20 @@ const QuestionHeader = ({ setQuiz, index, question, isLastIndex }) => {
             <FaCode size={17} />
           </button>
           <button
-            onClick={() => handleClickOptionToUp(index, setQuiz)}
+            onClick={() => handleClickOptionToUp(index, setQuizVersion)}
             disabled={index === 0}
           >
             <FaChevronUp />
           </button>
           <button
-            onClick={() => handleClickOptionToDown(index, setQuiz)}
+            onClick={() => handleClickOptionToDown(index, setQuizVersion)}
             disabled={isLastIndex}
           >
             <FaChevronDown />
           </button>
-          <button onClick={() => handleClickOptionDelete(index, setQuiz)}>
+          <button
+            onClick={() => handleClickOptionDelete(index, setQuizVersion)}
+          >
             <LuTrash />
           </button>
         </div>

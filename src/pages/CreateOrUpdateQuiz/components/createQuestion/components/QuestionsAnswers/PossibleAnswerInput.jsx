@@ -2,12 +2,12 @@ import "./QuestionsAnswers.css";
 const PossibleAnswerInput = ({
   index,
   proposition,
-  setQuiz,
+  setQuizVersion,
   propositionIndex,
   isRightAnswer,
 }) => {
   const handlePossibleAnswerChange = (event) => {
-    setQuiz((prevState) => {
+    setQuizVersion((prevState) => {
       const newQuiz = structuredClone(prevState);
 
       if (isRightAnswer) {

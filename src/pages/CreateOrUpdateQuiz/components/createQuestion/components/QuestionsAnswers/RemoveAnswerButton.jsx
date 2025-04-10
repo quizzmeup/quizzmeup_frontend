@@ -1,9 +1,9 @@
 import "./QuestionsAnswers.css";
 import { LuTrash } from "react-icons/lu";
 
-const RemoveAnswerButton = ({ propositionIndex, setQuiz, index }) => {
+const RemoveAnswerButton = ({ propositionIndex, setQuizVersion, index }) => {
   const handleClick = () => {
-    setQuiz((prevSate) => {
+    setQuizVersion((prevSate) => {
       const newQuiz = structuredClone(prevSate);
       newQuiz.questions[index].propositions.splice(propositionIndex, 1);
       return newQuiz;

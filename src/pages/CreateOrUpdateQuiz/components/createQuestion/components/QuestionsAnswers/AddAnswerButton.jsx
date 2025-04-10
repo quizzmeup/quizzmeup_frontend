@@ -1,8 +1,8 @@
 import "./QuestionsAnswers.css";
 
-const AddAnswerButton = ({ icon, setQuiz, index }) => {
+const AddAnswerButton = ({ icon, setQuizVersion, index }) => {
   const handleClick = () => {
-    setQuiz((prevSate) => {
+    setQuizVersion((prevSate) => {
       const newQuiz = structuredClone(prevSate);
       newQuiz.questions[index].propositions.push("");
       return newQuiz;

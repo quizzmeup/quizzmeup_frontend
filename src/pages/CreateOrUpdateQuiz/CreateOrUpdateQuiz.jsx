@@ -13,7 +13,7 @@ const CreateOrUpdateQuiz = () => {
 
   const { quizId } = useParams();
 
-  const [quiz, setQuiz] = useState({ title: "", questions: [] });
+  const [quizVersion, setQuizVersion] = useState({ title: "", questions: [] });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -23,7 +23,7 @@ const CreateOrUpdateQuiz = () => {
       const fetchMostRecentQuizVersion = async () => {
         try {
           const data = await getMostRecentQuizVersionWithUnpublished(quizId);
-          setQuiz(data);
+          setQuizVersion(data);
         } catch (error) {
           setError(handleApiError(error));
         } finally {
@@ -51,8 +51,15 @@ const CreateOrUpdateQuiz = () => {
     </main>
   ) : (
     <main className="create-or-update-quiz container">
-      <CreateOrUpdateQuizHeader quiz={quiz} setQuiz={setQuiz} quizId={quizId} />
-      <CreateOrUpdateQuizContent quiz={quiz} setQuiz={setQuiz} />
+      <CreateOrUpdateQuizHeader
+        quizVersion={quizVersion}
+        setQuizVersion={setQuizVersion}
+        quizId={quizId}
+      />
+      <CreateOrUpdateQuizContent
+        quizVersion={quizVersion}
+        setQuizVersion={setQuizVersion}
+      />
     </main>
   );
 };

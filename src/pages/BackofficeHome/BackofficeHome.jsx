@@ -29,7 +29,7 @@ const BackofficeHome = () => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        setData(await getQuizzes());
+        setData(await getQuizzes("?includeUnpublished=true"));
         setIsLoading(false);
       } catch (error) {
         console.error(error);
@@ -58,10 +58,10 @@ const BackofficeHome = () => {
                 return (
                   <ResultCard
                     title={quiz.title}
-                    key={quiz.id}
+                    key={quiz._id}
                     actionLabel="Editer"
                     specialClass="shadowed"
-                    linkTo={ROUTES.quizEdit.build(quiz.id)}
+                    linkTo={ROUTES.quizEdit.build(quiz._id)}
                   />
                 );
               })}

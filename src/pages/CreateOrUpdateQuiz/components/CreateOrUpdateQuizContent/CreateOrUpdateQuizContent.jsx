@@ -2,27 +2,27 @@ import "./CreateOrUpdateQuizContent.css";
 import AddQuestionButton from "../AddQuestionButton/AddQuestionButton";
 import CreateQuestion from "../createQuestion/CreateQuestion";
 
-const CreateOrUpdateQuizContent = ({ quiz, setQuiz }) => {
+const CreateOrUpdateQuizContent = ({ quizVersion, setQuizVersion }) => {
   return (
     <div className="create-or-update-quiz-container">
       <h2>
         Questions du quiz <span>Personnaliser le formulaire</span>
       </h2>
-      {quiz.questions.map((question, index) => {
-        const isLastIndex = quiz.questions.length - 1 === index;
+      {quizVersion.questions.map((question, index) => {
+        const isLastIndex = quizVersion.questions.length - 1 === index;
 
         return (
           <CreateQuestion
             key={index}
             question={question}
-            setQuiz={setQuiz}
+            setQuizVersion={setQuizVersion}
             index={index}
             isLastIndex={isLastIndex}
           />
         );
       })}
 
-      <AddQuestionButton setQuiz={setQuiz} />
+      <AddQuestionButton setQuizVersion={setQuizVersion} />
     </div>
   );
 };

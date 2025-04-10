@@ -2,7 +2,7 @@ import "./AddQuestionButton.css";
 import { LuFileSpreadsheet } from "react-icons/lu";
 import { FaCheck } from "react-icons/fa6";
 
-const AddQuestionButton = ({ setQuiz }) => {
+const AddQuestionButton = ({ setQuizVersion }) => {
   const freeAnswersQuestionSchema = {
     markdownCode: "",
     multipleChoices: false,
@@ -22,7 +22,7 @@ const AddQuestionButton = ({ setQuiz }) => {
   };
 
   const handleClick = (questionType) => {
-    setQuiz((prevState) => {
+    setQuizVersion((prevState) => {
       const newQuiz = structuredClone(prevState);
 
       switch (questionType) {
