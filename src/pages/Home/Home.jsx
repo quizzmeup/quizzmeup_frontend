@@ -72,7 +72,7 @@ const Home = () => {
             ) : (
               availableQuizzes.length > 0 && (
                 <>
-                  <p>Liste des quiz disponibles</p>
+                  <h2>Liste des quiz disponibles</h2>
                   {availableQuizzes.map((quiz, index) => (
                     <div className="quiz-line" key={index}>
                       <BannerItem
@@ -95,7 +95,7 @@ const Home = () => {
             ) : (
               submittedQuizzes.length > 0 && (
                 <>
-                  <p>Liste des Quiz soumis</p>
+                  <h2>Liste des Quiz soumis</h2>
 
                   {submittedQuizzes.map((quiz, index) => (
                     <div className="quiz-line" key={index}>
