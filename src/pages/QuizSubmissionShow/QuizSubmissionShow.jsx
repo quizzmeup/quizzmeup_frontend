@@ -52,7 +52,7 @@ const ResultQuizSession = () => {
           <div className="rqs-score-box">
             <span className="rqs-score-label">Score :</span>
             <span className="rqs-score-value">
-              {score} / {answers.length}
+              {score} / {answers.reduce((sum, a) => sum + a.question.points, 0)}
             </span>
           </div>
         </div>
