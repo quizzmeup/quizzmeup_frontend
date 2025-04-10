@@ -1,7 +1,8 @@
 main {
   width: 100%;
   height: calc(100vh - var(--header-height) - 60px);
-  background-color: var(--div-bg-color);
+  background-color: var(--primary-color-light);
+  border-radius: 12px;
 }
 
 .quiz-title {
@@ -10,8 +11,8 @@ main {
   align-items: baseline;
   justify-content: center;
   gap: 20px;
-  padding: 10px;
-  font-size: 20px;
+  padding: 30px;
+  font-size: 30px;
   text-decoration: underline;
 }
 
@@ -30,6 +31,10 @@ main {
   align-items: center;
 }
 
+.quiz-list h2 {
+  font-size: 20px;
+}
+
 .quiz-line {
   display: flex;
   flex-direction: row;
@@ -44,14 +49,13 @@ main {
   padding: 0.3rem 1rem;
   margin: 0.5rem 0px;
   background: white;
-  height: 34px;
+  height: 38px;
   display: flex;
-  justify-content: left;
   align-items: center;
 }
 
 .back-div span {
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .back-button {
