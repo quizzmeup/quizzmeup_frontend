@@ -1,3 +1,5 @@
+### This app is currently deployed at thi url : https://quiz-me-up.netlify.app/
+
 # .env file content
 ```env
 VITE_API_URL=http://localhost:3000
