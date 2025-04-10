@@ -8,7 +8,6 @@ import { createSubmission } from "../../api/submission";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { useToast } from "../../contexts/ToastContext";
-import { ROUTES } from "../../routes";
 import { handleApiError } from "../../utils/apiErrorHandler"; // ou où que tu l'aies mis
 import "./AnswerQuiz.css";
 
@@ -34,6 +33,7 @@ const AnswerQuiz = () => {
         setQuiz(res.data);
       } catch (error) {
         console.error("Erreur lors du chargement du quiz :", error);
+        showToast(handleApiError(error), "error");
       }
     };
     loadQuizInfo();
@@ -53,6 +53,7 @@ const AnswerQuiz = () => {
       setCurrentIndex(0);
     } catch (error) {
       console.error("Erreur lors du chargement de la version du quiz :", error);
+      showToast(handleApiError(error), "error");
     }
   };
 
