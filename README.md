@@ -1,4 +1,4 @@
-### This app is currently deployed at thi url : https://quiz-me-up.netlify.app/
+### This app is currently deployed at this url : https://quiz-me-up.netlify.app/
 
 # .env file content
 ```env
