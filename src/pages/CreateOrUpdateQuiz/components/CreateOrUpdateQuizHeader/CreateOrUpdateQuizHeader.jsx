@@ -16,9 +16,6 @@ import {
 const CreateOrUpdateQuizHeader = ({ quizVersion, setQuizVersion }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isExistingQuiz, setIsExistingQuiz] = useState(false);
-
-  console.log("isExistingQuiz = " + isExistingQuiz);
-
   const navigate = useNavigate();
   const { showToast } = useToast();
 
@@ -87,9 +84,8 @@ const CreateOrUpdateQuizHeader = ({ quizVersion, setQuizVersion }) => {
         onChange={handleTitleChange}
         disabled={quizVersion.quizId}
       />
-
       <div className="button-header-create-or-update-quiz">
-        {quizVersion.quizId && (
+        {isExistingQuiz && (
           <button className="auth-btn logout" onClick={handleDelete}>
             <LuTrash2 size={20} />
           </button>
@@ -97,13 +93,11 @@ const CreateOrUpdateQuizHeader = ({ quizVersion, setQuizVersion }) => {
         <button className="auth-btn" onClick={handleSubmit}>
           Sauvegarder
         </button>
-        <button
-          className={!isExistingQuiz ? "auth-btn testbut" : "auth-btn"}
-          disabled={!isExistingQuiz}
-          onClick={handlePublish}
-        >
-          Publier
-        </button>
+        {isExistingQuiz && (
+          <button className="auth-btn" onClick={handlePublish}>
+            Publier
+          </button>
+        )}
       </div>
     </div>
   );
