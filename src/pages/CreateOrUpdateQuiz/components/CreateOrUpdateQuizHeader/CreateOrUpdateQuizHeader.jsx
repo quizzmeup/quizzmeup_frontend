@@ -37,7 +37,7 @@ const CreateOrUpdateQuizHeader = ({ quizVersion, setQuizVersion }) => {
     setIsLoading(true);
     try {
       await destroyQuizVersionAndRedirect({
-        quizVersionId: quizVersion._id,
+        quizVersion,
         navigate,
         showToast,
       });

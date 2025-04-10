@@ -25,3 +25,7 @@ export const createQuiz = async (payload) => {
   console.log("rep create quiz", response.data);
   return response.data;
 };
+
+export const deleteQuiz = (quizId) => {
+  return api.delete(`api/quizzes/${quizId}`);
+};

@@ -1,4 +1,4 @@
-import { createQuiz } from "../api/quiz";
+import { createQuiz, deleteQuiz } from "../api/quiz";
 import {
   createQuizVersion,
   updateQuizVersion,
@@ -66,11 +66,17 @@ export const submitQuizVersion = async ({
  * Supprime une version de quiz, puis redirige vers le back-office.
  */
 export const destroyQuizVersionAndRedirect = async ({
-  quizVersionId,
+  quizVersion,
   navigate,
   showToast,
 }) => {
-  await deleteQuizVersion(quizVersionId);
+  await deleteQuizVersion(quizVersion._id);
+
+  const isFirstVersion = /\bv1$/i.test(quizVersion.title.trim());
+  if (isFirstVersion) {
+    await deleteQuiz(quizVersion.quizId);
+  }
+
   showToast("Le quiz a bien été supprimé", "success");
   navigate("/backoffice");
 };
