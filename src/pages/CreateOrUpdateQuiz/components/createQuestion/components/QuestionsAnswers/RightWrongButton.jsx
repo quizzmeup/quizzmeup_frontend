@@ -1,10 +1,15 @@
 import { FaCheck } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 
-const RightWrongButton = ({ index, isRightAnswer, proposition, setQuiz }) => {
+const RightWrongButton = ({
+  index,
+  isRightAnswer,
+  proposition,
+  setQuizVersion,
+}) => {
   const handleClick = () => {
     if (proposition !== "") {
-      setQuiz((prevState) => {
+      setQuizVersion((prevState) => {
         const newQuiz = structuredClone(prevState);
 
         //if proposition isn't the right answer, add it to rightAnswers array

@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./QuestionPoints.css";
 import Point from "./Point";
 
-const QuestionPoints = ({ question, setQuiz, index }) => {
+const QuestionPoints = ({ question, setQuizVersion, index }) => {
   const [nbOfPointsElem, setNbOfPointElem] = useState(
     question.points > 4 ? question.points : 4
   );
@@ -11,7 +11,7 @@ const QuestionPoints = ({ question, setQuiz, index }) => {
       return setNbOfPointElem((prevState) => prevState + 1);
     }
 
-    setQuiz((prevState) => {
+    setQuizVersion((prevState) => {
       const newQuiz = structuredClone(prevState);
       newQuiz.questions[index].points = nbOfPoints;
       return newQuiz;

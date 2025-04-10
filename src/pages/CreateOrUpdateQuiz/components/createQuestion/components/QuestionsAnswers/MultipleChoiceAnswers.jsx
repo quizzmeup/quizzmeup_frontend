@@ -8,7 +8,7 @@ const MultipleChoiceAnswers = ({
   index,
   propositionIndex,
   proposition,
-  setQuiz,
+  setQuizVersion,
   question,
 }) => {
   //check if this proposition is include in the rightAnswers array and set the rightAnswers selection logo
@@ -20,7 +20,7 @@ const MultipleChoiceAnswers = ({
       {question.propositions.length > 2 && (
         <RemoveAnswerButton
           propositionIndex={propositionIndex}
-          setQuiz={setQuiz}
+          setQuizVersion={setQuizVersion}
           index={index}
         />
       )}
@@ -28,18 +28,22 @@ const MultipleChoiceAnswers = ({
         index={index}
         proposition={proposition}
         propositionIndex={propositionIndex}
-        setQuiz={setQuiz}
+        setQuizVersion={setQuizVersion}
         isRightAnswer={isRightAnswer}
       />
       <RightWrongButton
         question={question}
         proposition={proposition}
-        setQuiz={setQuiz}
+        setQuizVersion={setQuizVersion}
         index={index}
         isRightAnswer={isRightAnswer}
       />
       {propositionIndex === question.propositions.length - 1 && (
-        <AddAnswerButton icon="+" setQuiz={setQuiz} index={index} />
+        <AddAnswerButton
+          icon="+"
+          setQuizVersion={setQuizVersion}
+          index={index}
+        />
       )}
     </div>
   );

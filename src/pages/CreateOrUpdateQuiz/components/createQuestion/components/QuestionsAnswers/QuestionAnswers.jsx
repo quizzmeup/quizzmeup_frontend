@@ -2,9 +2,9 @@ import "./QuestionsAnswers.css";
 import FreeAnswersInput from "./FreeAnswersInput";
 import MultipleChoiceAnswers from "./MultipleChoiceAnswers";
 
-const QuestionAnswers = ({ question, setQuiz, index }) => {
+const QuestionAnswers = ({ question, setQuizVersion, index }) => {
   const handleOnchangeAnswer = (event) => {
-    setQuiz((prevState) => {
+    setQuizVersion((prevState) => {
       const newQuiz = structuredClone(prevState);
       newQuiz.questions[index].rightAnswers = [event.target.value];
       return newQuiz;
@@ -32,7 +32,7 @@ const QuestionAnswers = ({ question, setQuiz, index }) => {
               proposition={proposition}
               index={index}
               propositionIndex={propositionIndex}
-              setQuiz={setQuiz}
+              setQuizVersion={setQuizVersion}
               question={question}
             />
           );

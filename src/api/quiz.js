@@ -20,7 +20,7 @@ export const fetchQuizShow = (quizId) => {
   return api.get(`api/quizzes/${quizId}`);
 };
 
-export const postQuiz = async (payload) => {
+export const createQuiz = async (payload) => {
   const response = await api.post("/api/quizzes", payload);
   console.log("rep create quiz", response.data);
   return response.data;
