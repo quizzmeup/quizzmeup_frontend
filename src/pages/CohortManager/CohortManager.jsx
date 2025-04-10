@@ -3,6 +3,9 @@ import { getCohorts, createCohort } from "../../api/cohort";
 import { useToast } from "../../contexts/ToastContext";
 import Loader from "../../components/Loader/Loader";
 import { handleApiError } from "../../utils/apiErrorHandler";
+import { useAuth } from "../../contexts/AuthContext";
+import { Navigate } from "react-router-dom";
+import { ROUTES } from "../../routes";
 import "./CohortManager.css";
 
 const CohortManager = () => {
@@ -10,16 +13,23 @@ const CohortManager = () => {
   const [newCohortName, setNewCohortName] = useState("");
   const [loading, setLoading] = useState(true);
   const { showToast } = useToast();
+  const { userData, token } = useAuth();
+  const userIsAdmin = userData?.isAdmin;
 
   useEffect(() => {
     const fetchCohorts = async () => {
-      try {
-        const res = await getCohorts();
-        setCohorts(res.data);
-      } catch (error) {
-        showToast(`Erreur lors du chargement des sessions: ${error}`, "error");
-      } finally {
-        setLoading(false);
+      if (userData && userIsAdmin) {
+        try {
+          const res = await getCohorts();
+          setCohorts(res.data);
+        } catch (error) {
+          showToast(
+            `Erreur lors du chargement des sessions: ${error}`,
+            "error"
+          );
+        } finally {
+          setLoading(false);
+        }
       }
     };
 
@@ -43,6 +53,8 @@ const CohortManager = () => {
       );
     }
   };
+
+  if (!token || !userIsAdmin) return <Navigate to={ROUTES.home} />;
 
   return (
     <div className="container">

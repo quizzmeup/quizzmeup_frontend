@@ -16,26 +16,28 @@ const Home = () => {
   // Fonction pour récupérer les quiz pour le user
   // quiz deja repondus + quiz dispos
   const fetchData = async () => {
-    setIsLoading(true);
-    try {
-      const response = await getQuizzes();
+    if (userData) {
+      setIsLoading(true);
+      try {
+        const response = await getQuizzes();
 
-      const allData = response.data;
+        const allData = response.data;
 
-      // on a null si pas de soumission ou l'id de la soumission dans le champ "submissionId"
-      // on dispatch en 2 states
-      const dataAvailable = allData.filter(
-        (item) => item.submissionId === null
-      );
-      const dataSubmitted = allData.filter(
-        (item) => item.submissionId !== null
-      );
+        // on a null si pas de soumission ou l'id de la soumission dans le champ "submissionId"
+        // on dispatch en 2 states
+        const dataAvailable = allData.filter(
+          (item) => item.submissionId === null
+        );
+        const dataSubmitted = allData.filter(
+          (item) => item.submissionId !== null
+        );
 
-      setAvailableQuizzes(dataAvailable);
-      setSubmittedQuizzes(dataSubmitted);
-      setIsLoading(false);
-    } catch (error) {
-      console.error("Erreur lors du chargement :", error);
+        setAvailableQuizzes(dataAvailable);
+        setSubmittedQuizzes(dataSubmitted);
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Erreur lors du chargement :", error);
+      }
     }
   };
 
